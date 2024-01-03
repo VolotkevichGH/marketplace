@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../static/create.CSS">
+    <style>
+
+    </style>
+</head>
+<body>
+<script>
+    window.addEventListener('scroll', function() {
+        var block = document.querySelector('.DandGscrolled');
+        var linkElements = document.querySelectorAll('.DandGscrolled .link a');
+        var hElements = document.querySelectorAll('.DandGscrolled .h1 a');
+        var loginButtons = document.querySelectorAll('.Login button');
+
+        if (window.scrollY > 10) {
+            block.style.background = 'white';
+            block.style.color = 'black';
+
+            linkElements.forEach(function(link) {
+                link.style.color = 'black';
+            });
+
+            hElements.forEach(function(h1) {
+                h1.style.color = 'black';
+            });
+
+
+            loginButtons.forEach(function(button) {
+                button.style.color = 'black';
+            });
+        } else {
+            block.style.background = '';
+            block.style.color = '';
+
+            linkElements.forEach(function(link) {
+                link.style.color = '';
+            });
+
+            hElements.forEach(function(h1) {
+                h1.style.color = '';
+            });
+
+
+            loginButtons.forEach(function(button) {
+                button.style.color = '';
+            });
+        }
+    });
+        function showScrollTopButton() {
+            var button = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    function openNav(menu) {
+        document.getElementById(menu + "Sidebar").style.width = "50%";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function closeNav(menu) {
+        document.getElementById(menu + "Sidebar").style.width = "0";
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("overlay")) {
+            closeNav();
+        }
+    }
+
+    document.querySelectorAll('.sidebar').forEach(function(el) {
+        el.innerHTML += '<button class="closebtn" onclick="closeNav()">×</button>';
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var menuItems = document.querySelectorAll('.AllMenu .menu .a');
+      var dwsMenus = document.querySelectorAll('.AllMenu .dws-menu1, .AllMenu .dws-menu2, .AllMenu .dws-menu3, .AllMenu .dws-menu4, .AllMenu .dws-menu5, .AllMenu .dws-menu6, .AllMenu .dws-menu7, .AllMenu .dws-menu8, .AllMenu .dws-menu9, .AllMenu .dws-menu10');
+
+      function hideAllMenus() {
+        dwsMenus.forEach(function (menu) {
+          menu.style.display = 'none';
+        });
+      }
+
+      menuItems.forEach(function (item, index) {
+        item.addEventListener('click', function () {
+          hideAllMenus();
+
+          var targetMenu;
+          if (index === 1) {
+            targetMenu = document.querySelector('.AllMenu .dws-menu2');
+          } else {
+            targetMenu = document.querySelector('.AllMenu .dws-menu' + (index + 1));
+          }
+
+          if (targetMenu) {
+            targetMenu.style.display = 'flex';
+          }
+        });
+      });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        let womenElement = document.querySelector(".women");
+        let closeMenuElement = document.querySelector(".closeMenu");
+        let menuWomenMenElement = document.querySelector(".MenuWomenMen");
+        if(womenElement) {
+            womenElement.addEventListener("click", function() {
+                menuWomenMenElement.classList.add("active");
+            });
+        }
+        if(closeMenuElement) {
+            closeMenuElement.addEventListener("click", function() {
+                menuWomenMenElement.classList.remove("active");
+            });
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let closeMenuElement = document.querySelector(".closeMenu");
+        if(closeMenuElement) {
+            closeMenuElement.addEventListener("click", function() {
+                console.log("Close menu clicked");
+                document.querySelector(".MenuWomenMen").style.display = "none";
+            });
+        }
+    });
+
+    $('input').focus(function(){
+      $(this).attr('placeholder', '');
+    });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let eyeicon = document.getElementById("eyeicon1");
+        let password = document.getElementById("password1");
+
+        eyeicon.addEventListener("click", () => {
+            if (password.type == "password") {
+                password.type = "text";
+                eyeicon.src = "eyeOpen1.png";
+            } else {
+                password.type = "password";
+                eyeicon.src = "eyeClose1.png";
+            }
+        });
+    });
+
+
+</script>
+<script>
+    document.getElementById("loginbtn2").onclick = function() {
+    window.location.href = "Account.html";
+};
+</script>
+
+
+<div class="overlay" onclick="closeNav()"></div>
+
+
+<div id="mySidebar" class="sidebar" onclick="event.stopPropagation()">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#" onclick="toggleSubmenu('submenu1'); event.stopPropagation()">О нас</a>
+    <div id="submenu1" class="submenu">
+        <a href="#">История</a>
+        <a href="#">Команда</a>
+    </div>
+    <a href="#" onclick="toggleSubmenu('submenu2'); event.stopPropagation()">Услуги</a>
+    <div id="submenu2" class="submenu">
+        <a href="#">Дизайн</a>
+        <a href="#">Разработка</a>
+    </div>
+    <a href="#">Клиенты</a>
+    <a href="#">Контакты</a>
+</div>
+
+
+<div id="loginSidebar" class="sidebar">
+    <div class="contentLogin">
+        <div class="log">
+            <h2>Login</h2>
+        </div>
+
+        <div class="l">
+
+            <div class="inputBox">
+                <input type="Email" placeholder="Email" id="Email">
+
+            </div>
+
+            <div class="inputBox">
+                <input type="password" placeholder="Password" id="password">
+                <img src="eyeClose.png" alt="" id="eyeicon">
+            </div>
+        </div>
+
+        <div class="Remember">
+            <div class="forgot">
+                <h3><a>Forgot your password?</a></h3>
+
+            </div>
+            <label class="checkbox">Remember me
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+
+            <div class="loginbtn">
+                <button><h2>Login</h2></button>
+            </div>
+        </div>
+
+        <div class="info">
+            <h3>CREATE ACCOUNT</h3>
+            <ul>
+                <li>Add your favorite items to your wishlist</li>
+                <li>Save your contact informations for a faster checkout</li>
+                <li>Check your order status</li>
+            </ul>
+        </div>
+        <div class="loginbtn1Block">
+            <div class="loginbtn1">
+                <button><h2>Create Account</h2></button>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav('login')">×</a>
+</div>
+
+<div id="cartSidebar" class="sidebar">
+    <!-- Вставьте здесь содержимое боковой панели корзины -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav('cart')">×</a>
+</div>
+
+<button id="scrollToTopBtn" onclick="scrollToTop()"></button>
+<div class="DandGscrolled">
+
+    <div class="Login">
+
+
+    </div>
+
+    <div class="h1">
+        <a>Dolce & Gabbana</a>
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="MenuWomenMen">
+    <div class="DandGscrolledMenu">
+
+        <div class="closeMenu"></div>
+        <div class="h1Menu">
+            <a>Dolce</a>
+        </div>
+
+
+        <div class="linkMenu">
+            <a>gifts</a>
+            <a class="womenMenu">women</a>
+            <a>men</a>
+            <a>dgvib3</a>
+            <a>children</a>
+            <a>Bags</a>
+        </div>
+
+    </div>
+
+    <div class="AllMenu">
+        <div class="menu">
+            <div class="a">
+                <a><span>Clothing</span></a>
+            </div>
+
+            <div class="a">
+                <a><span>Bags</span></a>
+            </div>
+
+            <div class="a">
+                <a><span>Shoes</span></a>
+            </div>
+
+            <div class="a">
+                <a><span>Accessories</span></a>
+            </div>
+            <div class="a">
+                <a><span>Sunglasses</span></a>
+            </div>
+            <div class="a">
+                <a><span>Watches&Jewelry</span></a>
+            </div>
+
+
+        </div>
+
+        <div class="dws-menu1">
+            <div class="dws-menu1Col">
+                <a class="a"><span>Coat and Jackets</span></a>
+                <a class="a"><span>Denim and Skirts</span></a>
+                <a class="a"><span>Dresses&Blazers</span></a>
+                <a class="a"><span>Shirts and Tops</span></a>
+                <a class="a"><span>Trousers and Shorts</span></a>
+                <a class="a"><span>T-Shirts and Sweatshirts</span></a>
+                <a class="a"><span>Underwear and Beachwear</span></a>
+            </div>
+
+        </div>
+
+        <div class="dws-menu2">
+            <div class="dws-menu1Col">
+                <a class="a"><span>Clutches mini and Micro Bags </span></a>
+                <a class="a"><span>handbags and Totes</span></a>
+                <a class="a"><span>Shoulder and Crossbody Bags</span></a>
+                <a class="a"><span>Sicily and Devotion</span></a>
+            </div>
+
+        </div>
+
+        <div class="dws-menu3">
+            <div class="dws-menu1Col">
+                <a class="a"><span>Boots and Booties</span></a>
+                <a class="a"><span>Pumps and Skingback</span></a>
+                <a class="a"><span>Sandals and Wedges</span></a>
+                <a class="a"><span>Slides and Mules</span></a>
+                <a class="a"><span>Sheakers and Flat</span></a>
+            </div>
+
+        </div>
+
+        <div class="dws-menu4">
+            <div class="dws-menu1Col">
+                <a class="a"><span>Bijoux and Belts</span></a>
+                <a class="a"><span>Hats and Gloves</span></a>
+                <a class="a"><span>Scarves and Silks</span></a>
+                <a class="a"><span>Socks and Technology</span></a>
+                <a class="a"><span>Wallets and small leather goods</span></a>
+            </div>
+
+        </div>
+
+        <div class="dws-menu5">
+            <div class="dws-menu1Col">
+                <a class="a"><span>New arrivals and Icons</span></a>
+            </div>
+
+        </div>
+        <div class="dws-menu6">
+            <div class="dws-menu1Col">
+                <a class="a"><span>Earrings and Rings</span></a>
+                <a class="a"><span>Neacklaces and Charms</span></a>
+                <a class="a"><span>Watches&Straps</span></a>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<div style="margin: 350px 0px 10px 30%;">
+    <h3>CREATE ACCOUNT</h3>
+</div>
+
+
+<form method="post" action="/register">
+    <div style="display:flex;justify-content: space-between;width: 90%;flex-direction: column;gap: 10%;margin-left: 30%;">
+        <div class="row1" style="display: flex;flex-direction: row;gap: 10% ">
+            <div class="inputBox3">
+                <input type="text" placeholder="FIRST NAME" id="firstname" name="firstname">
+
+            </div>
+
+            <div class="inputBox3">
+                <input type="text" placeholder="LAST NAME" id="lastname" name="lastname">
+
+            </div>
+
+        </div>
+
+
+        <div class="row2" style="display: flex;flex-direction: row; gap: 10%">
+            <div class="inputBox4">
+                <input type="Email" placeholder="Email" id="email2" name="email">
+
+            </div>
+
+            <div class="inputBox">
+                <input type="password" placeholder="Password" id="password1" name="password">
+                <img src="eyeClose1.png" alt="" id="eyeicon1">
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="loginbtn2Block" id="loginbtn2">
+        <div class="loginbtn2">
+            <button type="submit" id="myBtn"><h2>Create account</h2></button>
+        </div>
+    </div>
+</form>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Thanks for submitting your email address. We've sent you an email with the information needed to reset your
+            password. The email might take a couple of minutes to reach your account. Please check your junk mail to
+            ensure you receive it.</p>
+    </div>
+</div>
+
+
+</body>
+</html>

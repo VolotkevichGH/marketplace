@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../static/settings.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modifyBtn = document.getElementById('myBtn');
+            var firstNameInput = document.getElementById('firstName');
+            var lastNameInput = document.getElementById('lastName');
+            var emailInput = document.getElementById('email');
+            var passwordInput = document.getElementById('password1');
+            var eyeIcon = document.getElementById('eyeicon1');
+
+            modifyBtn.addEventListener('click', function () {
+                if (modifyBtn.textContent === 'Modify profile') {
+                    // Enable input fields
+                    firstNameInput.disabled = false;
+                    lastNameInput.disabled = false;
+                    emailInput.disabled = false;
+                    passwordInput.disabled = false;
+                    eyeIcon.style.display = 'block'; // Assuming you want to show the eye icon
+
+                    // Change button text and font size
+                    modifyBtn.innerHTML = '<h2 style="font-size: 20px;">Save profile</h2>';
+                } else {
+                    // Disable input fields
+                    firstNameInput.disabled = true;
+                    lastNameInput.disabled = true;
+                    emailInput.disabled = true;
+                    passwordInput.disabled = true;
+                    eyeIcon.style.display = 'none'; // Assuming you want to hide the eye icon
+
+                    // Change button text and font size
+                    modifyBtn.innerHTML = '<h2 style="font-size: 20px;">Modify profile</h2>';
+                }
+            });
+        });
+    </script>
+<div class="MenuWomenMen1">
+    <div class="DandGscrolledMenu"> 
+        <div class="closeMenu"><button><a href="D&G.html">Log out</a></button></div>
+
+        <div class="h1Menu"> 
+        <a href="Account.html">Dolce & Gabbana</a> 
+        </div> 
+ 
+
+
+    </div>
+</div> 
+    <div class="settings">
+        <div class="human">
+            <h2>Welcome,</h2>
+            <h2>name</h2>
+        </div>
+
+        <div style="display:flex;justify-content: space-between;width: 90%;flex-direction: column;gap: 10%;margin-left: 5%;">
+            <div class="row1" style="display: flex;flex-direction: row;gap: 10% ">
+                <div class="inputBox3">
+                    <input type="text" placeholder="FIRST NAME" id="firstName" disabled>
+                </div>
+
+                <div class="inputBox3">
+                    <input type="text" placeholder="LAST NAME" id="lastName" disabled>
+                </div>
+            </div>
+
+            <div class="row2" style="display: flex;flex-direction: row; gap: 10%">
+                <div class="inputBox4">
+                    <input type="email" placeholder="Email" id="email" disabled>
+                </div>
+
+                <div class="inputBox">
+                    <input type="password" placeholder="Password" id="password1" disabled>
+                    <img src="eyeClose1.png" alt="" id="eyeicon1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loginbtn2Block">
+        <div class="loginbtn2">
+            <button id="myBtn"><h2 style="font-size: 20px;">Modify profile</h2></button>
+        </div>
+    </div>
+
+
+
+    <div style="display: flex;margin-left: 5%;font-size: 20px;margin-top: 5%;margin-bottom: 5%;">
+    Shopping bag
+</div>
+
+<div class="container">
+  <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+      
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+    <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+      
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+  <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+      
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+  <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+      
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+  <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+     
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+
+  <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+      
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+  <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+     
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+
+  
+  <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+      
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+    <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+      
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+    <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+      
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+    <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+     
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+    <div class="item">
+    <img src="b1.jpg">
+    <div class="overlay1">
+        <div class="heart"></div>
+     
+      
+    </div>
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+</div>   
+</body>
+</html>
