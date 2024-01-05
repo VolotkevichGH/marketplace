@@ -2,9 +2,499 @@
 <html lang="en"> 
 <head> 
 <meta charset="utf-8" /> 
-<link rel="stylesheet" href="../static/inspection.CSS"> 
-<style> 
- 
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background: white;
+
+        font-family: 'FuturaLTPro-Book', sans-serif;
+        transition: background-color .5s;
+    }
+
+
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+
+
+
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 3;
+        top: 0;
+        right: 0;
+        background-color: white;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        display: block;
+        transition: 0.3s;
+
+    }
+
+    .sidebar a:hover {
+        border-bottom-color:black ;
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    .mainButton{
+        display: flex;
+        width: 20%;
+        height: 25px;
+        margin-top: 25px;
+        color: black;
+        justify-content: center;
+        align-items: center;
+    }
+    .openbtn {
+        font-size: 30px;
+        display: flex;
+        width: 80px;
+        height: 60px;
+        background: transparent;
+        color: black;
+        border: none;
+    }
+
+    .openbtn:hover {
+        background-color:
+    }
+
+    #main {
+        transition: margin-right .5s;
+        padding: 16px;
+    }
+
+    .submenu {
+        display: none;
+        background-color: white;
+        padding-left: 50px;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1;
+    }
+
+
+    .DandGscrolled{
+        display:flex;
+        width: 100%;
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: white;
+        z-index: 2;
+    }
+
+
+    #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        width: 40px;
+        height: 40px;
+        z-index: 99999;
+        color: black;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+
+    }
+
+    #scrollToTopBtn::before {
+        content: '\2B9D';
+        font-size: 24px;
+        line-height: 0px;
+        text-align: center;
+    }
+
+
+    .link a:hover {
+        border-bottom: 2px solid black;
+    }
+    .h1{
+        display: flex;
+        width: ;
+        height:;
+        justify-content: center;
+        color: BLACK;
+        align-items: center;
+        font-size: 50px;
+        width: 50%;
+    }
+
+
+    .link{
+        display: flex;
+        color: black;
+        justify-content: space-evenly;
+
+        width: 30%;
+        height: 20px;
+    }
+
+
+
+
+    .seach{
+        display: ;
+    }
+
+
+    .img {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .img-container {
+        display: flex;
+        position: relative;
+    }
+
+    .img1,
+    .img2 {
+        position: relative;
+        text-align: center;
+    }
+
+    .img1 img,
+    .img2 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .img1 p,
+    .img2 p {
+        position: absolute;
+        bottom: 50%;
+        left: 20%;
+
+        padding: 5px 10px;
+        color: white;
+    }
+
+
+
+    .button {
+        height: 42px;
+        border: none;
+        background: none;
+        color: #f2f2f2;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        position: relative;
+        box-sizing: border-box;
+        transition: all 500ms ease;
+        position: absolute;
+        bottom: 45%;
+        left: 20%;
+        border-bottom: 2px solid white;
+        border-radius: 0px;
+
+    }
+
+    .buy {
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        margin-left: 15%; /* Поправленное смещение для выравнивания */
+        margin-top: 5%;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+
+        position: relative; /* Необходимо для позиционирования кнопки */
+    }
+
+    .column img {
+        width: 70%;
+    }
+
+    .column h2 {
+        margin-top: 5%;
+    }
+
+
+
+    .column .columnb {
+        height: 42px;
+        width: 10%;
+        border: none;
+        background: none;
+        color: black;
+
+        font-size: 18px;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        border-bottom: 2px solid black;
+        border-radius: 0px;
+
+    }
+
+
+    .children {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 980px;
+        margin-top: 10%;
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    .child__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+    }
+
+    .childB{
+        height: 42px;
+        width: 15%;
+        border: none;
+        background: none;
+        color: black;
+
+        font-size: 18px;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        border-bottom: 2px solid black;
+        border-radius: 0px;
+    }
+    .childDic{
+        gap: 10%;
+    }
+
+    .inspectionImg{
+        display: flex;
+        width: 100%;
+        height: 23%;
+
+
+    }
+    .inspectionImg img {
+        width: 25%
+    }
+
+    .CartColor {
+        display: flex;
+        width: 100%;
+        height: 100px;
+        border-bottom: 1px solid gray;
+        flex-direction: row;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+    }
+
+    .infoBuy {
+        display: flex;
+        width: 30%;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .infoCart {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+        margin-left: 10%;
+    }
+
+    .AddToCart {
+        display: flex;
+        flex-direction: row;
+        width: 30%;
+        justify-content: center;
+        align-items: center;
+        gap:10%;
+    }
+
+
+
+    .CartColor .BigAdd {
+        border: 0;
+        background: black;
+        width: 70%;
+        height: 50px;
+        color: white;
+    }
+    .CartColorDiv{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .twoInfo{
+        display: flex;
+        width: 25%;
+        height: 50px;
+        justify-content: space-between;
+
+    }
+    .twoInfo a{
+        border-bottom: 2px solid black;
+    }
+
+
+    .contentInf{
+        display: block;
+        margin: 50px 0px 50px 50px;
+    }
+
+    .details .h3{
+        display: flex;
+        flex-direction: row;
+        gap:5%;
+        color: gray;
+        margin: 20px 0px 20px 0px
+    }
+    .h4{
+        margin: 20px 0px 20px 0px
+    }
+    .h5{
+        margin: 20px 0px 20px 0px
+    }
+
+    .more{
+        display: flex;
+        width: 100%;
+        height: 100px;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin: 20px 0px 20px 0px
+
+    }
+    .more-content{
+        display: flex;
+        flex-direction: row;
+        gap: 5%;
+    }
+
+    .more-content{
+        display:flex;
+        width: 10%;
+    }
+
+    .more-content a{
+        border-bottom: 2px solid black;
+    }
+
+
+
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start; /* Выравнивание по верхнему краю контейнера */
+    }
+
+    .container img{
+        border-bottom: 2px solid transparent;
+    }
+
+    .container img:hover{
+        border-bottom-color: black;
+    }
+
+
+
+    .item {
+        width: 15%;
+        margin: 10px;
+        position: relative; /* Позиционирование для overlay */
+        height: 400px;
+    }
+
+    .item2 {
+        width: 20%;
+        margin: 10px;
+        position: relative; /* Позиционирование для overlay */
+        height: 200px;
+    }
+
+    .item img {
+        width: 100%;
+        height: auto;
+    }
+    .item2 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .overlay1 {
+        position: absolute;
+        top: 20%;
+        left: -16%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Выравнивание по левому краю overlay */
+    }
+
+    .text {
+        transform: rotate(270deg); /* Поворот текста на 90 градусов */
+        white-space: nowrap; /* Предотвращение переноса текста на новую строку */
+        margin-bottom: 10px; /* Добавление отступа между текстом и сердечком */
+    }
+    .text2 {
+
+    }
+    .price{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .detailsNone{
+        display: none;
+    }
+
+
+
+
+
 </style> 
 </head> 
 <body> 
