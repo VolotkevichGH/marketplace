@@ -1,0 +1,2190 @@
+<!DOCTYPE html> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<meta charset="utf-8" /> 
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .MenuWomenMen1{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .MenuWomenMen2{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    body{
+        background: white;
+        height: 2000px;
+        font-family: 'FuturaLTPro-Book', sans-serif;
+    }
+
+    .mennMenu{
+        border-bottom: 2px solid black;
+
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+    .MenuWomenMen{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    .MenuWomenMen.active {
+        display: flex;
+    }
+    .DandGscrolledMenu a{
+        color:black;
+    }
+    .log{
+        display: flex;
+        margin-left: 7%;
+    }
+    .l{
+        display: flex;
+        width: 100%;
+        height: 20%;
+        justify-content: center;
+        gap:5%;
+        margin-top:10%;
+    }
+    .email{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+
+        margin-top:10px;
+    }
+
+    .psw{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        margin-top:10px;
+    }
+
+    input[type=email], input[type=password] {
+        margin-top: 5%;
+        border-bottom: 2px solid black;
+        padding-bottom: 5px;
+
+    }
+
+    input {
+        border: none;
+    }
+
+    input::placeholder {
+        color: #ccc;
+    }
+    input:focus {
+        outline: none;
+    }
+    input:focus::placeholder {
+        color: transparent;
+    }
+
+
+
+
+    .inputBox {
+        background: #fff;
+        border-bottom: 2px solid black;
+
+
+
+        display: flex;
+        align-items: center;
+    }
+
+    .inputBox input {
+
+        padding: 10px 0;
+        border: 0;
+        outline: 0;
+        font-size: 24px;
+        color: #000;
+    }
+
+    .inputBox img {
+        width: 20px;
+        cursor: pointer;
+    }
+    .closeMenu{
+        position: absolute;
+        right: 2%;
+        font-size: 20px;
+        bottom: 10%;
+    }
+    .closeMenu::after {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .closeMenu6{
+        position: absolute;
+        right: 2%;
+        font-size: 20px;
+        bottom: 10%;
+    }
+    .closeMenu6::after {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .closeMenu1{
+        position: absolute;
+        right: 2%;
+        font-size: 20px;
+        bottom: 10%;
+    }
+    .closeMenu1::after {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+
+
+
+    .closeMenu2{
+        position: absolute;
+        right: 2%;
+        font-size: 20px;
+        bottom: 10%;
+    }
+    .closeMenu2::after {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .DandGscrolledMenu{
+        display:flex;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 30vh;
+        background: white;
+
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-bottom: 1px solid black;
+    }
+    .DandGscrolledMenu::after {
+
+        position: absolute;
+        bottom: 0;
+        left: 97%;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .linkMenu .womenMenu{
+        border-bottom: 2px solid black;
+    }
+
+
+
+
+
+
+    .linkMenu a:hover {
+        border-bottom: 2px solid black;
+    }
+    .h1Menu{
+        display: flex;
+        width: ;
+        height:;
+        justify-content: center;
+        color: white;
+        align-items: center;
+        font-size: 50px;
+        width: 50%;
+    }
+    .h1Menu:hover{
+        color: black;
+    }
+    .linkMenu{
+        display: flex;
+        color: white;
+        justify-content: space-evenly;
+
+        width: 30%;
+        height: 20px;
+    }
+
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        width: 30vw;
+        margin-top:30vh;
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+
+    .menu .a {
+        margin-left: 2vw;
+
+    }
+
+    .menu .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .menu .a {
+        display: inline-block;
+        position: relative;
+        height: 25px;
+
+    }
+
+    .menu .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .menu .a:hover span::after {
+        opacity: 1;
+    }
+
+
+
+
+
+
+    .AllMenu{
+        display:flex;
+        width: 100vw;
+        height: 70vh;
+    }
+
+    .AllMenu1{
+        display:flex;
+        width: 100vw;
+        height: 70vh;
+    }
+
+    .AllMenu2{
+        display:flex;
+        width: 100vw;
+        height: 70vh;
+    }
+
+
+
+
+
+    .dws-menu1 {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        width: 30vw;
+        margin-top:30vh;
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+    .dws-menu1Col{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .dws-menu1 .a {
+        margin-left: 2vw;
+
+    }
+
+    .dws-menu1 .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .dws-menu1 .a {
+        display: inline-block;
+        position: relative;
+        height: 25px;
+
+    }
+
+    .dws-menu1 .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .dws-menu1 .a:hover span::after {
+        opacity: 1;
+    }
+
+
+    .dws-menu2 ,.dws-menu3, .dws-menu4 ,.dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10{
+        display: none;
+    }
+
+
+
+    .dws-menu2, .dws-menu3, .dws-menu4, .dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10 {
+        display: none;
+        flex-direction: column;
+        background: white;
+        width: 30vw;
+        margin-top:30vh;
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+
+    .dws-menu2 .a, .dws-menu3 .a, .dws-menu4 .a, .dws-menu5 .a, .dws-menu6 .a, .dws-menu7 .a, .dws-menu8 .a, .dws-menu9 .a, .dws-menu10 .a {
+        margin-left: 2vw;
+        display: inline-block;
+        position: relative;
+        height: 25px;
+    }
+
+    .dws-menu2 .a:not(.newMenu):hover span, .dws-menu3 .a:not(.newMenu):hover span, .dws-menu4 .a:not(.newMenu):hover span, .dws-menu5 .a:not(.newMenu):hover span, .dws-menu6 .a:not(.newMenu):hover span, .dws-menu7 .a:not(.newMenu):hover span, .dws-menu8 .a:not(.newMenu):hover span, .dws-menu9 .a:not(.newMenu):hover span, .dws-menu10 .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .dws-menu1 .a span::after, .dws-menu2 .a span::after, .dws-menu3 .a span::after, .dws-menu4 .a span::after, .dws-menu5 .a span::after, .dws-menu6 .a span::after, .dws-menu7 .a span::after, .dws-menu8 .a span::after, .dws-menu9 .a span::after, .dws-menu10 .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .dws-menu2 .a:hover span::after, .dws-menu3 .a:hover span::after, .dws-menu4 .a:hover span::after, .dws-menu5 .a:hover span::after, .dws-menu6 .a:hover span::after, .dws-menu7 .a:hover span::after, .dws-menu8 .a:hover span::after, .dws-menu9 .a:hover span::after, .dws-menu10 .a:hover span::after {
+        opacity: 1;
+    }
+
+
+    .DandGscrolled{
+        background: white;
+        color: black;
+        border-bottom: 2px solid black;
+    }
+
+    .DandGscrolled a {
+        color: black;
+    }
+    .DandGscrolled .Login .openbtn {
+        color: black;
+    }
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        background-color: white;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+
+
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 3;
+    }
+
+
+    .sidebar a {
+        padding: 8px 0px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        font-size: 20px;
+    }
+
+    .sidebar a:hover {
+        color: black;
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+    }
+
+    .openbtn:hover {
+
+    }
+
+    #main {
+        transition: margin-right .5s;
+        color: white;
+
+    }
+
+    .submenu {
+        display: none;
+        background-color: #222;
+        padding-left: 50px;
+    }
+
+
+    #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        width: 40px;
+        height: 40px;
+        z-index: 999;
+        color: black;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+
+    }
+
+    #scrollToTopBtn::before {
+        content: '\2B9D';
+        font-size: 24px;
+        line-height: 0px;
+        text-align: center;
+    }
+
+    .DandGscrolled{
+        display:flex;
+
+        z-index: 2;
+        width: 100%;
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .Login {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 80%;
+        width: 15%;
+        height: 50px;
+        order: -1;
+    }
+
+
+    .Login a{
+        color: white;
+        border-bottom: 2px solid transparent;
+
+    }
+    .Login a:hover{
+        border-bottom-color:black ;
+
+    }
+
+
+    .DandGscrolled{
+        background: white;
+        color: black;
+
+    }
+
+
+    .link a:hover {
+        border-bottom: 2px solid black;
+    }
+    .h1{
+        display: flex;
+        width: ;
+        height:;
+        justify-content: center;
+        color: white;
+        align-items: center;
+
+        width: 70%;
+    }
+
+    .h1 a{
+        font-size:100px;
+
+    }
+    .h1{
+        color: black;
+    }
+    .link{
+        display: flex;
+        color: white;
+        justify-content: space-evenly;
+
+        width: 30%;
+        height: 20px;
+    }
+
+
+    #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        width: 40px;
+        height: 40px;
+        z-index: 99999;
+        color: black;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+
+    }
+
+    #scrollToTopBtn::before {
+        content: '\2B9D';
+        font-size: 24px;
+        line-height: 0px;
+        text-align: center;
+    }
+
+    .seach{
+        display: ;
+    }
+
+
+    .img {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .img-container {
+        display: flex;
+        position: relative;
+    }
+
+    .img1,
+    .img2 {
+        position: relative;
+        text-align: center;
+    }
+
+    .img1 img,
+    .img2 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .img1 p,
+    .img2 p {
+        position: absolute;
+        bottom: 50%;
+        left: 20%;
+
+        padding: 5px 10px;
+        color: white;
+    }
+
+
+
+    .button {
+        height: 42px;
+        border: none;
+        background: none;
+        color: #f2f2f2;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        position: relative;
+        box-sizing: border-box;
+        transition: all 500ms ease;
+        position: absolute;
+        bottom: 45%;
+        left: 20%;
+        border-bottom: 2px solid white;
+        border-radius: 0px;
+
+    }
+
+    .buy {
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        margin-left: 15%;
+        margin-top: 5%;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+
+        position: relative;
+    }
+
+    .column img {
+        width: 70%;
+    }
+
+    .column h2 {
+        margin-top: 5%;
+    }
+
+
+
+    .column .columnb {
+        height: 42px;
+        width: 10%;
+        border: none;
+        background: none;
+        color: black;
+
+        font-size: 18px;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        border-bottom: 2px solid black;
+        border-radius: 0px;
+
+    }
+
+
+    .children {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 980px;
+        margin-top: 10%;
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    .child__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+    }
+
+    .childB{
+        height: 42px;
+        width: 15%;
+        border: none;
+        background: none;
+        color: black;
+
+        font-size: 18px;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        border-bottom: 2px solid black;
+        border-radius: 0px;
+    }
+    .childDic{
+        gap: 10%;
+    }
+
+
+
+    .inspectionImg {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 40%;
+    }
+
+    .checkbox {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 20px;
+        user-select: none;
+    }
+
+    .checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+
+    .checkbox:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    .checkbox input:checked ~ .checkmark {
+        background-color: black;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .checkbox input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    .checkbox .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+    }
+
+    .Remember{
+        display: flex;
+        width: 90%;
+        height: 100px;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 5%;
+        margin-top: 10px;
+    }
+
+    .loginbtn button{
+
+
+
+    }
+    .loginbtn {
+        display: flex;
+        border: 1px solid black;
+        width: 20%;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .loginbtn button {
+        border: none;
+        height: 30px;
+        background: transparent;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+    .loginbtn:hover {
+        background-color: black;
+    }
+
+    .loginbtn:hover button {
+        color: white;
+    }
+    .info{
+        margin-top: 80px;
+        margin-left: 7%;
+        font-size: 15px;
+    }
+
+    .loginbtn1 {
+        display: flex;
+        border: 1px solid black;
+        width: 20%;
+        height: 40px;
+        margin-right:9% ;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        background-color: black;
+
+    }
+
+    .loginbtn1 button {
+        border: none;
+        height: 30px;
+        background: transparent;
+        text-decoration: none;
+        color: white;
+        font-size: 12px;
+    }
+
+    .loginbtn1:hover {
+        background-color: white;
+    }
+
+    .loginbtn1:hover button {
+        color: black;
+    }
+    .loginbtn1Block{
+        display: flex;
+        width: 100%;
+        height: 50px;
+        justify-content: flex-end;
+
+    }
+
+    .loginbtn3 {
+        display: flex;
+        border: 1px solid black;
+        width: 90%;
+        height: 40px;
+        margin-left:7% ;
+        margin-top: 3%;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        background-color: black;
+
+    }
+
+    .loginbtn3 button {
+        border: none;
+        height: 30px;
+        background: transparent;
+        text-decoration: none;
+        color: white;
+        font-size: 12px;
+    }
+
+    .loginbtn3:hover {
+        background-color: white;
+    }
+
+    .loginbtn3:hover button {
+        color: black;
+    }
+
+    .sidebarSearch{
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 445466780;
+        top: 0;
+        right: 0;
+        background-color: white;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+
+    }
+
+
+    #searchInput {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    .container1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 20px;
+        width: 100%;
+        height: 80%;
+    }
+
+    .item {
+        flex: 0 0 calc(16.66% - 20px);
+        box-sizing: border-box;
+        margin-top: 50px;
+        height: auto;
+        width: 20%;
+        display: none;
+        overflow: hidden;
+        flex-direction: column;
+
+
+    }
+
+    .item img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .item .item-name {
+        margin-top: 10px;
+        word-wrap: break-word;
+    }
+
+    .category {
+        border-bottom: none;
+        background: transparent;
+        border: none;
+
+    }
+    .category.selected {
+        border-bottom: 2px solid black;
+    }
+
+    .linkMenu a.women.active {
+        border-bottom: 2px solid black;
+    }
+
+    .linkMenu a.men.active {
+        border-bottom: 2px solid black;
+    }
+
+    .nameShop{
+        text-align: center;
+        margin-top: 200px;
+    }
+
+
+    .container1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin-top: 100px;
+    }
+    .container1 img{
+        border-bottom: 2px solid transparent;
+    }
+    .container1 img:hover{
+        border-bottom-color: 2px solid black;
+    }
+
+    .item1 {
+        width: 20%;
+        margin: 10px;
+        position: relative;
+        word-wrap: break-word;
+    }
+
+    .item1 img {
+        width: 100%;
+        height: auto;
+    }
+</style> 
+</head> 
+<body> 
+    <script>
+
+    function showScrollTopButton() { 
+        var button = document.getElementById("scrollToTopBtn"); 
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { 
+            button.style.display = "block"; 
+        } else { 
+            button.style.display = "none"; 
+        } 
+    } 
+ 
+    function scrollToTop() { 
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+    } 
+function openNav(menu) {
+    if (menu === 'search') {
+        document.getElementById(menu + "Sidebar").style.width = "100%";
+    } else {
+        document.getElementById(menu + "Sidebar").style.width = "50%";
+    }
+    document.querySelector(".overlay").style.display = "block";
+}
+
+function closeNav(menu) {
+    document.getElementById(menu + "Sidebar").style.width = "0";
+    document.querySelector(".overlay").style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target.classList.contains("overlay")) {
+        closeNav('login');
+        closeNav('cart');
+        closeNav('search');
+    }
+}
+document.querySelectorAll('.sidebar').forEach(function(el) {
+    el.innerHTML += '<button class="closebtn" onclick="closeNav()">×</button>';
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu .dws-menu1, .AllMenu .dws-menu2, .AllMenu .dws-menu3, .AllMenu .dws-menu4, .AllMenu .dws-menu5, .AllMenu .dws-menu6, .AllMenu .dws-menu7, .AllMenu .dws-menu8, .AllMenu .dws-menu9, .AllMenu .dws-menu10');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu1 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu1 .dws-menu1, .AllMenu1 .dws-menu2, .AllMenu1 .dws-menu3, .AllMenu1 .dws-menu4, .AllMenu1 .dws-menu5, .AllMenu1 .dws-menu6');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu2 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu2 .dws-menu1, .AllMenu2 .dws-menu2, .AllMenu2 .dws-menu3, .AllMenu2 .dws-menu4, .AllMenu2 .dws-menu5');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let womenElement = document.querySelector(".women");
+    let closeMenuElement = document.querySelector(".closeMenu");
+    let menuWomenMenElement = document.querySelector(".MenuWomenMen");
+    if(womenElement) {
+        womenElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.add("active");
+        });
+    }
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.remove("active");
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() { 
+    let closeMenuElement = document.querySelector(".closeMenu");
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            console.log("Close menu clicked");
+            document.querySelector(".MenuWomenMen").style.display = "none";
+        });
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let womenMenuElement = document.querySelector(".womenMenu");
+    let closeMenuElement = document.querySelector(".closeMenu");
+    let menuWomenMenElement = document.querySelector(".MenuWomenMen");
+    if(womenMenuElement) {
+        womenMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.add("active");
+        });
+    }
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.remove("active");
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+        var menLink = document.querySelector('.men');
+        var menuBlock = document.querySelector('.MenuWomenMen1');
+
+        menLink.addEventListener('click', function () {
+            menuBlock.style.display = (menuBlock.style.display === 'none' || menuBlock.style.display === '') ? 'flex' : 'none';
+            
+        });
+    });
+
+document.addEventListener('DOMContentLoaded', function () {
+        var menLink = document.querySelector('.childrenchildren');
+        var menuBlock = document.querySelector('.MenuWomenMen2');
+
+        menLink.addEventListener('click', function () {
+            menuBlock.style.display = (menuBlock.style.display === 'none' || menuBlock.style.display === '') ? 'flex' : 'none';
+            
+        });
+    });
+
+$('input').focus(function(){
+  $(this).attr('placeholder', '');
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    let eyeicon = document.getElementById("eyeicon");
+    let password = document.getElementById("password");
+
+    eyeicon.addEventListener("click", () => {
+        if (password.type == "password") {
+            password.type = "text";
+            eyeicon.src = "eyeOpen.png";
+        } else {
+            password.type = "password";
+            eyeicon.src = "eyeClose.png";
+        }
+    });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        modal.style.display = modal.style.display === "none" ? "flex" : "none";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    var women = document.getElementsByClassName("women")[0];
+    var menuWomenMen = document.getElementsByClassName("MenuWomenMen")[0];
+    var closeMenu = document.getElementsByClassName("closeMenu")[0];
+
+    women.onclick = function() {
+        if (menuWomenMen.style.display === "" || menuWomenMen.style.display === "none") {
+            menuWomenMen.style.display = "block";
+        } else {
+            menuWomenMen.style.display = "none";
+        }
+    }
+
+    closeMenu.onclick = function() {
+        menuWomenMen.style.display = "none";
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const womenLink = document.querySelector('.women');
+    const menuWomenMen = document.querySelector('.MenuWomenMen');
+    const closeMenuButton = document.querySelector('.closeMenu');
+
+    womenLink.addEventListener('click', () => {
+        if (menuWomenMen.style.display === 'flex') {
+            menuWomenMen.style.display = 'none';
+        } else {
+            menuWomenMen.style.display = 'flex';
+        }
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+        menuWomenMen.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === menuWomenMen) {
+            menuWomenMen.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+
+
+document.querySelector('.men').addEventListener('click', function() {
+    document.querySelector('.AllMenu2').style.display = 'block';
+    document.querySelector('.AllMenu1').style.display = 'none';
+});
+
+document.querySelector('.womenMenu').addEventListener('click', function() {
+    document.querySelector('.AllMenu1').style.display = 'block';
+    document.querySelector('.AllMenu2').style.display = 'none';
+});document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.openbtn').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = '/settings';
+    });
+});
+    </script>   
+
+
+
+    <div class="overlay" onclick="closeNav('menu')"></div>
+
+
+
+
+
+
+  
+<form th:action="@{/login}" method="post">
+<div id="loginSidebar" class="sidebar">
+    <div class="contentLogin">
+     <div class="log">
+        <h2>Login</h2>
+    </div>
+         
+         <div class="l">
+
+    <div class="inputBox">
+        <input type="Email" placeholder="Email" id="Email" name="username">
+
+    </div>
+
+    <div class="inputBox">
+        <input type="password" placeholder="Password" id="password" name="password">
+        <img src="../static/assets/eyeClose.png" alt="" id="eyeicon">
+    </div>
+
+    </div>
+      
+     <div class="Remember"> <div class="forgot">
+        <h3><a>Forgot your password?</a></h3>
+
+     </div>
+     <label class="checkbox">Remember me
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label> 
+
+ <div class="loginbtn" id="loginButton">
+    <button><h2>Login</h2></button>
+ </div>   
+</div>
+</form>
+
+<div class="info">
+    <h3>CREATE ACCOUNT</h3>
+    <ul>
+        <li>Add your favorite items to your wishlist</li>
+        <li>Save your contact informations for a faster checkout</li>
+        <li>Check your order status</li>
+    </ul>
+</div> 
+<div class="loginbtn1Block">
+ <div class="loginbtn1" id="loginbtn1">
+    <button><h2>Create Account</h2></button>
+ </div>
+</div>
+     </div>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav('login')">×</a>
+</div>
+
+
+<div id="searchSidebar" class="sidebar">
+    <div class="contentSearch">
+     <input type="text" id="searchInput" placeholder="Поиск..." style="margin-left:1%">
+<div style="display:flex;gap: 5%;margin-left: 3%;margin-top: 2%;">
+<button class="category" data-category="men">Men</button>
+<button class="category" data-category="women">Women</button>
+<button class="category" data-category="children">Children</button>
+</div>
+<div class="container">
+
+
+    <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">тттттттттттттттттттттттттттттттттттттттт</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+
+    <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">тов</div>
+
+    </div>
+
+    <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">това</div>
+    </div>
+
+    <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">товар</div>
+    </div>
+
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">товар</div>
+    </div>
+
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">това</div>
+    </div>
+
+        <div class="item" data-category="men">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
+        <div class="item-name">това</div>
+    </div>
+
+    <div class="item" data-category="women">
+        <img src="../static/assets/b1.jpg" alt="Товар 2">
+        <div class="item-name">товар</div>
+    </div>
+
+        <div class="item" data-category="women">
+        <img src="../static/assets/b1.jpg" alt="Товар 2">
+        <div class="item-name">товары</div>
+    </div>
+
+
+        <div class="item" data-category="women">
+        <img src="../static/assets/b1.jpg" alt="Товар 2">
+        <div class="item-name">6</div>
+    </div>
+</div>
+     </div>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav('search')">×</a>
+</div>
+
+<div id="cartSidebar" class="sidebar">
+  <div class="bag" style="margin-left: 7%;">
+    <h2>SHOPPING BAG</h2>
+  </div>  
+
+  <div style="display: flex;
+  width:100% ;justify-content: center;margin-top: 7%;">
+    <h3>YOUR BAG IS EMPTY</h3>
+  </div> 
+
+  <div class="BagContent">
+      <div style="display: flex;
+  width:100% ;justify-content: center;margin-top: 47%;">
+        <h3>RETRIEVE YOUR BAG</h3>
+      </div>  
+
+      <div style="display: flex;
+  width:100% ;justify-content: center;margin-top: 3%;">
+        <h3>Sign in to My Account to access your bag across your devices.</h3>
+      </div>
+ <div class="loginbtn3" id="loginbtn3">
+    <button><h2>Create Account</h2></button>
+ </div>
+
+  </div> 
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav('cart')">×</a>
+</div>
+
+<button id="scrollToTopBtn" onclick="scrollToTop()"></button> 
+    <div class="DandGscrolled"> 
+        
+<div class="Login">
+    <div id="main">
+        <button class="openbtn" onclick="openNav('search'); event.stopPropagation()">Search</button>
+    </div>
+    <div id="main">
+        <button class="openbtn" onclick="window.location.href='/settings'">Account</button>
+    </div>
+    <div id="main">
+        <button class="openbtn" onclick="openNav('cart'); event.stopPropagation()">Cart</button>
+    </div>
+</div>
+
+        <div class="h1"> 
+        <a href="D&G A.html">Dolce & Gabbana</a> 
+        </div> 
+ 
+         
+
+        <div class="link"> 
+         
+         <a class="women">women</a> 
+         <a class="men">men</a> 
+          
+         <a class="childrenchildren">children</a> 
+        
+        </div> 
+
+    </div>
+
+
+
+      
+    </div>
+
+   
+ 
+ 
+  
+
+
+   <div class="MenuWomenMen">
+
+    <div class="DandGscrolledMenu"> 
+
+        
+        <div class="closeMenu">X</div>
+        <div class="h1Menu"> 
+        <a href="D&G.html">Dolce & Gabbana</a>  
+        </div> 
+ 
+ 
+        <div class="linkMenu"> 
+
+         <a class="womenMenu">women</a> 
+         
+        </div> 
+
+    </div>
+
+<div class="AllMenu">
+  <div class="menu">
+    <div class="a">
+      <a><span>Clothing</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Bags</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Shoes</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Accessories</span></a>
+    </div>
+    <div class="a">
+      <a><span>Sunglasses</span></a>
+    </div>
+        <div class="a">
+      <a><span>Watches&Jewelry</span></a>
+    </div>
+
+    
+
+  </div>
+
+  <div class="dws-menu1">
+    <div class="dws-menu1Col">
+      <a class="a" href="Coats and Jackets A.html"><span>Coats and Jackets</span></a>
+      <a class="a" href="Denim and Skirts A.html"><span>Denim and Skirts</span></a>
+      <a class="a" href="Dresses&Blazers A.html"><span>Dresses&Blazers</span></a>
+      <a class="a" href="Shirts and Tops A.html"><span>Shirts and Tops</span></a>
+      <a class="a" href="Trousers and Shorts A.html"><span>Trousers and Shorts</span></a>
+      <a class="a" href="T-Shirts and Sweatshirts A.html"><span>T-Shirts and Sweatshirts</span></a>
+      <a class="a" href="Underwear and Beachwear A.html"><span>Underwear and Beachwear</span></a>
+    </div>
+
+  </div>
+
+  <div class="dws-menu2">
+    <div class="dws-menu1Col">
+      <a class="a" href="Clutches mini and Micro Bags A.html"><span>Clutches mini and Micro Bags </span></a>
+      <a class="a" href="handbags and Totes A.html"><span>handbags and Totes</span></a>
+      <a class="a" href="Shoulder and Crossbody Bags A.html"><span>Shoulder and Crossbody Bags</span></a>
+      <a class="a" href="Sicily and Devotion A.html"><span>Sicily and Devotion</span></a>
+    </div>
+    
+  </div>
+
+  <div class="dws-menu3">
+    <div class="dws-menu1Col">
+      <a class="a" href="Boots and Booties A.html"><span>Boots and Booties</span></a>
+      <a class="a" href="Pumps and Skingback A.html"><span>Pumps and Skingback</span></a>
+      <a class="a" href="Sandals and Wedges A.html"><span>Sandals and Wedges</span></a>
+      <a class="a" href="Slides and Mules A.html"><span>Slides and Mules</span></a>
+      <a class="a" href="Sheakers and Flat A.html"><span>Sheakers and Flat</span></a>
+    </div>
+   
+  </div>
+
+  <div class="dws-menu4">
+    <div class="dws-menu1Col">
+      <a class="a" href="Bijoux and Belts A.html"><span>Bijoux and Belts</span></a>
+      <a class="a" href="Hats and Gloves A.html"><span>Hats and Gloves</span></a>
+      <a class="a" href="Scarves and Silks A.html"><span>Scarves and Silks</span></a>
+      <a class="a" href="Socks and Technology A.html"><span>Socks and Technology</span></a>
+      <a class="a" href="Wallets and small leather goods A.html"><span>Wallets and small leather goods</span></a>
+    </div>
+    
+  </div>
+
+    <div class="dws-menu5">
+    <div class="dws-menu1Col">
+      <a class="a" href="New arrivals and Icons A.html"><span>New arrivals and Icons</span></a>
+    </div>
+    
+  </div>
+    <div class="dws-menu6">
+    <div class="dws-menu1Col">
+      <a class="a" href="Earrings and Rings A.html"><span>Earrings and Rings</span></a>
+      <a class="a" href="Neacklaces and Charms A.html"><span>Neacklaces and Charms</span></a>
+      <a class="a" href="Watches&Straps A.html"><span>Watches&Straps</span></a>
+    </div>
+    
+  </div>
+
+
+</div>
+
+
+
+
+
+</div> 
+</div>
+
+
+
+<div class="MenuWomenMen1">
+    <div class="DandGscrolledMenu"> 
+        <div class="closeMenu1">X</div>
+
+        <div class="h1Menu"> 
+        <a href="D&G.html">Dolce & Gabbana</a> 
+        </div> 
+ 
+ 
+        <div class="linkMenu"> 
+ 
+         <a class="mennMenu">women</a> 
+
+        </div> 
+
+    </div>
+
+ <div class="AllMenu1">
+  <div class="menu">
+    <div class="a">
+      <a><span>Clothing</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Bags</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Shoes</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Accessories</span></a>
+    </div>
+    <div class="a">
+      <a><span>Sunglasses</span></a>
+    </div>
+        <div class="a">
+      <a><span>Watches&Jewelry</span></a>
+    </div>
+
+    
+
+  </div>
+
+  <div class="dws-menu1">
+    <div class="dws-menu1Col">
+      <a class="a" href="Activewear and Beachwear. Ahtml"><span>Activewear and Beachwear</span></a>
+      <a class="a" href="Coats and Jackets1 A.html"><span>Coats and Jackets</span></a>
+      <a class="a" href="Denim and Sweatshirts A.html"><span>Denim and Sweatshirts</span></a>
+      <a class="a" href="Shirts A.html"><span>Shirts</span></a>
+      <a class="a" href="Suits and Blazers A.html"><span>Suits and Blazers</span></a>
+      <a class="a" href="T-Shirts and Polos A.html"><span>T-Shirts and Polos</span></a>
+      <a class="a" href="Sweaters and Cardigans A.html"><span>Sweaters and Cardigans</span></a>
+      <a class="a" href="Trousers and Shorts1 A.html"><span>Trousers and Shorts</span></a>
+      <a class="a" href="Underwear and Loungewear A.html"><span>Underwear and Loungewear</span></a>
+    </div>
+
+  </div>
+
+  <div class="dws-menu2">
+    <div class="dws-menu1Col">
+      <a class="a" href="Backpacks and Fanny packs A.html"><span>Backpacks and Fanny packs </span></a>
+      <a class="a" href="Briefcase and cluthces A.html"><span>Briefcase and cluthces</span></a>
+      <a class="a" href="Crossbody Bags A.html"><span>Crossbody Bags</span></a>
+      <a class="a" href="Travel bags and Shoppers A.html"><span>Travel bags and Shoppers</span></a>
+    </div>
+    
+  </div>
+
+  <div class="dws-menu3">
+    <div class="dws-menu1Col">
+      <a class="a" href="Boots A.html"><span>Boots</span></a>
+      <a class="a" href="Loafers and Moccasins A.html"><span>Loafers and Moccasins</span></a>
+      <a class="a" href="Sandals and Slides A.html"><span>Sandals and Slides</span></a>
+      <a class="a" href="Sheakers and Lace-ups A.html"><span>Sheakers and Lace-ups</span></a>
+      
+    </div>
+   
+  </div>
+
+  <div class="dws-menu4">
+    <div class="dws-menu1Col">
+      <a class="a" href="Belts and Bijoux A.html"><span>Belts and Bijoux</span></a>
+      <a class="a" href="Hats and Gloves1 A.html"><span>Hats and Gloves</span></a>
+      <a class="a" href="Scarves and Silks1 A.html"><span>Scarves and Silks</span></a>
+      <a class="a" href="Socks A.html"><span>Socks</span></a>
+      <a class="a" href="Wallets and small leather goods1 A.html"><span>Wallets and small leather goods</span></a>
+      <a class="a" href="Ties and pocket squares A.html"><span>Ties and pocket squares</span></a>
+    </div>
+    
+  </div>
+
+    <div class="dws-menu5">
+    <div class="dws-menu1Col">
+      <a class="a" href="Icons A.html"><span>Icons</span></a>
+      <a class="a" href="New arrivals A.html"><span>New arrivals</span></a>
+    </div>
+    
+  </div>
+    <div class="dws-menu6">
+    <div class="dws-menu1Col">
+      <a class="a" href="Brooches&Tiepins A.html"><span>Brooches&Tiepins</span></a>
+      <a class="a" href="Charms and watches A.html"><span>Charms and watches</span></a>
+      <a class="a" href="Cufflinks and necklaces A.html"><span>Cufflinks and necklaces</span></a>
+      <a class="a" href="Rings and bracelets A.html"><span>Rings and bracelets</span></a>
+    </div>
+    
+  </div>
+
+
+</div> 
+
+
+</div>
+
+
+
+
+<div class="MenuWomenMen2">
+    <div class="DandGscrolledMenu"> 
+        <div class="closeMenu6">X</div>
+
+        <div class="h1Menu"> 
+        <a href="D&G.html">Dolce & Gabbana</a>  
+        </div> 
+ 
+ 
+        <div class="linkMenu"> 
+ 
+         <a class="mennMenu">children</a> 
+
+        </div> 
+
+    </div>
+
+ <div class="AllMenu2">
+  <div class="menu">
+    <div class="a">
+      <a><span>Girl(2-13)</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Boy(2-13)</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Newborn(0-12 months)</span></a>
+    </div>
+
+    <div class="a">
+      <a><span>Newborn girl(0-30 months)</span></a>
+    </div>
+    <div class="a">
+      <a><span>Newborn boy(0-30 months)</span></a>
+
+ </div>
+ </div>
+    
+
+  
+
+  <div class="dws-menu1">
+    <div class="dws-menu1Col">
+      <a class="a" href="Coats and Jackets2 A.html"><span>Coats and Jackets</span></a>
+      <a class="a" href="T-Shirts and Sweatshirts1 A.html"><span>T-Shirts and Sweatshirts</span></a>
+      <a class="a" href="Shirts and Tops1 A.html"><span>Shirts and Tops</span></a>
+      <a class="a" href="Trousers and Skirts A.html"><span>Trousers and Skirts</span></a>
+      <a class="a" href="Dresses and Sweaters A.html"><span>Dresses and Sweaters</span></a>
+      <a class="a" href="Beachwear A.html"><span>Beachwear</span></a>
+      <a class="a" href="Accessories A.html"><span>Accessories</span></a>
+      
+    </div>
+
+  </div>
+
+  <div class="dws-menu2">
+    <div class="dws-menu1Col">
+      <a class="a" href="Coats and Jackets3 A.html"><span>Coats and Jackets</span></a>
+      <a class="a" href="T-Shirts and Sweatshirts2 A.html"><span>T-Shirts and Sweatshirts</span></a>
+      <a class="a" href="Trousers and Shorts2 A.html"><span>Trousers and Shorts</span></a>
+      <a class="a" href="Nightwear and Underwear A.html"><span>Nightwear and Underwear</span></a>
+      <a class="a" href="Suits and Shirts A.html"><span>Suits and Shirts</span></a>
+      <a class="a" href="Sweaters A.html"><span>Sweaters</span></a>
+      <a class="a" href="Beachwear1 A.html"><span>Beachwear</span></a>
+      <a class="a" href="Accessories A.html"><span>Accessories</span></a>
+    </div>
+    
+  </div>
+
+  <div class="dws-menu3">
+    <div class="dws-menu1Col">
+      <a class="a" href="Special occasions A.html"><span>Special occasions</span></a>
+      <a class="a" href="Accessories and Baby carriers A.html"><span>Accessories and Baby carriers</span></a>
+      <a class="a" href="Trousers and Shorts3 A.html"><span>Trousers and Shorts</span></a>
+      <a class="a" href="Dresses A.html"><span>Dresses</span></a>
+      <a class="a" href="Topwear A.html"><span>Topwear</span></a>
+      <a class="a" href="Newborn shoes A.html"><span>Newborn shoes</span></a>
+    </div>
+   
+  </div>
+
+  <div class="dws-menu4">
+    <div class="dws-menu1Col">
+
+      <a class="a" href="Accessories and Baby carriers1 A.html"><span>Accessories and Baby carriers</span></a>
+      <a class="a" href="Trousers and Shorts4 A.html"><span>Trousers and Shorts</span></a>
+      <a class="a" href="Dresses A.html"><span>Dresses</span></a>
+      <a class="a" href="Topwear and Beachwear A.html"><span>Topwear and Beachwear</span></a>
+      <a class="a" href="Newborn shoes A.html"><span>Newborn shoes</span></a></a>
+    </div>
+    
+  </div>
+
+    <div class="dws-menu5">
+    <div class="dws-menu1Col">
+      <a class="a" href="Accessories and Baby carriers2 A.html"><span>Accessories and Baby carriers</span></a>
+      <a class="a" href="Trousers and Shorts5 A.html"><span>Trousers and Shorts</span></a>
+      <a class="a" href="Dresses2 A.html"><span>Dresses</span></a>
+      <a class="a" href="Topwear and Beachwear1 A.html"><span>Topwear and Beachwear</span></a>
+      <a class="a" href="Newborn shoes2 A.html"><span>Newborn shoes</span></a></a>
+    </div>
+   </div> 
+     </div> 
+   </div> 
+ </div> 
+     </div> 
+
+ </div> 
+
+<div class="nameShop">
+   <h2>Dresses&Blazers</h2>
+</div> 
+
+
+<div class="container1">
+
+
+
+    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+      <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>    <div class="item1">
+    <a href="/inspection"><img src="../static/assets/b1.jpg">
+
+    <div class="price">
+    <h2>iformation</h2>
+    </div>
+    <h2>€1.450</h2>
+  </div>
+
+
+
+
+
+
+  
+
+</div>
+<script>
+
+
+
+let searchInput = document.querySelector('#searchInput');
+
+
+let categoryButtons = document.querySelectorAll('.category');
+
+
+searchInput.addEventListener('input', searchItems);
+
+
+categoryButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+
+        if (this.classList.contains('selected')) {
+            this.classList.remove('selected');
+            searchInput.removeAttribute('data-category');
+        } else {
+            categoryButtons.forEach(function(btn) {
+                btn.classList.remove('selected');
+            });
+            this.classList.add('selected');
+            searchInput.setAttribute('data-category', this.getAttribute('data-category'));
+        }
+        searchItems();
+    });
+});
+
+function searchItems() {
+
+    let query = searchInput.value;
+
+
+    let selectedCategory = searchInput.getAttribute('data-category');
+
+
+    let items = document.querySelectorAll('.item');
+
+
+    if (query === '') {
+        items.forEach(function(item) {
+            item.style.display = 'none';
+        });
+    } else {
+
+        let count = 0; 
+        items.forEach(function(item) {
+            let itemName = item.querySelector('.item-name').textContent;
+            let itemCategory = item.getAttribute('data-category');
+            if (itemName.startsWith(query) && (!selectedCategory || itemCategory === selectedCategory)) {
+                if (count < 6) { 
+                    item.style.display = 'flex';
+                    count++; 
+                } else {
+                    item.style.display = 'none';
+                }
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+}
+
+     document.addEventListener("DOMContentLoaded", function() {
+   
+    var menuWomenMen1 = document.querySelector('.MenuWomenMen1');
+
+
+    menuWomenMen1.style.display = 'none';
+
+    document.querySelector('.closeMenu1').addEventListener('click', function() {
+       
+        menuWomenMen1.style.display = (menuWomenMen1.style.display === 'none' || menuWomenMen1.style.display === '') ? 'block' : 'none';
+    });
+
+
+    document.querySelector('.mennMenu').addEventListener('click', function() {
+   
+        menuWomenMen1.style.display = 'none';
+
+   
+       
+    });
+});
+
+
+
+     document.addEventListener("DOMContentLoaded", function() {
+   
+    var menuWomenMen1 = document.querySelector('.MenuWomenMen2');
+
+
+    menuWomenMen1.style.display = 'none';
+
+    document.querySelector('.closeMenu6').addEventListener('click', function() {
+       
+        menuWomenMen1.style.display = (menuWomenMen1.style.display === 'none' || menuWomenMen1.style.display === '') ? 'block' : 'none';
+    });
+
+
+    document.querySelector('.mennMenu').addEventListener('click', function() {
+   
+        menuWomenMen1.style.display = 'none';
+
+   
+       
+    });
+});
+
+
+document.getElementById("loginButton").onclick = function() {
+    window.location.href = "/account";
+};
+
+document.getElementById("loginbtn1").onclick = function() {
+    window.location.href = "/register";
+};
+
+document.getElementById("loginbtn3").onclick = function() {
+    window.location.href = "/register";
+};
+</script>
+
+</body> 
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="en"> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head> 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <meta charset="utf-8" /> 
@@ -1366,6 +1366,7 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
 
 
   
+<form th:action="@{/login}" method="post">
 <div id="loginSidebar" class="sidebar">
     <div class="contentLogin">
      <div class="log">
@@ -1375,12 +1376,12 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
          <div class="l">
 
     <div class="inputBox">
-        <input type="Email" placeholder="Email" id="Email">
-        
+        <input type="Email" placeholder="Email" id="Email" name="username">
+
     </div>
 
     <div class="inputBox">
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Password" id="password" name="password">
         <img src="../static/assets/eyeClose.png" alt="" id="eyeicon">
     </div>
 
@@ -1399,6 +1400,7 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
     <button><h2>Login</h2></button>
  </div>   
 </div>
+</form>
 
 <div class="info">
     <h3>CREATE ACCOUNT</h3>
