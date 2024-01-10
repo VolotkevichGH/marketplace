@@ -32,7 +32,7 @@ public class SpringSecurityConfig {
                 .anyRequest().permitAll();
         http.formLogin(
                 form -> form
-                        .loginPage("/")
+                        .loginPage("/register")
                         .loginProcessingUrl("/login")
         ).logout(
                 logout -> logout
