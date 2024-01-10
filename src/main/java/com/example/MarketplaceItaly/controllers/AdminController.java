@@ -26,7 +26,7 @@ public class AdminController {
     public String adminPage(Model model) {
         HashSet<Product> products = new HashSet<>(productRepository.findAll());
         model.addAttribute("products", products);
-        return "Admin";
+        return "admin";
     }
 
     @GetMapping("/addproduct")
