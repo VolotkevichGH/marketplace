@@ -1,0 +1,233 @@
+*{ 
+margin: 0; 
+padding: 0; 
+} 
+body{ 
+background: black; 
+width: 90svw;
+
+font-family: 'FuturaLTPro-Book', sans-serif;
+} 
+
+
+.DandGscrolledMenu a{
+    color:black;
+}
+
+
+
+.DandGscrolledMenu{ 
+display:flex; 
+position: absolute; 
+z-index: 1; 
+width: 100%; 
+height: 30vh; 
+background: white;
+
+justify-content: center; 
+align-items: center; 
+ flex-direction: column;
+ border-bottom: 1px solid black;
+} 
+
+
+
+
+
+.closeMenu::after {
+    content: '✖';
+    position: absolute;
+    bottom: 0;
+    left: 97%;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.linkMenu .mennMenu{
+    border-bottom: 2px solid black;
+}
+
+.DandGscrolledMenu {
+  position: fixed;
+  top: 0;
+
+}
+
+.DandGscrolledMenu:hover{ 
+background: white; 
+color: black; 
+ 
+} 
+
+
+.linkMenu a:hover {
+  border-bottom: 2px solid black;
+}
+.h1Menu{ 
+display: flex; 
+width: ; 
+height:; 
+justify-content: center; 
+color: white; 
+align-items: center; 
+font-size: 50px; 
+width: 50%; 
+} 
+.h1Menu:hover{ 
+color: black; 
+} 
+.linkMenu{ 
+display: flex; 
+color: white; 
+justify-content: space-evenly; 
+ 
+width: 30%; 
+height: 20px;
+} 
+ 
+
+.menu {
+    display: flex; 
+    flex-direction: column; 
+    background: white; 
+    width: 30vw; 
+    margin-top:30vh; 
+    height: 70vh; 
+    gap:10px;
+    justify-content: center;
+    border-right: 2px solid black; 
+}
+
+.menu .a {
+    margin-left: 2vw;
+    
+}
+
+.menu .a:not(.newMenu):hover span {
+    border-bottom: 2px solid black;
+}
+
+.menu .a {
+    display: inline-block;
+    position: relative;
+    height: 25px;
+
+}
+
+.menu .a span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.menu .a:hover span::after {
+    opacity: 1;
+}
+
+
+
+
+
+
+.AllMenu{
+    display:flex;
+    width: 100vw;
+    height: 70vh;
+}
+
+
+.dws-menu1 {
+    display: flex; 
+    flex-direction: column; 
+    background: white; 
+    width: 30vw; 
+    margin-top:30vh; 
+    height: 70vh; 
+    gap:10px;
+    justify-content: center;
+    border-right: 2px solid black; 
+}
+.dws-menu1Col{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.dws-menu1 .a {
+    margin-left: 2vw;
+    
+}
+
+.dws-menu1 .a:not(.newMenu):hover span {
+    border-bottom: 2px solid black;
+}
+
+.dws-menu1 .a {
+    display: inline-block;
+    position: relative;
+    height: 25px;
+
+}
+
+.dws-menu1 .a span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.dws-menu1 .a:hover span::after {
+    opacity: 1;
+}
+
+
+.dws-menu2 ,.dws-menu3, .dws-menu4 ,.dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10{
+    display: none;
+}
+
+
+
+.dws-menu2, .dws-menu3, .dws-menu4, .dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10 {
+    display: none; 
+    flex-direction: column; 
+    background: white; 
+    width: 30vw; 
+    margin-top:30vh; 
+    height: 70vh; 
+    gap:10px;
+    justify-content: center;
+    border-right: 2px solid black; 
+}
+
+.dws-menu2 .a, .dws-menu3 .a, .dws-menu4 .a, .dws-menu5 .a, .dws-menu6 .a, .dws-menu7 .a, .dws-menu8 .a, .dws-menu9 .a, .dws-menu10 .a {
+    margin-left: 2vw;
+    display: inline-block;
+    position: relative;
+    height: 25px;
+}
+
+.dws-menu2 .a:not(.newMenu):hover span, .dws-menu3 .a:not(.newMenu):hover span, .dws-menu4 .a:not(.newMenu):hover span, .dws-menu5 .a:not(.newMenu):hover span, .dws-menu6 .a:not(.newMenu):hover span, .dws-menu7 .a:not(.newMenu):hover span, .dws-menu8 .a:not(.newMenu):hover span, .dws-menu9 .a:not(.newMenu):hover span, .dws-menu10 .a:not(.newMenu):hover span {
+    border-bottom: 2px solid black;
+}
+
+.dws-menu1 .a span::after, .dws-menu2 .a span::after, .dws-menu3 .a span::after, .dws-menu4 .a span::after, .dws-menu5 .a span::after, .dws-menu6 .a span::after, .dws-menu7 .a span::after, .dws-menu8 .a span::after, .dws-menu9 .a span::after, .dws-menu10 .a span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.dws-menu2 .a:hover span::after, .dws-menu3 .a:hover span::after, .dws-menu4 .a:hover span::after, .dws-menu5 .a:hover span::after, .dws-menu6 .a:hover span::after, .dws-menu7 .a:hover span::after, .dws-menu8 .a:hover span::after, .dws-menu9 .a:hover span::after, .dws-menu10 .a:hover span::after {
+    opacity: 1;
+}
