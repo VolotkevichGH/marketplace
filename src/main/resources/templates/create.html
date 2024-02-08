@@ -424,14 +424,14 @@
             flex-direction: column;
         }
 
-        .Login {
-            display: flex;
-            justify-content: space-between;
-            margin-left: 80%;
-            width: 15%;
-            height: 50px;
-            order: -1;
-        }
+    .Login {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 70%;
+        width: 30%;
+        height: 50px;
+        order: -1;
+    }
 
 
         .Login a{
@@ -969,10 +969,36 @@
             text-decoration: none;
             color: inherit;
         }
+
+
+.h1 a {
+    border-bottom: none;
+    color: inherit;
+    text-decoration: none;
+}
     </style>
 </head>
 <body>
+</script>
+<script src="child.js"></script>
+<script src="translate.js"></script>
 <script>
+
+    let searchInput = document.querySelector('#searchInput');
+
+
+    let categoryButtons = document.querySelectorAll('.category');
+
+
+    searchInput.addEventListener('input', searchItems);
+
+    let searchInput = document.querySelector('#searchInput');
+
+
+    let categoryButtons = document.querySelectorAll('.category');
+
+
+    searchInput.addEventListener('input', searchItems);
     window.addEventListener('scroll', function() {
         var block = document.querySelector('.DandGscrolled');
         var linkElements = document.querySelectorAll('.DandGscrolled .link a');
@@ -1120,7 +1146,26 @@
 
 
 </script>
+</script>
+<script src="child.js"></script>
+<script src="translate.js"></script>
 <script>
+
+    let searchInput = document.querySelector('#searchInput');
+
+
+    let categoryButtons = document.querySelectorAll('.category');
+
+
+    searchInput.addEventListener('input', searchItems);
+
+    let searchInput = document.querySelector('#searchInput');
+
+
+    let categoryButtons = document.querySelectorAll('.category');
+
+
+    searchInput.addEventListener('input', searchItems);
     document.getElementById("loginbtn2").onclick = function() {
     window.location.href = "/account";
 };
@@ -1150,7 +1195,7 @@
 <div id="loginSidebar" class="sidebar">
     <div class="contentLogin">
         <div class="log">
-            <h2>Login</h2>
+            <h2 id="one">Login</h2>
         </div>
 
         <div class="l">
@@ -1162,13 +1207,13 @@
 
             <div class="inputBox">
                 <input type="password" placeholder="Password" id="password">
-                <img src="../static/assets/eyeClose.png" alt="" id="eyeicon">
+                <img src="https://i.imgur.com/3g2X07N.png" alt="" id="eyeicon">
             </div>
         </div>
 
         <div class="Remember">
             <div class="forgot">
-                <h3><a>Forgot your password?</a></h3>
+                <h3 id="two"><a>Forgot your password?</a></h3>
 
             </div>
             <label class="checkbox">Remember me
@@ -1177,21 +1222,21 @@
             </label>
 
             <div class="loginbtn">
-                <button><h2>Login</h2></button>
+                <button><h2 id="one">Login</h2></button>
             </div>
         </div>
 
-        <div class="info">
-            <h3>CREATE ACCOUNT</h3>
-            <ul>
-                <li>Add your favorite items to your wishlist</li>
-                <li>Save your contact informations for a faster checkout</li>
-                <li>Check your order status</li>
-            </ul>
-        </div>
+<div class="info">
+    <h3 id="four">CREATE ACCOUNT</h3>
+    <ul>
+        <li id="five">Add your favorite items to your wishlist</li>
+        <li id="six">Save your contact informations for a faster checkout</li>
+        <li id="seven">Check your order status</li>
+    </ul>
+</div> 
         <div class="loginbtn1Block">
             <div class="loginbtn1">
-                <button><h2>Create Account</h2></button>
+                <button><h2 id="four">Create Account</h2></button>
             </div>
         </div>
     </div>
@@ -1199,7 +1244,7 @@
 </div>
 
 <div id="cartSidebar" class="sidebar">
-    <!-- Вставьте здесь содержимое боковой панели корзины -->
+   
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav('cart')">×</a>
 </div>
 
@@ -1212,7 +1257,7 @@
     </div>
 
     <div class="h1">
-        <a>Dolce & Gabbana</a>
+        <a href="/">Gamma</a>
     </div>
 
 
@@ -1233,7 +1278,7 @@
 
         <div class="linkMenu">
             <a>gifts</a>
-            <a class="womenMenu">women</a>
+            <a class="womenMenu" id="twelve">women</a>
             <a>men</a>
             <a>dgvib3</a>
             <a>children</a>
@@ -1245,25 +1290,25 @@
     <div class="AllMenu">
         <div class="menu">
             <div class="a">
-                <a><span>Clothing</span></a>
+                <a id="fifteen"><span>Clothing</span></a>
             </div>
 
             <div class="a">
-                <a><span>Bags</span></a>
+                <a id="sixteen"><span>Bags</span></a>
             </div>
 
             <div class="a">
-                <a><span>Shoes</span></a>
+                <a id="seventeen"><span>Shoes</span></a>
             </div>
 
             <div class="a">
-                <a><span>Accessories</span></a>
+                <a id="eighteen"><span>Accessories</span></a>
             </div>
             <div class="a">
-                <a><span>Sunglasses</span></a>
+                <a id="nineteen"><span>Sunglasses</span></a>
             </div>
             <div class="a">
-                <a><span>Watches&Jewelry</span></a>
+                <a id="twenty"><span>Watches&Jewelry</span></a>
             </div>
 
 
@@ -1285,7 +1330,7 @@
         <div class="dws-menu2">
             <div class="dws-menu1Col">
                 <a class="a"><span>Clutches mini and Micro Bags </span></a>
-                <a class="a"><span>handbags and Totes</span></a>
+                <a class="a"><span>Handbags and Totes</span></a>
                 <a class="a"><span>Shoulder and Crossbody Bags</span></a>
                 <a class="a"><span>Sicily and Devotion</span></a>
             </div>
@@ -1335,7 +1380,7 @@
 
 
 <div style="margin: 350px 0px 10px 30%;">
-    <h3>CREATE ACCOUNT</h3>
+    <h3 id="four">CREATE ACCOUNT</h3>
 </div>
 
 
@@ -1372,19 +1417,19 @@
 
     <div class="loginbtn2Block" id="loginbtn2">
         <div class="loginbtn2">
-            <button type="submit" id="myBtn"><h2>Create account</h2></button>
+            <button type="submit" id="myBtn"><h2 id="four">Create Account</h2></button>
         </div>
     </div>
 </form>
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Thanks for submitting your email address. We've sent you an email with the information needed to reset your
+        <p id="One hundred eleven">Thanks for submitting your email address. We've sent you an email with the information needed to reset your
             password. The email might take a couple of minutes to reach your account. Please check your junk mail to
             ensure you receive it.</p>
     </div>
 </div>
-
+<script src="translate.js"></script>
 
 </body>
 </html>

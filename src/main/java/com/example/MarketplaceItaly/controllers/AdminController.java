@@ -2,65 +2,85 @@ package com.example.MarketplaceItaly.controllers;
 
 import com.example.MarketplaceItaly.models.Category;
 import com.example.MarketplaceItaly.models.Product;
-import com.example.MarketplaceItaly.repositories.CategoryRepository;
 import com.example.MarketplaceItaly.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.*;
 import java.util.HashSet;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
 
     @GetMapping("")
     public String adminPage(Model model) {
         HashSet<Product> products = new HashSet<>(productRepository.findAll());
         model.addAttribute("products", products);
-        return "Admin";
+        return "Bok";
     }
+
+    @GetMapping("/orders")
+    public String admin1Page(Model model) {
+        HashSet<Product> products = new HashSet<>(productRepository.findAll());
+        model.addAttribute("products", products);
+        return "bok1";
+    }
+
+    @GetMapping("/buyers")
+    public String admin2Page(Model model) {
+        HashSet<Product> products = new HashSet<>(productRepository.findAll());
+        model.addAttribute("products", products);
+        return "bok2";
+    }
+
 
     @GetMapping("/addproduct")
     public String addProduct(Model model) {
-        HashSet categories = new HashSet(categoryRepository.findAll());
-        model.addAttribute("categories", categories);
+        HashSet<Category> list = new HashSet<>(List.of(Category.values()));
+        model.addAttribute("categories", list);
         return "addproduct";
     }
 
+
+
     @PostMapping("/addproduct")
-    public String postAddProduct(@RequestParam String name, @RequestParam String desc, @RequestParam double price, @RequestParam String image, @RequestParam HashSet<String> categories) {
+    public String postAddProduct(@RequestParam String name, @RequestParam String desc, @RequestParam double price,
+                                 @RequestParam String image, @RequestParam String category) {
+        HashSet<Category> hashSet = new HashSet<>();
+        String[] massive = category.split(",");
+        for (String str : massive) {
+            str.trim();
+            hashSet.add(Category.valueOf(str));
+        }
+
+
         Product product = new Product();
         product.setName(name);
+        if (hashSet.contains(Category.men)) {
+            product.setHeadCategory(Category.men);
+        } else if (hashSet.contains(Category.women)) {
+            product.setHeadCategory(Category.women);
+        } else if (hashSet.contains(Category.child)) {
+            product.setHeadCategory(Category.child);
+        }
         product.setPrice(price);
         product.setImage(image);
         product.setDescription(desc);
-        HashSet<Category> hashSet = new HashSet<>();
-        for (String nameCategory : categories) {
-            Category category = categoryRepository.findByName(nameCategory);
-            hashSet.add(category);
-        }
-        product.setHasSale(false);
         product.setCategory(hashSet);
+        product.setHasSale(false);
         productRepository.save(product);
         return "redirect:/admin";
     }
 
-    @PostMapping("/addcategory")
-    public String addCategory(@RequestParam String catName) {
-        Category category = new Category();
-        category.setName(catName);
-        categoryRepository.save(category);
-        return "redirect:/admin";
-    }
 
     @PostMapping("/allsales")
     public String addSales(@RequestParam double sale) {
@@ -88,6 +108,33 @@ public class AdminController {
                 productRepository.save(product);
             }
         }
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/sale-{product}")
+    public String addSalesByOne(@RequestParam double sale, @PathVariable Product product) {
+
+        if (product.getHasSale()) {
+            product.setPrice((100 - sale) / 100 * product.getBackPrice());
+            productRepository.save(product);
+        } else {
+            product.setBackPrice(product.getPrice());
+            product.setPrice((100 - sale) / 100 * product.getPrice());
+            product.setHasSale(true);
+            productRepository.save(product);
+        }
+
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/delsale-{product}")
+    public String delSalesByProduct(@PathVariable Product product) {
+        if (product.getHasSale()) {
+            product.setPrice(product.getBackPrice());
+            product.setHasSale(false);
+            productRepository.save(product);
+        }
+
         return "redirect:/admin";
     }
 

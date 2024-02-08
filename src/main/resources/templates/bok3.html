@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+.content{
+    display: flex;
+    width: 100%;
+    height: 200px;
+    background: gray;
+    border-radius: 30px;
+    margin-top: 10px;
+    flex-direction: column;
+}
+.nameTag{
+    display: flex;
+    width: 100%;
+    height: 33%;
+    background: black;
+    justify-content: space-between;
+    color: white;
+}
+.name1{
+    margin-left: 2%;
+}
+.name2{
+    margin-right: 2%;
+}
+.nameCart{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    
+    align-items: center;
+    margin-left: 2%;
+}
+.cart{
+    display: flex;
+    background: white;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 33%;
+}
+
+.search-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid black;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            margin-right: 2%;
+            width: 100px;
+            height: 50px;
+        }
+
+        .search-block input {
+            flex: 1;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            width: 90px;
+        }
+
+        .search-block i {
+            color: #6c757d;
+            font-size: 20px;
+        }
+.carti{
+    display: flex;
+    width: 100%;
+    height: 34%;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+
+}     
+.i{
+    display: flex;
+    margin-left: 2%;
+} 
+.soxhr{
+    display: flex;
+    margin-right: 2%;
+    justify-content: center;
+    align-items: center;
+}  
+button{
+    display: flex;
+    background: transparent;
+    color: orange;
+width: 100px;
+            height: 50px;
+            border-radius: 5px;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  width: 70%;
+}
+
+.row {
+  display: table-row;
+  background: white;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.cell {
+  display: table-cell;
+  padding: 5px;
+  border: 1px solid black;
+  overflow: hidden;
+    width: 10%;
+  box-sizing: border-box;
+}
+
+.toggle {
+  padding: 5px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.option {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+.option:hover {
+  background-color: #ddd;
+}
+
+.cell:hover .submenu {
+  display: block;
+}
+
+.row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.toggle.active {
+  background-color: #f44336;
+}
+.AllTable{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+}
+
+.table {
+  flex-grow: 1;
+}
+
+.block {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  gap: 2%;
+}
+
+.block1 {
+  flex-grow: 1;
+  background-color: white;
+  height: 40%;
+}
+
+.block2 {
+  flex-grow: 1;
+  background-color: white;
+  height: 40%;
+}
+
+ .block {
+  background: white;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+        .search {
+            margin-bottom: 10px;
+            gap: 5%;
+        }
+
+        .blockSearch{
+          display: flex;
+          margin: 2% 0 2% 0;
+        }
+
+
+  .tangle{
+    display: flex;
+    border: 1px solid black;
+    width: 17%;
+    height: 50px;
+    color: black;
+    background: white;
+    padding: 5px;
+  }
+  .six{
+    display: flex;
+    flex-direction: row;
+  }
+  .tangle1{
+    display: flex;
+    border: 1px solid black;
+    width: 17%;
+    height: 190px;
+    color: black;
+    background: white;
+    padding: 5px;
+    position: relative;
+  }
+  .tangle1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.AllMenu{
+    display: flex;
+    width: 30vw;
+    height: 70vh;
+}
+
+.AllMenu1{
+    display:flex;
+    width: 30vw;
+    height: 70vh;
+}
+
+.AllMenu2{
+    display: flex;
+    width: 30vw;
+    height: 70vh;
+}
+
+
+
+.dws-menu1 {
+    display: flex; 
+    flex-direction: column; 
+    background: white; 
+    width: 30vw; 
+     
+    height: 70vh; 
+    gap:10px;
+    justify-content: center;
+    border-right: 2px solid black; 
+}
+.dws-menu1Col{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width:20vw ;
+}
+.dws-menu1 .a {
+    margin-left: 2vw;
+    
+}
+
+.dws-menu1 .a:not(.newMenu):hover span {
+    border-bottom: 2px solid black;
+}
+
+.dws-menu1 .a {
+    display: inline-block;
+    position: relative;
+    height: 25px;
+
+}
+
+.dws-menu1 .a span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.dws-menu1 .a:hover span::after {
+    opacity: 1;
+}
+
+
+.dws-menu2 ,.dws-menu3, .dws-menu4 ,.dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10{
+    display: none;
+}
+
+
+
+.dws-menu2, .dws-menu3, .dws-menu4, .dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10 {
+    display: none; 
+    flex-direction: column; 
+    background: white; 
+    width: 50vw; 
+     
+    height: 70vh; 
+    gap:10px;
+    justify-content: center;
+    border-right: 2px solid black; 
+}
+
+.dws-menu2 .a, .dws-menu3 .a, .dws-menu4 .a, .dws-menu5 .a, .dws-menu6 .a, .dws-menu7 .a, .dws-menu8 .a, .dws-menu9 .a, .dws-menu10 .a {
+    margin-left: 2vw;
+    display: inline-block;
+    position: relative;
+    height: 25px;
+    width: 20vw;
+}
+
+.dws-menu2 .a:not(.newMenu):hover span, .dws-menu3 .a:not(.newMenu):hover span, .dws-menu4 .a:not(.newMenu):hover span, .dws-menu5 .a:not(.newMenu):hover span, .dws-menu6 .a:not(.newMenu):hover span, .dws-menu7 .a:not(.newMenu):hover span, .dws-menu8 .a:not(.newMenu):hover span, .dws-menu9 .a:not(.newMenu):hover span, .dws-menu10 .a:not(.newMenu):hover span {
+    border-bottom: 2px solid black;
+}
+
+.dws-menu1 .a span::after, .dws-menu2 .a span::after, .dws-menu3 .a span::after, .dws-menu4 .a span::after, .dws-menu5 .a span::after, .dws-menu6 .a span::after, .dws-menu7 .a span::after, .dws-menu8 .a span::after, .dws-menu9 .a span::after, .dws-menu10 .a span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.dws-menu2 .a:hover span::after, .dws-menu3 .a:hover span::after, .dws-menu4 .a:hover span::after, .dws-menu5 .a:hover span::after, .dws-menu6 .a:hover span::after, .dws-menu7 .a:hover span::after, .dws-menu8 .a:hover span::after, .dws-menu9 .a:hover span::after, .dws-menu10 .a:hover span::after {
+    opacity: 1;
+}
+
+.menu {
+    display: flex; 
+    flex-direction: column; 
+    background: white; 
+    width: 45vw; 
+ 
+    height: 70vh; 
+    gap:10px;
+    justify-content: center;
+    border-right: 2px solid black; 
+}
+
+.menu .a {
+    margin-left: 2vw;
+    
+}
+
+.menu .a:not(.newMenu):hover span {
+    border-bottom: 2px solid black;
+}
+
+.menu .a {
+    display: inline-block;
+    position: relative;
+    height: 25px;
+
+}
+
+.menu .a span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.menu .a:hover span::after {
+    opacity: 1;
+}
+.checkbox {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 20px;
+        user-select: none;
+    }
+
+    .checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+
+    .checkbox:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    .checkbox input:checked ~ .checkmark {
+        background-color: black;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .checkbox input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    .checkbox .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+    }
+
+    .Remember{
+        display: flex;
+        width: 90%;
+        height: 100px;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 5%;
+        margin-top: 10px;
+    }
+
+    a{
+      text-decoration: none;
+      border: none;
+    }
+</style>    
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu .dws-menu1, .AllMenu .dws-menu2, .AllMenu .dws-menu3, .AllMenu .dws-menu4, .AllMenu .dws-menu5, .AllMenu .dws-menu6, .AllMenu .dws-menu7, .AllMenu .dws-menu8, .AllMenu .dws-menu9, .AllMenu .dws-menu10');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu1 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu1 .dws-menu1, .AllMenu1 .dws-menu2, .AllMenu1 .dws-menu3, .AllMenu1 .dws-menu4, .AllMenu1 .dws-menu5, .AllMenu1 .dws-menu6');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu2 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu2 .dws-menu1, .AllMenu2 .dws-menu2, .AllMenu2 .dws-menu3, .AllMenu2 .dws-menu4, .AllMenu2 .dws-menu5');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+  </script>  
+
+
+      <div class="content">
+
+        <div class="nameTag">
+        <div class="name1">
+            <h3>Gamma</h3>
+         </div> 
+         
+         <div class="name2">
+            <h3>Администрирование</h3>
+         </div> 
+         </div> 
+
+
+
+
+         <div class="cart">
+            <div class="nameCart">
+                <a href="bok.html">Заказы</a>
+                <a href="bok1.html">Товары</a>
+                <a href="bok2.html">Покупатели</a>
+                <a>Веб-сайт</a>
+                
+            </div>
+
+
+<div class="search-block">
+        <input type="text" placeholder="Поиск...">
+        <i class="fas fa-search"></i>
+    </div>
+
+    <script src="https://kit.fontawesome.com/yourcode.js"></script>
+         </div>   
+
+    <div class="carti">
+            <div class="i">
+                <h3>Товары</h3>
+            </div>
+
+
+            <div class="soxhr">
+                <button>Сохранить</button>
+            </div>
+         </div> 
+
+
+
+      </div>  
+
+      <div class="block" >
+    
+<form action="/admin/addproduct" method="get">
+<button type="submit" class="add">Добавить товар</button>
+</form>
+
+<form action="/admin/allsales" method="post">
+  <input name="sale" type="text" placeholder="Укажите скидку в %"style="margin-top: 10px;">
+  <button type="submit" class="add"style="margin-top: 10px;">Установить скидку</button>
+</form>
+
+<form action="/admin/delsales" method="post">
+  <button type="submit" class="add"style="margin-top: 10px;" >Убрать скидку</button>
+</form>
+</div>
+
+
+      <div style="display: flex;">
+
+       <div class="tangle"> 
+        Название/код
+       </div> 
+        <div class="tangle">
+        img
+       </div>
+       <div class="tangle">
+        цена
+       </div>
+       <div class="tangle">
+        цена без учета скидки
+       </div>
+       <div class="tangle">
+        скидка
+       </div>
+       <div class="tangle">
+        Статус
+       </div>
+
+      </div> 
+
+      <div class="six">
+        <div class="tangle1"> 
+        Название/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/кодНазвание/код
+       </div> 
+        <div class="tangle1">
+        <img src="b1.png">
+       </div>
+       <div class="tangle1">
+        цена
+       </div>
+       <div class="tangle1">
+        цена без учета скидки
+       </div>
+       <div class="tangle1" style="flex-direction: column;">
+            <form th:action="'/admin/sale-' + ${el.id}" method="post">
+      <input name="sale" type="text" placeholder="Укажите скидку в %">
+      <button type="submit" style="margin-top: 10px;">Установить скидку</button>
+    </form>
+
+    <form action="/admin/delsales" method="post">
+  <button type="submit" class="add" style="margin-top: 10px;">Убрать скидку</button>
+</form>
+
+       </div>
+       <div class="tangle1">
+        <button class="toggle">Вкл</button>
+       </div>
+      </div> 
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleButtons = document.querySelectorAll('.toggle');
+
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const isActive = button.classList.contains('active');
+        button.classList.toggle('active', !isActive);
+
+        const cell = button.closest('.toggle');
+        const isToggleOn = button.classList.contains('active');
+        cell.style.backgroundColor = isToggleOn ? '#4CAF50' : '#f44336';
+        button.textContent = isToggleOn ? 'Вкл' : 'Выкл';
+      });
+    });
+  });
+
+
+</script>
+
+<script>
+    // Получаем блок "Выберите категорию"
+    var categoryBlock = document.querySelector('.category');
+
+    // Получаем все чекбоксы
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    // Перебираем все чекбоксы и добавляем обработчик события
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                // Если чекбокс отмечен, меняем текст в блоке "Выберите категорию"
+                categoryBlock.textContent = this.parentNode.textContent.trim();
+            } else {
+                // Если чекбокс не отмечен, возвращаем текст "Выберите категорию"
+                categoryBlock.textContent = 'Выберите категорию';
+            }
+        });
+    });
+</script>
+<script>
+
+</script>  
+</body>
+</html>

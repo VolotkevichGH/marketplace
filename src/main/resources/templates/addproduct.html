@@ -1,10 +1,1010 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop</title>
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: black;
+    }
+    .content{
+        display: flex;
+        width: 100%;
+        height: 200px;
+        background: gray;
+        border-radius: 30px;
+        margin-top: 10px;
+        flex-direction: column;
+    }
+    .nameTag{
+        display: flex;
+        width: 100%;
+        height: 33%;
+        background: black;
+        justify-content: space-between;
+        color: white;
+    }
+    .name1{
+        margin-left: 2%;
+    }
+    .name2{
+        margin-right: 2%;
+    }
+    .nameCart{
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+
+        align-items: center;
+        margin-left: 2%;
+    }
+
+    .nameCart a:hover{
+      border-bottom: 1px solid black;
+
+    }
+    .cart{
+        display: flex;
+        background: white;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 33%;
+    }
+
+    .search-block {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 1px solid black;
+                background-color: #f8f9fa;
+                border-radius: 5px;
+                margin-right: 2%;
+                width: 100px;
+                height: 50px;
+            }
+
+            .search-block input {
+                flex: 1;
+                padding: 5px;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+                width: 90px;
+            }
+
+            .search-block i {
+                color: #6c757d;
+                font-size: 20px;
+            }
+    .carti{
+        display: flex;
+        width: 100%;
+        height: 34%;
+        justify-content: space-between;
+        background: white;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+
+    }
+    .i{
+        display: flex;
+        margin-left: 2%;
+    }
+    .soxhr{
+        display: flex;
+        margin-right: 2%;
+        justify-content: center;
+        align-items: center;
+    }
+    button{
+        display: flex;
+        background: transparent;
+        color: orange;
+    width: 100px;
+                height: 50px;
+                border-radius: 5px;
+    }
+
+    .table {
+      display: table;
+      width: 100%;
+      border-collapse: collapse;
+      width: 70%;
+    }
+
+    .row {
+      display: table-row;
+      background: white;
+    }
+
+    .header {
+      font-weight: bold;
+    }
+
+    .cell {
+      display: table-cell;
+      padding: 5px;
+      border: 1px solid black;
+      overflow: hidden;
+        width: 10%;
+      box-sizing: border-box;
+    }
+
+    .toggle {
+      padding: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .option {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: black;
+    }
+
+    .option:hover {
+      background-color: #ddd;
+    }
+
+    .cell:hover .submenu {
+      display: block;
+    }
+
+    .row:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .toggle.active {
+      background-color: #f44336;
+    }
+    .AllTable{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: row;
+    }
+
+    .table {
+      flex-grow: 1;
+    }
+
+    .block {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+      width: 100vw;
+      gap: 2%;
+    }
+
+    .block1 {
+      flex-grow: 1;
+      background-color: white;
+      height: 40%;
+    }
+
+    .block2 {
+      flex-grow: 1;
+      background-color: white;
+      height: 40%;
+    }
+
+     .block {
+      background: white;
+                margin: 20px;
+                padding: 20px;
+                border: 1px solid black;
+            }
+            .search {
+                margin-bottom: 10px;
+                gap: 5%;
+            }
+
+            .blockSearch{
+              display: flex;
+              margin: 2% 0 2% 0;
+            }
+
+
+      .tangle{
+        display: flex;
+        border: 1px solid black;
+        width: 17%;
+        height: 50px;
+        color: black;
+        background: white;
+        padding: 5px;
+      }
+      .six{
+        display: flex;
+        flex-direction: row;
+      }
+      .tangle1{
+        display: flex;
+        border: 1px solid black;
+        width: 17%;
+        height: 190px;
+        color: black;
+        background: white;
+        padding: 5px;
+        position: relative;
+      }
+      .tangle1 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+
+    .AllMenu{
+        display: flex;
+        width: 30vw;
+        height: 70vh;
+        margin-left: 2%;
+
+    }
+
+    .AllMenu1{
+        display:flex;
+        width: 30vw;
+        height: 70vh;
+
+    }
+
+    .AllMenu2{
+        display: flex;
+        width: 30vw;
+        height: 70vh;
+
+    }
+
+
+
+    .dws-menu1 {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        width: 30vw;
+
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+    .dws-menu1Col{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width:20vw ;
+    }
+    .dws-menu1 .a {
+        margin-left: 2vw;
+
+    }
+
+    .dws-menu1 .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .dws-menu1 .a {
+        display: inline-block;
+        position: relative;
+        height: 25px;
+
+    }
+
+    .dws-menu1 .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .dws-menu1 .a:hover span::after {
+        opacity: 1;
+    }
+
+
+    .dws-menu2 ,.dws-menu3, .dws-menu4 ,.dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10{
+        display: none;
+    }
+
+
+
+    .dws-menu2, .dws-menu3, .dws-menu4, .dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10 {
+        display: none;
+        flex-direction: column;
+        background: white;
+        width: 50vw;
+
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+
+    .dws-menu2 .a, .dws-menu3 .a, .dws-menu4 .a, .dws-menu5 .a, .dws-menu6 .a, .dws-menu7 .a, .dws-menu8 .a, .dws-menu9 .a, .dws-menu10 .a {
+        margin-left: 2vw;
+        display: inline-block;
+        position: relative;
+        height: 25px;
+        width: 20vw;
+    }
+
+    .dws-menu2 .a:not(.newMenu):hover span, .dws-menu3 .a:not(.newMenu):hover span, .dws-menu4 .a:not(.newMenu):hover span, .dws-menu5 .a:not(.newMenu):hover span, .dws-menu6 .a:not(.newMenu):hover span, .dws-menu7 .a:not(.newMenu):hover span, .dws-menu8 .a:not(.newMenu):hover span, .dws-menu9 .a:not(.newMenu):hover span, .dws-menu10 .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .dws-menu1 .a span::after, .dws-menu2 .a span::after, .dws-menu3 .a span::after, .dws-menu4 .a span::after, .dws-menu5 .a span::after, .dws-menu6 .a span::after, .dws-menu7 .a span::after, .dws-menu8 .a span::after, .dws-menu9 .a span::after, .dws-menu10 .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .dws-menu2 .a:hover span::after, .dws-menu3 .a:hover span::after, .dws-menu4 .a:hover span::after, .dws-menu5 .a:hover span::after, .dws-menu6 .a:hover span::after, .dws-menu7 .a:hover span::after, .dws-menu8 .a:hover span::after, .dws-menu9 .a:hover span::after, .dws-menu10 .a:hover span::after {
+        opacity: 1;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        width: 45vw;
+
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+
+    .menu .a {
+        margin-left: 2vw;
+
+    }
+
+    .menu .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .menu .a {
+        display: inline-block;
+        position: relative;
+        height: 25px;
+
+    }
+
+    .menu .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .menu .a:hover span::after {
+        opacity: 1;
+    }
+    .checkbox {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            user-select: none;
+        }
+
+        .checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+        }
+
+        .checkbox:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        .checkbox input:checked ~ .checkmark {
+            background-color: black;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checkbox .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+
+        .Remember{
+            display: flex;
+            width: 90%;
+            height: 100px;
+            align-items: flex-end;
+            flex-direction: column;
+            gap: 5%;
+            margin-top: 10px;
+        }
+
+        a{
+          text-decoration: none;
+          border: none;
+        }
+
+</style>
 <body>
-$END$
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu .dws-menu1, .AllMenu .dws-menu2, .AllMenu .dws-menu3, .AllMenu .dws-menu4, .AllMenu .dws-menu5, .AllMenu .dws-menu6, .AllMenu .dws-menu7, .AllMenu .dws-menu8, .AllMenu .dws-menu9, .AllMenu .dws-menu10');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu1 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu1 .dws-menu1, .AllMenu1 .dws-menu2, .AllMenu1 .dws-menu3, .AllMenu1 .dws-menu4, .AllMenu1 .dws-menu5, .AllMenu1 .dws-menu6');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu2 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu2 .dws-menu1, .AllMenu2 .dws-menu2, .AllMenu2 .dws-menu3, .AllMenu2 .dws-menu4, .AllMenu2 .dws-menu5');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+</script>
+
+
+
+
+<div class="block">
+    <div class="searc">
+        <div class="search">
+            <label for="search">Название</label><br>
+            <input type="text" id="search" name="search"><br>
+        </div>
+        <div class="price">
+            <label for="price">Описание</label><br>
+            <input type="text" id="price" name="price"><br>
+        </div>
+
+                <div class="price">
+            <label for="price">Цена (₽):</label><br>
+            <input type="text" id="price" name="price"><br>
+        </div>
+        <div class="category" style="display: flex;flex-direction: row;flex-wrap: wrap;width: 100%;height: 100px;margin-top: 20px;">
+            Выберите категорию
+        </div>
+        <button type="button" class="blockSearch">Найти</button>
+    </div>
+    <div style="">
+<div style="display:flex;flex-direction: column;">
+<input type="file" id="file1" />
+<button onclick="save()" style="margin-top:10px">Save</button>
+</div>
+<img id="image1" style="    max-width: 50%;
+    height: auto;" />
+<br>
+</div>
+<script>
+
+    function save ()  {
+        let f = file1.files[0];
+        if (f) {
+            image1.src = URL.createObjectURL(f);
+            localStorage.setItem('myImage', image1.src);
+        }
+    }
+
+    image1.src = localStorage.getItem('myImage')
+</script>
+
+</div>
+
+ <div class="AllMenu">
+
+        <div class="menu">
+            <div style="margin-left:20%;margin-bottom: 20%;">
+                <a><span>women</span></a>
+            </div>
+            <div class="a">
+                <a><span>Clothing</span></a>
+            </div>
+
+            <div class="a">
+                <a><span>Bags</span></a>
+            </div>
+
+            <div class="a">
+                <a><span>Shoes</span></a>
+            </div>
+
+            <div class="a">
+                <a><span>Accessories</span></a>
+            </div>
+            <div class="a">
+                <a><span>Sunglasses</span></a>
+            </div>
+            <div class="a">
+                <a><span>Watches&Jewelry</span></a>
+            </div>
+
+
+        </div>
+
+        <div class="dws-menu1">
+
+            <div class="dws-menu1Col">
+                <a class="a"><span><input type="checkbox"data-category="Coats and Jackets" data-clothing-type="Clothing" data-gender="women">Coats and Jackets</label></span></a>
+                <a class="a"><span><input type="checkbox"data-category="Denim and Skirts" data-clothing-type="Clothing" data-gender="women">Denim and Skirts</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Dresses&Blazers" data-clothing-type="Clothing" data-gender="women">Dresses&Blazers</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Shirts and Tops" data-clothing-type="Clothing" data-gender="women">Shirts and Tops</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Trousers and Shorts" data-clothing-type="Clothing" data-gender="women">Trousers and Shorts</span></a>
+                <a class="a"><span><input type="checkbox"data-category="T-Shirts and Sweatshirts" data-clothing-type="Clothing" data-gender="women">T-Shirts and Sweatshirts</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Underwear and Beachwear" data-clothing-type="Clothing" data-gender="women">Underwear and Beachwear</span></a>
+            </div>
+
+        </div>
+
+        <div class="dws-menu2">
+            <div class="dws-menu1Col">
+                <a class="a"><span><input type="checkbox"data-category="Clutches mini and Micro Bags" data-clothing-type="Bags" data-gender="women">Clutches mini and Micro Bags</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Handbags and Totes" data-clothing-type="Bags" data-gender="women">Handbags and Totes</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Shoulder and Crossbody Bags" data-clothing-type="Bags" data-gender="women">Shoulder and Crossbody Bags</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Sicily and Devotion" data-clothing-type="Bags" data-gender="women">Sicily and Devotion</span></a>
+            </div>
+
+        </div>
+
+        <div class="dws-menu3">
+            <div class="dws-menu1Col">
+                <a class="a"><span><input type="checkbox"data-category="Boots and Booties" data-clothing-type="Shoes" data-gender="women">Boots and Booties</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Pumps and Skingback" data-clothing-type="Shoes" data-gender="women">Pumps and Skingback</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Sandals and Wedges" data-clothing-type="Shoes" data-gender="women">Sandals and Wedges</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Slides and Mules" data-clothing-type="Shoes" data-gender="women">Slides and Mules</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Sheakers and Flat" data-clothing-type="Shoes" data-gender="women">Sheakers and Flat</span></a>
+            </div>
+
+        </div>
+
+        <div class="dws-menu4">
+            <div class="dws-menu1Col">
+                <a class="a"><span><input type="checkbox"data-category="Bijoux and Belts" data-clothing-type="Accessories" data-gender="women">Bijoux and Belts</span></a>
+                <a class="a"><span><input type="checkbox" data-category="Hats and Gloves" data-clothing-type="Accessories" data-gender="women">Hats and Gloves</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Scarves and Silks" data-clothing-type="Accessories" data-gender="women">Scarves and Silks</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Socks and Technology" data-clothing-type="Accessories" data-gender="women">Socks and Technology</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Wallets and small leather goods"data-clothing-type="Accessories" data-gender="women">Wallets and small leather goods</span></a>
+            </div>
+
+        </div>
+
+        <div class="dws-menu5">
+            <div class="dws-menu1Col">
+                <a class="a"><span><input type="checkbox"data-category="New arrivals and Icons" data-clothing-type="Sunglasses" data-gender="women">New arrivals and Icons</span></a>
+            </div>
+
+        </div>
+        <div class="dws-menu6">
+            <div class="dws-menu1Col">
+                <a class="a"><span><input type="checkbox"data-category="Earrings and Rings" data-clothing-type="Watches&Jewelry" data-gender="women">Earrings and Rings</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Neacklaces and Charms" data-clothing-type="Watches&Jewelry" data-gender="women">Neacklaces and Charms</span></a>
+                <a class="a"><span><input type="checkbox"data-category="Watches&Straps" data-clothing-type="Watches&Jewelry" data-gender="women">Watches&Straps</span></a>
+            </div>
+
+        </div>
+
+
+        <div class="AllMenu1">
+            <div class="menu">
+                <div style="margin-left:15%;margin-bottom: 15%;">
+                    <a><span>men</span></a>
+                </div>
+                <div class="a">
+                    <a><span>Clothing</span></a>
+                </div>
+
+                <div class="a">
+                    <a><span>Bags</span></a>
+                </div>
+
+                <div class="a">
+                    <a><span>Shoes</span></a>
+                </div>
+
+                <div class="a">
+                    <a><span>Accessories</span></a>
+                </div>
+                <div class="a">
+                    <a><span>Sunglasses</span></a>
+                </div>
+                <div class="a">
+                    <a><span>Watches&Jewelry</span></a>
+                </div>
+
+
+            </div>
+
+            <div class="dws-menu1">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Activewear and Beachwear" data-clothing-type="Clothing" data-gender="men">Activewear and Beachwear</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Coats and Jackets" data-clothing-type="Clothing" data-gender="men">Coats and Jackets</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Denim and Sweatshirts" data-clothing-type="Clothing" data-gender="men">Denim and Sweatshirts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Shirts" data-clothing-type="Clothing" data-gender="men">Shirts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Suits and Blazers" data-clothing-type="Clothing" data-gender="men">Suits and Blazers</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="T-Shirts and Polos" data-clothing-type="Clothing" data-gender="men">T-Shirts and Polos</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Sweaters and Cardigans" data-clothing-type="Clothing" data-gender="men">Sweaters and Cardigans</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Trousers and Shorts" data-clothing-type="Clothing" data-gender="men">Trousers and Shorts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Underwear and Loungewear" data-clothing-type="Clothing" data-gender="men">Underwear and Loungewear</span></a>
+                </div>
+
+            </div>
+
+            <div class="dws-menu2">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Backpacks and Fanny packs" data-clothing-type="Bags" data-gender="men">Backpacks and Fanny packs</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Briefcase and cluthces" data-clothing-type="Bags" data-gender="men">Briefcase and cluthces</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Crossbody Bags" data-clothing-type="Bags" data-gender="men">Crossbody Bags</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Travel bags and Shoppers" data-clothing-type="Bags" data-gender="men">Travel bags and Shoppers</span></a>
+                </div>
+
+            </div>
+
+            <div class="dws-menu3">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Boots" data-clothing-type="Shoes" data-gender="men">Boots</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Loafers and Moccasins" data-clothing-type="Shoes" data-gender="men">Loafers and Moccasins</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Sandals and Slides" data-clothing-type="Shoes" data-gender="men">Sandals and Slides</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Sheakers and Lace-ups" data-clothing-type="Shoes" data-gender="men">Sheakers and Lace-ups</span></a>
+
+                </div>
+
+            </div>
+
+            <div class="dws-menu4">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Belts and Bijoux" data-clothing-type="Accessories" data-gender="men">Belts and Bijoux</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Hats and Gloves" data-clothing-type="Accessories" data-gender="men">Hats and Gloves</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Scarves and Silks" data-clothing-type="Accessories" data-gender="men">Scarves and Silks</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Socks" data-clothing-type="Accessories" data-gender="men">Socks</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Wallets and small leather goods" data-clothing-type="Accessories" data-gender="men">Wallets and small leather goods</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Ties and pocket squares" data-clothing-type="Accessories" data-gender="men">Ties and pocket squares</span></a>
+                </div>
+
+            </div>
+
+            <div class="dws-menu5">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Icons" data-clothing-type="Sunglasses" data-gender="men">Icons</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="New arrivals" data-clothing-type="Sunglasses" data-gender="men">New arrivals</span></a>
+                </div>
+
+            </div>
+            <div class="dws-menu6">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Brooches&Tiepins" data-clothing-type="Watches&Jewelry" data-gender="men">Brooches&Tiepins</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Charms and watches" data-clothing-type="Watches&Jewelry" data-gender="men">Charms and watches</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Cufflinks and necklaces" data-clothing-type="Watches&Jewelry" data-gender="men">Cufflinks and necklaces</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Rings and bracelets" data-clothing-type="Watches&Jewelry" data-gender="men">Rings and bracelets</span></a>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="AllMenu2">
+            <div class="menu">
+                <div style="margin-left:15%;margin-bottom: 20%;">
+                    <a><span>children</span></a>
+                </div>
+                <div class="a">
+                    <a><span>Girl(2-13)</span></a>
+                </div>
+
+                <div class="a">
+                    <a><span>Boy(2-13)</span></a>
+                </div>
+
+                <div class="a">
+                    <a><span>Newborn(0-12 months)</span></a>
+                </div>
+
+                <div class="a">
+                    <a><span>Newborn girl(0-30 months)</span></a>
+                </div>
+                <div class="a">
+                    <a><span>Newborn boy(0-30 months)</span></a>
+
+                </div>
+            </div>
+
+
+            <div class="dws-menu1">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Coats and Jackets" data-clothing-type="Girl(2-13)" data-gender="children">Coats and Jackets</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="T-Shirts and Sweatshirts" data-clothing-type="Girl(2-13)" data-gender="children">T-Shirts and Sweatshirts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Shirts and Tops" data-clothing-type="Girl(2-13)" data-gender="children">Shirts and Tops</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Trousers and Skirts" data-clothing-type="Girl(2-13)" data-gender="children">Trousers and Skirts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Dresses and Sweaters" data-clothing-type="Girl(2-13)" data-gender="children">Dresses and Sweaters</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Beachwear" data-clothing-type="Girl(2-13)" data-gender="children">Beachwear</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Accessories" data-clothing-type="Girl(2-13)" data-gender="children">Accessories</span></a>
+
+                </div>
+
+            </div>
+
+            <div class="dws-menu2">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Coats and Jackets" data-clothing-type="Boy(2-13)" data-gender="children">Coats and Jackets</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="T-Shirts and Sweatshirts" data-clothing-type="Boy(2-13)" data-gender="children">T-Shirts and Sweatshirts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Trousers and Shorts" data-clothing-type="Boy(2-13)" data-gender="children">Trousers and Shorts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Nightwear and Underwear" data-clothing-type="Boy(2-13)" data-gender="children">Nightwear and Underwear</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Suits and Shirts" data-clothing-type="Boy(2-13)" data-gender="children">Suits and Shirts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Sweaters" data-clothing-type="Boy(2-13)" data-gender="children">Sweaters</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Beachwear" data-clothing-type="Boy(2-13)" data-gender="children">Beachwear</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Accessories" data-clothing-type="Boy(2-13)" data-gender="children">Accessories</span></a>
+                </div>
+
+            </div>
+
+            <div class="dws-menu3">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Special occasions" data-clothing-type="Newborn(0-12 months)" data-gender="children">Special occasions</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Accessories and Baby carriers" data-clothing-type="Newborn(0-12 months)" data-gender="children">Accessories and Baby carriers</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Trousers and Shorts" data-clothing-type="Newborn(0-12 months)" data-gender="children">Trousers and Shorts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Dresses" data-clothing-type="Newborn(0-12 months)" data-gender="children">Dresses</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Topwear" data-clothing-type="Newborn(0-12 months)" data-gender="children">Topwear</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Newborn shoes" data-clothing-type="Newborn(0-12 months)" data-gender="children">Newborn shoes</span></a>
+                </div>
+
+            </div>
+
+            <div class="dws-menu4">
+                <div class="dws-menu1Col">
+
+                    <a class="a"><span><input type="checkbox"data-category="Accessories and Baby carriers" data-clothing-type="Newborn girl(0-30 months)" data-gender="children">Accessories and Baby carriers</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Trousers and Shorts" data-clothing-type="Newborn girl(0-30 months)" data-gender="children">Trousers and Shorts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Dresses" data-clothing-type="Newborn girl(0-30 months)" data-gender="children">Dresses</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Topwear and Beachwear" data-clothing-type="Newborn girl(0-30 months)" data-gender="children">Topwear and Beachwear</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Newborn shoes" data-clothing-type="Newborn girl(0-30 months)" data-gender="children">Newborn shoes</span></a></a>
+                </div>
+
+            </div>
+
+            <div class="dws-menu5">
+                <div class="dws-menu1Col">
+                    <a class="a"><span><input type="checkbox"data-category="Accessories and Baby carriers" data-clothing-type="Newborn boy(0-30 months)" data-gender="children">Accessories and Baby carriers</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Trousers and Shorts" data-clothing-type="Newborn boy(0-30 months)" data-gender="children">Trousers and Shorts</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Dresses" data-clothing-type="Newborn boy(0-30 months)" data-gender="children">Dresses</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Topwear and Beachwear" data-clothing-type="Newborn boy(0-30 months)" data-gender="children">Topwear and Beachwear</span></a>
+                    <a class="a"><span><input type="checkbox"data-category="Newborn shoes" data-clothing-type="Newborn boy(0-30 months)" data-gender="children">Newborn shoes</span></a></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButtons = document.querySelectorAll('.toggle');
+
+      toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const isActive = button.classList.contains('active');
+          button.classList.toggle('active', !isActive);
+
+          const cell = button.closest('.toggle');
+          const isToggleOn = button.classList.contains('active');
+          cell.style.backgroundColor = isToggleOn ? '#4CAF50' : '#f44336';
+          button.textContent = isToggleOn ? 'Вкл' : 'Выкл';
+        });
+      });
+    });
+
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const categoryBlock = document.querySelector('.category');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                
+                var category = this.getAttribute('data-category');
+                var clothingType = this.getAttribute('data-clothing-type');
+                var gender = this.getAttribute('data-gender');
+
+                
+                checkboxes.forEach(function (otherCheckbox) {
+                    if (otherCheckbox !== checkbox) {
+                        otherCheckbox.checked = false;
+                    }
+                });
+
+                
+                var textToShow = gender + ':' + clothingType + ':' + category;
+                categoryBlock.textContent = textToShow;
+            } else {
+                categoryBlock.textContent = 'Выберите категорию';
+            }
+        });
+    });
+});
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const categoryBlock = document.querySelector('.category');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const findButton = document.querySelector('.blockSearch');
+        const fileInput = document.getElementById('file1');
+        const image = document.getElementById('image1');
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    var category = this.getAttribute('data-category');
+                    var clothingType = this.getAttribute('data-clothing-type');
+                    var gender = this.getAttribute('data-gender');
+
+                    checkboxes.forEach(function (otherCheckbox) {
+                        if (otherCheckbox !== checkbox) {
+                            otherCheckbox.checked = false;
+                        }
+                    });
+
+                    var textToShow = gender + ':' + clothingType + ':' + category;
+                    categoryBlock.textContent = textToShow;
+                } else {
+                    categoryBlock.textContent = 'Выберите категорию';
+                }
+            });
+        });
+
+        findButton.addEventListener('click', function () {
+            categoryBlock.textContent = 'Выберите категорию';
+            let f = fileInput.files[0];
+            if (f) {
+                image.src = URL.createObjectURL(f);
+                localStorage.setItem('myImage', image.src);
+            } else {
+                // Если файл не выбран, скрываем изображение
+                image.src = '';
+                localStorage.removeItem('myImage');
+            }
+
+            // Сброс чекбоксов
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        });
+
+        // При загрузке страницы, попробуем восстановить изображение из localStorage
+        image.src = localStorage.getItem('myImage');
+    });
+</script>
 </body>
 </html>

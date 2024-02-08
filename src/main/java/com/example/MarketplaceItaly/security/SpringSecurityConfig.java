@@ -29,6 +29,7 @@ public class SpringSecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable).authorizeRequests()
                 .requestMatchers("/admin/**")
                 .hasRole("ADMIN")
+                .requestMatchers("/settings").authenticated()
                 .anyRequest().permitAll();
         http.formLogin(
                 form -> form

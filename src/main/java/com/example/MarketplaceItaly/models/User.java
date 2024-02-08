@@ -29,5 +29,4 @@ public class User {
     private Set<Role> roles;
     @ManyToMany
     private List<Product> cart;
-
 }

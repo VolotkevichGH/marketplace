@@ -1,0 +1,5158 @@
+<!DOCTYPE html> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<meta charset="utf-8" /> 
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .MenuWomenMen1{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .MenuWomenMen2{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    body{
+        background: white;
+        height: 2000px;
+        font-family: 'FuturaLTPro-Book', sans-serif;
+    }
+
+    .mennMenu{
+        border-bottom: 2px solid black;
+
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+    .MenuWomenMen{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    .MenuWomenMen.active {
+        display: flex;
+    }
+    .DandGscrolledMenu a{
+        color:black;
+    }
+    .log{
+        display: flex;
+        margin-left: 7%;
+    }
+    .l{
+        display: flex;
+        width: 100%;
+        height: 20%;
+        justify-content: center;
+        gap:5%;
+        margin-top:10%;
+    }
+    .email{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+
+        margin-top:10px;
+    }
+
+    .psw{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        margin-top:10px;
+    }
+
+    input[type=email], input[type=password] {
+        margin-top: 5%;
+        border-bottom: 2px solid black;
+        padding-bottom: 5px;
+
+    }
+
+    input {
+        border: none;
+    }
+
+    input::placeholder {
+        color: #ccc;
+    }
+    input:focus {
+        outline: none;
+    }
+    input:focus::placeholder {
+        color: transparent;
+    }
+
+
+
+
+    .inputBox {
+        background: #fff;
+        border-bottom: 2px solid black;
+
+
+
+        display: flex;
+        align-items: center;
+    }
+
+    .inputBox input {
+
+        padding: 10px 0;
+        border: 0;
+        outline: 0;
+        font-size: 24px;
+        color: #000;
+    }
+
+    .inputBox img {
+        width: 20px;
+        cursor: pointer;
+    }
+    .closeMenu{
+        position: absolute;
+        right: 2%;
+        font-size: 20px;
+        bottom: 10%;
+    }
+    .closeMenu::after {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .closeMenu6{
+        position: absolute;
+        right: 2%;
+        font-size: 20px;
+        bottom: 10%;
+    }
+    .closeMenu6::after {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .closeMenu1{
+        position: absolute;
+        right: 2%;
+        font-size: 20px;
+        bottom: 10%;
+    }
+    .closeMenu1::after {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+
+
+
+    .closeMenu2{
+        position: absolute;
+        right: 2%;
+        font-size: 20px;
+        bottom: 10%;
+    }
+    .closeMenu2::after {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .DandGscrolledMenu{
+        display:flex;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 30vh;
+        background: white;
+
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-bottom: 1px solid black;
+    }
+    .DandGscrolledMenu::after {
+
+        position: absolute;
+        bottom: 0;
+        left: 97%;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .linkMenu .womenMenu{
+        border-bottom: 2px solid black;
+    }
+
+
+
+
+
+
+    .linkMenu a:hover {
+        border-bottom: 2px solid black;
+    }
+    .h1Menu{
+        display: flex;
+        width: ;
+        height:;
+        justify-content: center;
+        color: white;
+        align-items: center;
+        font-size: 50px;
+        width: 50%;
+    }
+    .h1Menu:hover{
+        color: black;
+    }
+    .linkMenu{
+        display: flex;
+        color: white;
+        justify-content: space-evenly;
+
+        width: 30%;
+        height: 20px;
+    }
+
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        width: 30vw;
+        margin-top:30vh;
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+
+    .menu .a {
+        margin-left: 2vw;
+
+    }
+
+    .menu .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .menu .a {
+        display: inline-block;
+        position: relative;
+        height: 25px;
+
+    }
+
+    .menu .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .menu .a:hover span::after {
+        opacity: 1;
+    }
+
+
+
+
+
+
+    .AllMenu{
+        display:flex;
+        width: 100vw;
+        height: 100vh;
+       
+    }
+
+    .AllMenu1{
+        display:flex;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .AllMenu2{
+        display:flex;
+        width: 100vw;
+        height: 10vh;
+    }
+
+
+
+
+
+    .dws-menu1 {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        width: 30vw;
+        margin-top:30vh;
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+    .dws-menu1Col{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .dws-menu1 .a {
+        margin-left: 2vw;
+
+    }
+
+    .dws-menu1 .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .dws-menu1 .a {
+        display: inline-block;
+        position: relative;
+        height: 25px;
+
+    }
+
+    .dws-menu1 .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .dws-menu1 .a:hover span::after {
+        opacity: 1;
+    }
+
+
+    .dws-menu2 ,.dws-menu3, .dws-menu4 ,.dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10{
+        display: none;
+    }
+
+
+
+    .dws-menu2, .dws-menu3, .dws-menu4, .dws-menu5, .dws-menu6, .dws-menu7, .dws-menu8, .dws-menu9, .dws-menu10 {
+        display: none;
+        flex-direction: column;
+        background: white;
+        width: 30vw;
+        margin-top:30vh;
+        height: 70vh;
+        gap:10px;
+        justify-content: center;
+        border-right: 2px solid black;
+    }
+
+    .dws-menu2 .a, .dws-menu3 .a, .dws-menu4 .a, .dws-menu5 .a, .dws-menu6 .a, .dws-menu7 .a, .dws-menu8 .a, .dws-menu9 .a, .dws-menu10 .a {
+        margin-left: 2vw;
+        display: inline-block;
+        position: relative;
+        height: 25px;
+    }
+
+    .dws-menu2 .a:not(.newMenu):hover span, .dws-menu3 .a:not(.newMenu):hover span, .dws-menu4 .a:not(.newMenu):hover span, .dws-menu5 .a:not(.newMenu):hover span, .dws-menu6 .a:not(.newMenu):hover span, .dws-menu7 .a:not(.newMenu):hover span, .dws-menu8 .a:not(.newMenu):hover span, .dws-menu9 .a:not(.newMenu):hover span, .dws-menu10 .a:not(.newMenu):hover span {
+        border-bottom: 2px solid black;
+    }
+
+    .dws-menu1 .a span::after, .dws-menu2 .a span::after, .dws-menu3 .a span::after, .dws-menu4 .a span::after, .dws-menu5 .a span::after, .dws-menu6 .a span::after, .dws-menu7 .a span::after, .dws-menu8 .a span::after, .dws-menu9 .a span::after, .dws-menu10 .a span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .dws-menu2 .a:hover span::after, .dws-menu3 .a:hover span::after, .dws-menu4 .a:hover span::after, .dws-menu5 .a:hover span::after, .dws-menu6 .a:hover span::after, .dws-menu7 .a:hover span::after, .dws-menu8 .a:hover span::after, .dws-menu9 .a:hover span::after, .dws-menu10 .a:hover span::after {
+        opacity: 1;
+    }
+
+
+    .DandGscrolled{
+        background: white;
+        color: black;
+        border-bottom: 2px solid black;
+    }
+
+    .DandGscrolled a {
+        color: black;
+    }
+    .DandGscrolled .Login .openbtn {
+        color: black;
+    }
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        background-color: white;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+
+
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 3;
+    }
+
+
+    .sidebar a {
+        padding: 8px 0px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        font-size: 20px;
+    }
+
+    .sidebar a:hover {
+        color: black;
+    }
+
+    .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+    }
+
+    .openbtn:hover {
+
+    }
+
+    #main {
+        transition: margin-right .5s;
+        color: white;
+
+    }
+
+    .submenu {
+        display: none;
+        background-color: #222;
+        padding-left: 50px;
+    }
+
+
+    #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        width: 40px;
+        height: 40px;
+        z-index: 999;
+        color: black;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+
+    }
+
+    #scrollToTopBtn::before {
+        content: '\2B9D';
+        font-size: 24px;
+        line-height: 0px;
+        text-align: center;
+    }
+
+    .DandGscrolled{
+        display:flex;
+
+        z-index: 2;
+        width: 100%;
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .Login {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 70%;
+        width: 30%;
+        height: 50px;
+        order: -1;
+    }
+
+
+    .Login a{
+        color: white;
+        border-bottom: 2px solid transparent;
+
+    }
+    .Login a:hover{
+        border-bottom-color:black ;
+
+    }
+
+
+    .DandGscrolled{
+        background: white;
+        color: black;
+
+    }
+
+
+    .link a:hover {
+        border-bottom: 2px solid black;
+    }
+    .h1{
+        display: flex;
+        width: ;
+        height:;
+        justify-content: center;
+        color: white;
+        align-items: center;
+
+        width: 70%;
+    }
+
+    .h1 a{
+        font-size:100px;
+
+    }
+    .h1{
+        color: black;
+    }
+    .link{
+        display: flex;
+        color: black;
+        justify-content: space-evenly;
+
+        width: 30%;
+        height: 20px;
+    }
+
+
+    #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        width: 40px;
+        height: 40px;
+        z-index: 99999;
+        color: black;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+
+    }
+
+    #scrollToTopBtn::before {
+        content: '\2B9D';
+        font-size: 24px;
+        line-height: 0px;
+        text-align: center;
+    }
+
+    .seach{
+        display: ;
+    }
+
+
+    .img {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .img-container {
+        display: flex;
+        position: relative;
+    }
+
+    .img1,
+    .img2 {
+        position: relative;
+        text-align: center;
+    }
+
+    .img1 img,
+    .img2 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .img1 p,
+    .img2 p {
+        position: absolute;
+        bottom: 50%;
+        left: 20%;
+
+        padding: 5px 10px;
+        color: white;
+    }
+
+
+
+    .button {
+        height: 42px;
+        border: none;
+        background: none;
+        color: #f2f2f2;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        position: relative;
+        box-sizing: border-box;
+        transition: all 500ms ease;
+        position: absolute;
+        bottom: 45%;
+        left: 20%;
+        border-bottom: 2px solid white;
+        border-radius: 0px;
+
+    }
+
+    .buy {
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        margin-left: 15%;
+        margin-top: 5%;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+
+        position: relative;
+    }
+
+    .column img {
+        width: 70%;
+    }
+
+    .column h2 {
+        margin-top: 5%;
+    }
+
+
+
+    .column .columnb {
+        height: 42px;
+        width: 10%;
+        border: none;
+        background: none;
+        color: black;
+
+        font-size: 18px;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        border-bottom: 2px solid black;
+        border-radius: 0px;
+
+    }
+
+
+    .children {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 980px;
+        margin-top: 10%;
+        flex-direction: column;
+        gap: 5%;
+    }
+
+    .child__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+    }
+
+    .childB{
+        height: 42px;
+        width: 15%;
+        border: none;
+        background: none;
+        color: black;
+
+        font-size: 18px;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        border-bottom: 2px solid black;
+        border-radius: 0px;
+    }
+    .childDic{
+        gap: 10%;
+    }
+
+
+
+    .inspectionImg {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 40%;
+    }
+
+    .checkbox {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 20px;
+        user-select: none;
+    }
+
+    .checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+
+    .checkbox:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    .checkbox input:checked ~ .checkmark {
+        background-color: black;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .checkbox input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    .checkbox .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+    }
+
+    .Remember{
+        display: flex;
+        width: 90%;
+        height: 100px;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 5%;
+        margin-top: 10px;
+    }
+
+    .loginbtn button{
+
+
+
+    }
+    .loginbtn {
+        display: flex;
+        border: 1px solid black;
+        width: 20%;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .loginbtn button {
+        border: none;
+        height: 30px;
+        background: transparent;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+    .loginbtn:hover {
+        background-color: black;
+    }
+
+    .loginbtn:hover button {
+        color: white;
+    }
+    .info{
+        margin-top: 80px;
+        margin-left: 7%;
+        font-size: 15px;
+    }
+
+    .loginbtn1 {
+        display: flex;
+        border: 1px solid black;
+        width: 20%;
+        height: 40px;
+        margin-right:9% ;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        background-color: black;
+
+    }
+
+    .loginbtn1 button {
+        border: none;
+        height: 30px;
+        background: transparent;
+        text-decoration: none;
+        color: white;
+        font-size: 12px;
+    }
+
+    .loginbtn1:hover {
+        background-color: white;
+    }
+
+    .loginbtn1:hover button {
+        color: black;
+    }
+    .loginbtn1Block{
+        display: flex;
+        width: 100%;
+        height: 50px;
+        justify-content: flex-end;
+
+    }
+
+    .loginbtn3 {
+        display: flex;
+        border: 1px solid black;
+        width: 90%;
+        height: 40px;
+        margin-left:7% ;
+        margin-top: 3%;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        background-color: black;
+
+    }
+
+    .loginbtn3 button {
+        border: none;
+        height: 30px;
+        background: transparent;
+        text-decoration: none;
+        color: white;
+        font-size: 12px;
+    }
+
+    .loginbtn3:hover {
+        background-color: white;
+    }
+
+    .loginbtn3:hover button {
+        color: black;
+    }
+
+    .sidebarSearch{
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 445466780;
+        top: 0;
+        right: 0;
+        background-color: white;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+
+    }
+
+
+    #searchInput {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    .container1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 20px;
+        width: 100%;
+        height: 80%;
+    }
+
+.item {
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    margin: 10px;
+    word-wrap: break-word;
+
+
+    }
+
+    .item img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .item .item-name {
+        margin-top: 10px;
+        word-wrap: break-word;
+    }
+
+    .category {
+        border-bottom: none;
+        background: transparent;
+        border: none;
+
+    }
+    .category.selected {
+        border-bottom: 2px solid black;
+    }
+
+    .linkMenu a.women.active {
+        border-bottom: 2px solid black;
+    }
+
+    .linkMenu a.men.active {
+        border-bottom: 2px solid black;
+    }
+
+    .nameShop{
+        text-align: center;
+        margin-top: 200px;
+    }
+
+
+    .container1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    margin-top: 50px; 
+   
+}
+    .container1 img{
+        border-bottom: 2px solid transparent;
+    }
+    .container1 img:hover{
+        border-bottom-color: 2px solid black;
+    }
+
+    .item1 {
+        width: 20%;
+        margin: 10px;
+       
+        word-wrap: break-word;
+    }
+
+    .item1 img {
+        width: 100%;
+        height: auto;
+    }
+
+
+
+    #myText1:hover {
+    border-bottom: 2px solid black;
+}
+
+.cartPrice{
+    display: flex;
+    font-size: 10px;
+}
+
+.total{
+    display: flex;
+    color: black;
+    margin-top: 20px;
+    font-size: 20px;
+    margin-left: 7%;
+}
+.container2 img{
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    overflow-y: auto;
+    min-height: fit-content;
+    margin-bottom: 100px;
+    align-items: stretch;
+    margin-top: 50px;
+}
+
+body.sidebar-open {
+    overflow: hidden;
+}
+
+ .loginbtn2 {
+            display: flex;
+            border: 1px solid black;
+            width: 30%;
+            height: 40px;
+            margin-right:9% ;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            background-color: black;
+            text-align: center;
+
+        }
+
+        .loginbtn2 button {
+            border: none;
+            height: 30px;
+            background: transparent;
+            text-decoration: none;
+            color: white;
+            font-size: 12px;
+
+        }
+
+        .loginbtn2:hover {
+            background-color: white;
+        }
+
+        .loginbtn2:hover button {
+            color: black;
+        }
+        .loginbtn2Block{
+            display: flex;
+            width: 100%;
+            height: 50px;
+            margin-left: 7%;
+            margin-top: 20px;
+
+        }
+</style> 
+</head> 
+<body> 
+<script>
+     document.addEventListener("DOMContentLoaded", function() {
+   
+    var menuWomenMen1 = document.querySelector('.MenuWomenMen1');
+
+
+    menuWomenMen1.style.display = 'none';
+
+    document.querySelector('.closeMenu1').addEventListener('click', function() {
+       
+        menuWomenMen1.style.display = (menuWomenMen1.style.display === 'none' || menuWomenMen1.style.display === '') ? 'block' : 'none';
+    });
+
+
+    document.querySelector('.mennMenu').addEventListener('click', function() {
+   
+        menuWomenMen1.style.display = 'none';
+
+   
+       
+    });
+});
+          document.addEventListener("DOMContentLoaded", function() {
+   
+    var menuWomenMen1 = document.querySelector('.MenuWomenMen2');
+
+
+    menuWomenMen1.style.display = 'none';
+
+    document.querySelector('.closeMenu6').addEventListener('click', function() {
+       
+        menuWomenMen1.style.display = (menuWomenMen1.style.display === 'none' || menuWomenMen1.style.display === '') ? 'block' : 'none';
+    });
+
+
+    document.querySelector('.mennMenu').addEventListener('click', function() {
+   
+        menuWomenMen1.style.display = 'none';
+
+   
+       
+    });
+});
+    </script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+    function setupMenu(menuContainer) {
+        var menuLinks = menuContainer.querySelectorAll('.menu a');
+        var imageContainer = menuContainer.querySelector('.png-container img');
+
+        menuLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                var imageUrl = link.getAttribute('data-image');
+                imageContainer.src = imageUrl;
+            });
+        });
+    }
+
+    var allMenu = document.querySelector('.AllMenu');
+    var allMenu1 = document.querySelector('.AllMenu1');
+    var allMenu2 = document.querySelector('.AllMenu2');
+
+    setupMenu(allMenu);
+    setupMenu(allMenu1);
+    setupMenu(allMenu2);
+});
+</script>
+<script>    function showScrollTopButton() { 
+        var button = document.getElementById("scrollToTopBtn"); 
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) { 
+            button.style.display = "block"; 
+        } else { 
+            button.style.display = "none"; 
+        } 
+    } 
+ 
+    function scrollToTop() { 
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+    } 
+function openNav(menu) {
+    if (menu === 'search') {
+        document.getElementById(menu + "Sidebar").style.width = "100%";
+    } else {
+        document.getElementById(menu + "Sidebar").style.width = "50%";
+    }
+    document.querySelector(".overlay").style.display = "block";
+}
+
+function closeNav(menu) {
+    document.getElementById(menu + "Sidebar").style.width = "0";
+    document.querySelector(".overlay").style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target.classList.contains("overlay")) {
+        closeNav('login');
+        closeNav('cart');
+        closeNav('search');
+    }
+}
+document.querySelectorAll('.sidebar').forEach(function(el) {
+    el.innerHTML += '<button class="closebtn" onclick="closeNav()">×</button>';
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu .dws-menu1, .AllMenu .dws-menu2, .AllMenu .dws-menu3, .AllMenu .dws-menu4, .AllMenu .dws-menu5, .AllMenu .dws-menu6, .AllMenu .dws-menu7, .AllMenu .dws-menu8, .AllMenu .dws-menu9, .AllMenu .dws-menu10');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu1 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu1 .dws-menu1, .AllMenu1 .dws-menu2, .AllMenu1 .dws-menu3, .AllMenu1 .dws-menu4, .AllMenu1 .dws-menu5, .AllMenu1 .dws-menu6');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu2 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu2 .dws-menu1, .AllMenu2 .dws-menu2, .AllMenu2 .dws-menu3, .AllMenu2 .dws-menu4, .AllMenu2 .dws-menu5');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let womenElement = document.querySelector(".women");
+    let closeMenuElement = document.querySelector(".closeMenu");
+    let menuWomenMenElement = document.querySelector(".MenuWomenMen");
+    if(womenElement) {
+        womenElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.add("active");
+        });
+    }
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.remove("active");
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() { 
+    let closeMenuElement = document.querySelector(".closeMenu");
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            console.log("Close menu clicked");
+            document.querySelector(".MenuWomenMen").style.display = "none";
+        });
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let womenMenuElement = document.querySelector(".womenMenu");
+    let closeMenuElement = document.querySelector(".closeMenu");
+    let menuWomenMenElement = document.querySelector(".MenuWomenMen");
+    if(womenMenuElement) {
+        womenMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.add("active");
+        });
+    }
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.remove("active");
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+        var menLink = document.querySelector('.men');
+        var menuBlock = document.querySelector('.MenuWomenMen1');
+
+        menLink.addEventListener('click', function () {
+            menuBlock.style.display = (menuBlock.style.display === 'none' || menuBlock.style.display === '') ? 'flex' : 'none';
+            
+        });
+    });
+
+document.addEventListener('DOMContentLoaded', function () {
+        var menLink = document.querySelector('.childrenchildren');
+        var menuBlock = document.querySelector('.MenuWomenMen2');
+
+        menLink.addEventListener('click', function () {
+            menuBlock.style.display = (menuBlock.style.display === 'none' || menuBlock.style.display === '') ? 'flex' : 'none';
+            
+        });
+    });
+
+$('input').focus(function(){
+  $(this).attr('placeholder', '');
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    let eyeicon = document.getElementById("eyeicon");
+    let password = document.getElementById("password");
+
+    eyeicon.addEventListener("click", () => {
+        if (password.type == "password") {
+            password.type = "text";
+            eyeicon.src = "https://i.imgur.com/jLPLH0F.png";
+        } else {
+            password.type = "password";
+            eyeicon.src = "https://i.imgur.com/3g2X07N.png";
+        }
+    });
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        modal.style.display = modal.style.display === "none" ? "flex" : "none";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    var women = document.getElementsByClassName("women")[0];
+    var menuWomenMen = document.getElementsByClassName("MenuWomenMen")[0];
+    var closeMenu = document.getElementsByClassName("closeMenu")[0];
+
+    women.onclick = function() {
+        if (menuWomenMen.style.display === "" || menuWomenMen.style.display === "none") {
+            menuWomenMen.style.display = "block";
+        } else {
+            menuWomenMen.style.display = "none";
+        }
+    }
+
+    closeMenu.onclick = function() {
+        menuWomenMen.style.display = "none";
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const womenLink = document.querySelector('.women');
+    const menuWomenMen = document.querySelector('.MenuWomenMen');
+    const closeMenuButton = document.querySelector('.closeMenu');
+
+    womenLink.addEventListener('click', () => {
+        if (menuWomenMen.style.display === 'flex') {
+            menuWomenMen.style.display = 'none';
+        } else {
+            menuWomenMen.style.display = 'flex';
+        }
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+        menuWomenMen.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === menuWomenMen) {
+            menuWomenMen.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+
+
+document.querySelector('.men').addEventListener('click', function() {
+    document.querySelector('.AllMenu2').style.display = 'block';
+    document.querySelector('.AllMenu1').style.display = 'none';
+});
+
+document.querySelector('.womenMenu').addEventListener('click', function() {
+    document.querySelector('.AllMenu1').style.display = 'block';
+    document.querySelector('.AllMenu2').style.display = 'none';
+});
+
+
+
+
+         document.addEventListener("DOMContentLoaded", function() {
+
+        var menuWomenMen1 = document.querySelector('.MenuWomenMen1');
+
+
+        menuWomenMen1.style.display = 'none';
+
+        document.querySelector('.closeMenu1').addEventListener('click', function() {
+
+            menuWomenMen1.style.display = (menuWomenMen1.style.display === 'none' || menuWomenMen1.style.display === '') ? 'block' : 'none';
+        });
+
+
+        document.querySelector('.mennMenu').addEventListener('click', function() {
+
+            menuWomenMen1.style.display = 'none';
+
+
+
+        });
+    });
+
+
+
+         document.addEventListener("DOMContentLoaded", function() {
+
+        var menuWomenMen1 = document.querySelector('.MenuWomenMen2');
+
+
+        menuWomenMen1.style.display = 'none';
+
+        document.querySelector('.closeMenu6').addEventListener('click', function() {
+
+            menuWomenMen1.style.display = (menuWomenMen1.style.display === 'none' || menuWomenMen1.style.display === '') ? 'block' : 'none';
+        });
+
+
+        document.querySelector('.mennMenu').addEventListener('click', function() {
+
+            menuWomenMen1.style.display = 'none';
+
+
+
+        });
+    });
+
+
+         function openNav() {
+    document.getElementById("searchSidebar").style.width = "100%";
+    document.body.classList.add("sidebar-open");
+}
+
+function closeNav() {
+    document.getElementById("searchSidebar").style.width = "0";
+    document.body.classList.remove("sidebar-open");
+}
+</script>
+<script>  function changeText() {
+    var myTextElements = document.getElementsByClassName("myText");
+
+    for (var i = 0; i < myTextElements.length; i++) {
+        var currentText = myTextElements[i].innerText;
+
+        if (currentText === "Accessories") {
+            myTextElements[i].innerText = "Аксессуары";
+        } else if (currentText === "Аксессуары") {
+            myTextElements[i].innerText = "Accessories";
+        } 
+
+        if (currentText === "information") {
+            myTextElements[i].innerText = "информация";
+        } else if (currentText === "информация") {
+            myTextElements[i].innerText = "information";
+        } 
+
+        if (currentText === "SHOPPING BAG") {
+            myTextElements[i].innerText = "КОРЗИНА";
+        } else if (currentText === "КОРЗИНА") {
+            myTextElements[i].innerText = "SHOPPING BAG";
+        } 
+
+        if (currentText === "Search") {
+            myTextElements[i].innerText = "Поиск";
+        } else if (currentText === "Поиск") {
+            myTextElements[i].innerText = "Search";
+        } 
+
+        if (currentText === "Account") {
+            myTextElements[i].innerText = "Аккаунт";
+        } else if (currentText === "Аккаунт") {
+            myTextElements[i].innerText = "Account";
+        } 
+
+        if (currentText === "Cart") {
+            myTextElements[i].innerText = "Корзина";
+        } else if (currentText === "Корзина") {
+            myTextElements[i].innerText = "Cart";
+        } 
+
+        if (currentText === "EN") {
+            myTextElements[i].innerText = "RU";
+        } else if (currentText === "RU") {
+            myTextElements[i].innerText = "EN";
+        } 
+        if (currentText === "women") {
+            myTextElements[i].innerText = "женское";
+        } else if (currentText === "женское") {
+            myTextElements[i].innerText = "women";
+        } 
+
+        if (currentText === "men") {
+            myTextElements[i].innerText = "мужское";
+        } else if (currentText === "мужское") {
+            myTextElements[i].innerText = "men";
+        } 
+        if (currentText === "children") {
+            myTextElements[i].innerText = "детское";
+        } else if (currentText === "детское") {
+            myTextElements[i].innerText = "children";
+        } 
+
+         if (currentText === "Clothing") {
+            myTextElements[i].innerText = "Одежда";
+        } else if (currentText === "Одежда") {
+            myTextElements[i].innerText = "Clothing";
+        } 
+
+         if (currentText === "Bags") {
+            myTextElements[i].innerText = "Сумки";
+        } else if (currentText === "Сумки") {
+            myTextElements[i].innerText = "Bags";
+        } 
+
+         if (currentText === "Shoes") {
+            myTextElements[i].innerText = "Обувь";
+        } else if (currentText === "Обувь") {
+            myTextElements[i].innerText = "Shoes";
+        } 
+
+        if (currentText === "Sunglasses") {
+            myTextElements[i].innerText = "Очки";
+        } else if (currentText === "Очки") {
+            myTextElements[i].innerText = "Sunglasses";
+        } 
+
+        if (currentText === "Watches&Jewelry") {
+            myTextElements[i].innerText = "Часы и ювелирные изделия";
+        } else if (currentText === "Часы и ювелирные изделия") {
+            myTextElements[i].innerText = "Watches&Jewelry";
+        } 
+
+        if (currentText === "Coats and Jackets") {
+            myTextElements[i].innerText = "Пальто и куртки";
+        } else if (currentText === "Пальто и куртки") {
+            myTextElements[i].innerText = "Coats and Jackets";
+        } 
+        if (currentText === "Denim and Skirts") {
+            myTextElements[i].innerText = "Джинсы и юбки";
+        } else if (currentText === "Джинсы и юбки") {
+            myTextElements[i].innerText = "Denim and Skirts";
+        } 
+        if (currentText === "Dresses&Blazers") {
+            myTextElements[i].innerText = "Платья и блейзеры";
+        } else if (currentText === "Платья и блейзеры") {
+            myTextElements[i].innerText = "Dresses&Blazers";
+        } 
+        if (currentText === "Shirts and Tops") {
+            myTextElements[i].innerText = "Рубашки и топы";
+        } else if (currentText === "Рубашки и топы") {
+            myTextElements[i].innerText = "Shirts and Tops";
+        } 
+        if (currentText === "Trousers and Shorts") {
+            myTextElements[i].innerText = "Брюки и шорты";
+        } else if (currentText === "Брюки и шорты") {
+            myTextElements[i].innerText = "Trousers and Shorts";
+        } 
+        if (currentText === "T-Shirts and Sweatshirts") {
+            myTextElements[i].innerText = "Футболки и толстовки";
+        } else if (currentText === "Футболки и толстовки") {
+            myTextElements[i].innerText = "T-Shirts and Sweatshirts";
+        } 
+        if (currentText === "Underwear and Beachwear") {
+            myTextElements[i].innerText = "Нижнее белье и пляжная одежда";
+        } else if (currentText === "Нижнее белье и пляжная одежда") {
+            myTextElements[i].innerText = "Underwear and Beachwear";
+        } 
+        if (currentText === "Activewear and Beachwear") {
+            myTextElements[i].innerText = "Спортивная и пляжная одежда";
+        } else if (currentText === "Спортивная и пляжная одежда") {
+            myTextElements[i].innerText = "Activewear and Beachwear";
+        } 
+        if (currentText === "Denim and Sweatshirts") {
+            myTextElements[i].innerText = "Джинсы и толстовки";
+        } else if (currentText === "Джинсы и толстовки") {
+            myTextElements[i].innerText = "Denim and Sweatshirts";
+        } 
+        if (currentText === "Shirts") {
+            myTextElements[i].innerText = "Рубашки";
+        } else if (currentText === "Рубашки") {
+            myTextElements[i].innerText = "Shirts";
+        } 
+        if (currentText === "Suits and Blazers") {
+            myTextElements[i].innerText = "Костюмы и блейзеры";
+        } else if (currentText === "Костюмы и блейзеры") {
+            myTextElements[i].innerText = "Suits and Blazers";
+        } 
+        if (currentText === "T-Shirts and Polos") {
+            myTextElements[i].innerText = "Футболки и поло";
+        } else if (currentText === "Футболки и поло") {
+            myTextElements[i].innerText = "T-Shirts and Polos";
+        } 
+        if (currentText === "Sweaters and Cardigans") {
+            myTextElements[i].innerText = "Свитера и кардиганы";
+        } else if (currentText === "Свитера и кардиганы") {
+            myTextElements[i].innerText = "Sweaters and Cardigans";
+        } 
+        if (currentText === "Underwear and Loungewear") {
+            myTextElements[i].innerText = "Нижнее белье и одежда для отдыха";
+        } else if (currentText === "Нижнее белье и одежда для отдыха") {
+            myTextElements[i].innerText = "Underwear and Loungewear";
+        } 
+
+
+
+
+
+
+
+        if (currentText === "Clutches mini and Micro Bags") {
+            myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+        } else if (currentText === "Клатчи, мини- и микро-сумки") {
+            myTextElements[i].innerText = "Clutches mini and Micro Bags";
+        } 
+        if (currentText === "Handbags and Totes") {
+            myTextElements[i].innerText = "сумки и тотализаторы";
+        } else if (currentText === "сумки и тотализаторы") {
+            myTextElements[i].innerText = "Handbags and Totesr";
+        } 
+        if (currentText === "Shoulder and Crossbody Bags") {
+            myTextElements[i].innerText = "Сумки через плечо и кроссбоди";
+        } else if (currentText === "Сумки через плечо и кроссбоди") {
+            myTextElements[i].innerText = "Shoulder and Crossbody Bags";
+        } 
+        if (currentText === "Sicily and Devotion") {
+            myTextElements[i].innerText = "Сицилия и преданность";
+        } else if (currentText === "Сицилия и преданность") {
+            myTextElements[i].innerText = "Sicily and Devotion";
+        } 
+        if (currentText === "Boots and Booties") {
+            myTextElements[i].innerText = "Сапоги и пинетки";
+        } else if (currentText === "Сапоги и пинетки") {
+            myTextElements[i].innerText = "Boots and Booties";
+        } 
+        if (currentText === "Pumps and Skingback") {
+            myTextElements[i].innerText = "Туфли и Босоножки";
+        } else if (currentText === "Туфли и Босоножки") {
+            myTextElements[i].innerText = "Pumps and Skingback";
+        } 
+        if (currentText === "Sandals and Wedges") {
+            myTextElements[i].innerText = "Босоножки и туфли на танкетке";
+        } else if (currentText === "Босоножки и туфли на танкетке") {
+            myTextElements[i].innerText = "Sandals and Wedges";
+        } 
+        if (currentText === "Slides and Mules") {
+            myTextElements[i].innerText = "Шлепанцы и Мюли";
+        } else if (currentText === "Шлепанцы и Мюли") {
+            myTextElements[i].innerText = "Slides and Mules";
+        } 
+        if (currentText === "Sheakers and Flat") {
+            myTextElements[i].innerText = "Шейкеры и плоские";
+        } else if (currentText === "Шейкеры и плоские") {
+            myTextElements[i].innerText = "Sheakers and Flat";
+        } 
+        if (currentText === "Bijoux and Belts") {
+            myTextElements[i].innerText = "Бижутерия и пояса";
+        } else if (currentText === "Бижутерия и пояса") {
+            myTextElements[i].innerText = "Bijoux and Belts";
+        } 
+        if (currentText === "Hats and Gloves") {
+            myTextElements[i].innerText = "Шляпы и перчатки";
+        } else if (currentText === "Шляпы и перчатки") {
+            myTextElements[i].innerText = "Hats and Gloves";
+
+
+        } if (currentText === "Scarves and Silks") {
+            myTextElements[i].innerText = "Шарфы и шелка";
+        } else if (currentText === "Шарфы и шелка") {
+            myTextElements[i].innerText = "Scarves and Silks";
+        } 
+        if (currentText === "Wallets and small leather goods") {
+            myTextElements[i].innerText = "Кошельки и небольшие изделия из кожи";
+        } else if (currentText === "Кошельки и небольшие изделия из кожи") {
+            myTextElements[i].innerText = "Wallets and small leather goods";
+        } 
+        if (currentText === "New arrivals and Icons") {
+            myTextElements[i].innerText = "Новые поступления и значки";
+        } else if (currentText === "Новые поступления и значки") {
+            myTextElements[i].innerText = "New arrivals and Icons";
+        } 
+        if (currentText === "Earrings and Rings") {
+            myTextElements[i].innerText = "Серьги и кольца";
+        } else if (currentText === "Серьги и кольца") {
+            myTextElements[i].innerText = "Earrings and Rings";
+        } 
+        if (currentText === "Neacklaces and Charms") {
+            myTextElements[i].innerText = "Шнурки и брелоки";
+        } else if (currentText === "Шнурки и брелоки") {
+            myTextElements[i].innerText = "Neacklaces and Charms";
+        } 
+
+        if (currentText === "Watches&Straps") {
+            myTextElements[i].innerText = "Часы и ремешки";
+        } else if (currentText === "Часы и ремешки") {
+            myTextElements[i].innerText = "Watches&Straps";
+        }
+
+
+        if (currentText === "Trousers and Skirts") {
+            myTextElements[i].innerText = "Брюки и юбки";
+        } else if (currentText === "Брюки и юбки") {
+            myTextElements[i].innerText = "Trousers and Skirts";
+        }
+
+        if (currentText === "Dresses and Sweaters") {
+            myTextElements[i].innerText = "Платья и свитера";
+        } else if (currentText === "Платья и свитера") {
+            myTextElements[i].innerText = "Dresses and Sweaters";
+        }
+
+
+        if (currentText === "Beachwear") {
+            myTextElements[i].innerText = "Пляжная одежда";
+        } else if (currentText === "Пляжная одежда") {
+            myTextElements[i].innerText = "Beachwear";
+        }
+
+
+        if (currentText === "Nightwear and Underwear") {
+            myTextElements[i].innerText = "Ночная одежда и нижнее белье";
+        } else if (currentText === "Ночная одежда и нижнее белье") {
+            myTextElements[i].innerText = "Nightwear and Underwear";
+        }
+
+         if (currentText === "Suits and Shirts") {
+            myTextElements[i].innerText = "Костюмы и рубашки";
+        } else if (currentText === "Костюмы и рубашки") {
+            myTextElements[i].innerText = "Suits and Shirts";
+        }
+
+
+         if (currentText === "Sweaters") {
+            myTextElements[i].innerText = "Свитера";
+        } else if (currentText === "Свитера") {
+            myTextElements[i].innerText = "Sweaters";
+        }
+
+         if (currentText === "Special occasions") {
+            myTextElements[i].innerText = "Особые случаи";
+        } else if (currentText === "Особые случаи") {
+            myTextElements[i].innerText = "Special occasions";
+        }
+
+         if (currentText === "Accessories and Baby carriers") {
+            myTextElements[i].innerText = "Аксессуары и переноски для младенцев";
+        } else if (currentText === "Аксессуары и переноски для младенцев") {
+            myTextElements[i].innerText = "Accessories and Baby carriers";
+        }
+
+
+         if (currentText === "Trousers and Shorts") {
+            myTextElements[i].innerText = "Брюки и шорты";
+        } else if (currentText === "Брюки и шорты") {
+            myTextElements[i].innerText = "Trousers and Shorts";
+        }
+
+         if (currentText === "Dresses") {
+            myTextElements[i].innerText = "Платья";
+        } else if (currentText === "Платья") {
+            myTextElements[i].innerText = "Dresses";
+        }
+
+
+         if (currentText === "Topwear") {
+            myTextElements[i].innerText = "Верхняя одежда";
+        } else if (currentText === "Верхняя одежда") {
+            myTextElements[i].innerText = "Topwear";
+        }
+
+
+         if (currentText === "Newborn shoes") {
+            myTextElements[i].innerText = "Обувь для новорожденных";
+        } else if (currentText === "Обувь для новорожденных") {
+            myTextElements[i].innerText = "Newborn shoes";
+        }
+
+
+         if (currentText === "Topwear and Beachwear") {
+            myTextElements[i].innerText = "Верхняя одежда и пляжная одежда";
+        } else if (currentText === "Верхняя одежда и пляжная одежда") {
+            myTextElements[i].innerText = "Topwear and Beachwear";
+        }
+
+
+         if (currentText === "Girl(2-13)") {
+            myTextElements[i].innerText = "Девочка(2-13)";
+        } else if (currentText === "Девочка(2-13)") {
+            myTextElements[i].innerText = "Girl(2-13)";
+        }
+
+         if (currentText === "Boy(2-13)") {
+            myTextElements[i].innerText = "Мальчик (2-13)";
+        } else if (currentText === "Мальчик (2-13)") {
+            myTextElements[i].innerText = "Boy(2-13)";
+        }
+        if (currentText === "Newborn(0-12 months)") {
+            myTextElements[i].innerText = "Новорожденный (0-12 месяцев)";
+        } else if (currentText === "Новорожденный (0-12 месяцев)") {
+            myTextElements[i].innerText = "Newborn(0-12 months)";
+        }
+        if (currentText === "Newborn girl(0-30 months)") {
+            myTextElements[i].innerText = "Новорожденная девочка (0-30 месяцев)";
+        } else if (currentText === "Новорожденная девочка (0-30 месяцев)") {
+            myTextElements[i].innerText = "Newborn girl(0-30 months)";
+        }
+        if (currentText === "Newborn boy(0-30 months)") {
+            myTextElements[i].innerText = "Новорожденный мальчик (0-30 месяцев)";
+        } else if (currentText === "Новорожденный мальчик (0-30 месяцев)") {
+            myTextElements[i].innerText = "Newborn boy(0-30 months)";
+        }
+
+        if (currentText === "Clutches mini and Micro Bags") {
+            myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+        } else if (currentText === "Клатчи, мини- и микро-сумки") {
+            myTextElements[i].innerText = "Clutches mini and Micro Bags";
+        }
+
+        if (currentText === "Backpacks and Fanny packs") {
+            myTextElements[i].innerText = "Рюкзаки и поясные сумки";
+        } else if (currentText === "Рюкзаки и поясные сумки") {
+            myTextElements[i].innerText = "Backpacks and Fanny packs";
+        }
+
+        if (currentText === "Briefcase and cluthces") {
+            myTextElements[i].innerText = "Портфель и другие вещи";
+        } else if (currentText === "Портфель и другие вещи") {
+            myTextElements[i].innerText = "Briefcase and cluthces";
+        }
+
+
+        if (currentText === "Crossbody Bags") {
+            myTextElements[i].innerText = "Сумки через плечо";
+        } else if (currentText === "Сумки через плечо") {
+            myTextElements[i].innerText = "Crossbody Bags";
+        }
+
+
+        if (currentText === "Travel bags and Shoppers") {
+            myTextElements[i].innerText = "Дорожные сумки и шопперы";
+        } else if (currentText === "Дорожные сумки и шопперы") {
+            myTextElements[i].innerText = "Travel bags and Shoppers";
+        }
+
+
+        if (currentText === "Boots") {
+            myTextElements[i].innerText = "Ботинки";
+        } else if (currentText === "Ботинки") {
+            myTextElements[i].innerText = "Boots";
+        }
+
+
+
+        if (currentText === "Loafers and Moccasins") {
+            myTextElements[i].innerText = "Лоферы и Мокасины";
+        } else if (currentText === "Лоферы и Мокасины") {
+            myTextElements[i].innerText = "Loafers and Moccasins";
+        }
+
+
+
+        if (currentText === "Sandals and Slides") {
+            myTextElements[i].innerText = "Сандалии и шлепанцы";
+        } else if (currentText === "Сандалии и шлепанцы") {
+            myTextElements[i].innerText = "Sandals and Slides";
+        }
+
+
+        if (currentText === "Sheakers and Lace-ups") {
+            myTextElements[i].innerText = "Шейкеры и шнуровки";
+        } else if (currentText === "Шейкеры и шнуровки") {
+            myTextElements[i].innerText = "Sheakers and Lace-ups";
+        }
+
+
+        if (currentText === "Belts and Bijoux") {
+            myTextElements[i].innerText = "Пояса и бижутерия";
+        } else if (currentText === "Пояса и бижутерия") {
+            myTextElements[i].innerText = "Belts and Bijoux";
+        }
+
+
+        if (currentText === "Socks") {
+            myTextElements[i].innerText = "Носки";
+        } else if (currentText === "Носки") {
+            myTextElements[i].innerText = "Socks";
+        }
+
+
+        if (currentText === "Icons") {
+            myTextElements[i].innerText = "Значки";
+        } else if (currentText === "Значки") {
+            myTextElements[i].innerText = "Icons";
+        }
+        if (currentText === "New arrivals") {
+            myTextElements[i].innerText = "Вновь прибывшие";
+        } else if (currentText === "Вновь прибывшие") {
+            myTextElements[i].innerText = "New arrivals";
+        }
+
+
+        if (currentText === "Brooches&Tiepins") {
+            myTextElements[i].innerText = "Броши и заколки для галстуков";
+        } else if (currentText === "Броши и заколки для галстуков") {
+            myTextElements[i].innerText = "Brooches&Tiepins";
+        }
+
+
+        if (currentText === "Charms and watches") {
+            myTextElements[i].innerText = "Брелоки и часы";
+        } else if (currentText === "Брелоки и часы") {
+            myTextElements[i].innerText = "Charms and watches";
+        }
+
+
+
+
+        if (currentText === "Cufflinks and necklaces") {
+            myTextElements[i].innerText = "Запонки и ожерелья";
+        } else if (currentText === "Запонки и ожерелья") {
+            myTextElements[i].innerText = "Cufflinks and necklaces";
+        }
+
+
+
+        if (currentText === "Rings and bracelets") {
+            myTextElements[i].innerText = "Кольца и браслеты";
+        } else if (currentText === "Кольца и браслеты") {
+            myTextElements[i].innerText = "Rings and bracelets";
+        }
+
+
+        if (currentText === "Socks and Technology") {
+            myTextElements[i].innerText = "Носки и технологии";
+        } else if (currentText === "Носки и технологии") {
+            myTextElements[i].innerText = "Socks and Technology";
+        }
+
+
+
+        if (currentText === "Login") {
+            myTextElements[i].innerText = "Вход";
+        } else if (currentText === "Вход") {
+            myTextElements[i].innerText = "Login";
+        }
+
+
+
+        if (currentText === "Check your order status") {
+            myTextElements[i].innerText = "Проверьте статус вашего заказа";
+        } else if (currentText === "Проверьте статус вашего заказа") {
+            myTextElements[i].innerText = "Check your order status";
+        }
+
+
+        if (currentText === "Save your contact informations for a faster checkout") {
+            myTextElements[i].innerText = "Сохраните свои контактные данные для более быстрого оформления заказа.";
+        } else if (currentText === "Сохраните свои контактные данные для более быстрого оформления заказа.") {
+            myTextElements[i].innerText = "Save your contact informations for a faster checkout";
+        }
+
+
+        if (currentText === "Add your favorite items to your wishlist") {
+            myTextElements[i].innerText = "Добавьте понравившиеся товары в список желаний";
+        } else if (currentText === "Добавьте понравившиеся товары в список желаний") {
+            myTextElements[i].innerText = "Add your favorite items to your wishlist";
+        }
+
+        if (currentText === "CREATE ACCOUNT") {
+            myTextElements[i].innerText = "СОЗДАНИЕ АККАУНТА";
+        } else if (currentText === "СОЗДАНИЕ АККАУНТА") {
+            myTextElements[i].innerText = "CREATE ACCOUNT";
+        }
+
+
+
+        if (currentText === "Remember me") {
+            myTextElements[i].innerText = "Запомнить меня";
+        } else if (currentText === "Запомнить меня") {
+            myTextElements[i].innerText = "Remember me";
+        }
+
+
+        if (currentText === "Forgot your password?") {
+            myTextElements[i].innerText = "Забыли пароль?";
+        } else if (currentText === "Забыли пароль?") {
+            myTextElements[i].innerText = "Forgot your password?";
+        }
+
+
+        if (currentText === "Create Account") {
+            myTextElements[i].innerText = "Создать";
+        } else if (currentText === "Создать") {
+            myTextElements[i].innerText = "Create Account";
+        }
+
+
+        if (currentText === "Sign in to My Account to access your bag across your devices.") {
+            myTextElements[i].innerText = "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.";
+        } else if (currentText === "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.") {
+            myTextElements[i].innerText = "Sign in to My Account to access your bag across your devices.";
+        }
+
+
+        if (currentText === "RETRIEVE YOUR BAG") {
+            myTextElements[i].innerText = "ЗАБЕРИТЕ СВОЮ КОРЗИНУ";
+        } else if (currentText === "ЗАБЕРИТЕ СВОЮ КОРЗИНУ") {
+            myTextElements[i].innerText = "RETRIEVE YOUR BAG";
+        }
+
+        if (currentText === "YOUR BAG IS EMPTY") {
+            myTextElements[i].innerText = "ВАША КОРЗИНА ПУСТАЯ";
+        } else if (currentText === "ВАША КОРЗИНА ПУСТАЯ") {
+            myTextElements[i].innerText = "YOUR BAG IS EMPTY";
+        }
+
+        if (currentText === "SHOPPING BAG") {
+            myTextElements[i].innerText = "КОРЗИНА";
+        } else if (currentText === "КОРЗИНА") {
+            myTextElements[i].innerText = "SHOPPING BAG";
+        }
+
+
+        if (currentText === "NEW IN: CHILDREN'S COLLECTION") {
+            myTextElements[i].innerText = "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ";
+        } else if (currentText === "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ") {
+            myTextElements[i].innerText = "NEW IN: CHILDREN'S COLLECTION";
+        }
+
+        if (currentText === "Discover the latest arrivals") {
+            myTextElements[i].innerText = "Откройте для себя последние поступления";
+        } else if (currentText === "Откройте для себя последние поступления") {
+            myTextElements[i].innerText = "Discover the latest arrivals";
+        }
+
+    }
+
+
+
+   
+    var currentState = sessionStorage.getItem("currentState") || "english";
+    currentState = (currentState === "english") ? "russian" : "english";
+    sessionStorage.setItem("currentState", currentState);
+    localStorage.setItem("currentState", currentState);
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    var myTextElements = document.getElementsByClassName("myText");
+    var currentState = sessionStorage.getItem("currentState") || "english";
+
+    for (var i = 0; i < myTextElements.length; i++) {
+        if (currentState === "russian") {
+            if (myTextElements[i].innerText === "Accessories") {
+                myTextElements[i].innerText = "Аксессуары";
+            } 
+            if (myTextElements[i].innerText === "information") {
+                myTextElements[i].innerText = "информация";
+            }
+
+            if (myTextElements[i].innerText === "SHOPPING BAG") {
+                myTextElements[i].innerText = "КОРЗИНА";
+            }
+
+            if (myTextElements[i].innerText === "Search") {
+                myTextElements[i].innerText = "Поиск";
+            }
+
+            if (myTextElements[i].innerText === "Account") {
+                myTextElements[i].innerText = "Аккаунт";
+            }
+            if (myTextElements[i].innerText === "Cart") {
+                myTextElements[i].innerText = "Корзина";
+            }
+            if (myTextElements[i].innerText === "EN") {
+                myTextElements[i].innerText = "RU";
+            }
+            if (myTextElements[i].innerText === "women") {
+                myTextElements[i].innerText = "женское";
+            }
+            if (myTextElements[i].innerText === "men") {
+                myTextElements[i].innerText = "мужское";
+            }
+            if (myTextElements[i].innerText === "children") {
+                myTextElements[i].innerText = "детское";
+            }
+
+            if (myTextElements[i].innerText === "Clothing") {
+                myTextElements[i].innerText = "Одежда";
+            }
+
+            if (myTextElements[i].innerText === "Bags") {
+                myTextElements[i].innerText = "Сумки";
+            }
+            if (myTextElements[i].innerText === "Shoes") {
+                myTextElements[i].innerText = "Обувь";
+            }
+            if (myTextElements[i].innerText === "Sunglasses") {
+                myTextElements[i].innerText = "Очки";
+            }
+            if (myTextElements[i].innerText === "Watches&Jewelry") {
+                myTextElements[i].innerText = "Часы и ювелирные изделия";
+            }
+
+            if (myTextElements[i].innerText === "Coats and Jackets") {
+                myTextElements[i].innerText = "Пальто и куртки";
+            }
+
+            if (myTextElements[i].innerText === "Denim and Skirts") {
+                myTextElements[i].innerText = "Джинсы и юбки";
+            }
+            if (myTextElements[i].innerText === "Dresses&Blazers") {
+                myTextElements[i].innerText = "Платья и блейзеры";
+            }
+            if (myTextElements[i].innerText === "Shirts and Tops") {
+                myTextElements[i].innerText = "Рубашки и топы";
+            }
+            if (myTextElements[i].innerText === "Trousers and Shorts") {
+                myTextElements[i].innerText = "Брюки и шорты";
+            }
+
+            if (myTextElements[i].innerText === "T-Shirts and Sweatshirts") {
+                myTextElements[i].innerText = "Футболки и толстовки";
+            }
+            if (myTextElements[i].innerText === "Underwear and Beachwear") {
+                myTextElements[i].innerText = "Нижнее белье и пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Activewear and Beachwear") {
+                myTextElements[i].innerText = "Спортивная и пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Denim and Sweatshirts") {
+                myTextElements[i].innerText = "Джинсы и толстовки";
+            }
+            if (myTextElements[i].innerText === "Shirts") {
+                myTextElements[i].innerText = "Рубашки";
+            }
+            if (myTextElements[i].innerText === "Suits and Blazers") {
+                myTextElements[i].innerText = "Костюмы и блейзеры";
+            }
+            if (myTextElements[i].innerText === "T-Shirts and Polos") {
+                myTextElements[i].innerText = "Футболки и поло";
+            }
+            if (myTextElements[i].innerText === "Sweaters and Cardigans") {
+                myTextElements[i].innerText = "Свитера и кардиганы";
+            }
+            if (myTextElements[i].innerText === "Underwear and Loungewear") {
+                myTextElements[i].innerText = "Нижнее белье и одежда для отдыха";
+            }
+
+            if (myTextElements[i].innerText === "Clutches mini and Micro Bags") {
+                myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+            }
+            if (myTextElements[i].innerText === "Handbags and Totes") {
+                myTextElements[i].innerText = "сумки и тотализаторы";
+            }
+            if (myTextElements[i].innerText === "Shoulder and Crossbody Bags") {
+                myTextElements[i].innerText = "Сумки через плечо и кроссбоди";
+            }
+            if (myTextElements[i].innerText === "Sicily and Devotion") {
+                myTextElements[i].innerText = "Сицилия и преданность";
+            }
+            if (myTextElements[i].innerText === "Boots and Booties") {
+                myTextElements[i].innerText = "Сапоги и пинетки";
+            }
+            if (myTextElements[i].innerText === "Pumps and Skingback") {
+                myTextElements[i].innerText = "Туфли и Босоножки";
+            }
+            if (myTextElements[i].innerText === "Sandals and Wedges") {
+                myTextElements[i].innerText = "Босоножки и туфли на танкетке";
+            }
+            if (myTextElements[i].innerText === "Slides and Mules") {
+                myTextElements[i].innerText = "Шлепанцы и Мюли";
+            }
+            if (myTextElements[i].innerText === "Sheakers and Flat") {
+                myTextElements[i].innerText = "Шейкеры и плоские";
+            }
+            if (myTextElements[i].innerText === "Bijoux and Belts") {
+                myTextElements[i].innerText = "Бижутерия и пояса";
+            }
+            if (myTextElements[i].innerText === "Hats and Gloves") {
+                myTextElements[i].innerText = "Шляпы и перчатки";
+            }
+            if (myTextElements[i].innerText === "Scarves and Silks") {
+                myTextElements[i].innerText = "Шарфы и шелка";
+            }
+            if (myTextElements[i].innerText === "Wallets and small leather goods") {
+                myTextElements[i].innerText = "Кошельки и небольшие изделия из кожи";
+            }
+            if (myTextElements[i].innerText === "New arrivals and Icons") {
+                myTextElements[i].innerText = "Новые поступления и значки";
+            }
+            if (myTextElements[i].innerText === "Earrings and Rings") {
+                myTextElements[i].innerText = "Серьги и кольца";
+            }
+            if (myTextElements[i].innerText === "Neacklaces and Charms") {
+                myTextElements[i].innerText = "Шнурки и брелоки";
+            }
+            if (myTextElements[i].innerText === "Watches&Straps") {
+                myTextElements[i].innerText = "Часы и ремешки";
+            }
+
+            if (myTextElements[i].innerText === "Trousers and Skirts") {
+                myTextElements[i].innerText = "Брюки и юбки";
+            }
+            if (myTextElements[i].innerText === "Dresses and Sweaters") {
+                myTextElements[i].innerText = "Платья и свитера";
+            }
+            if (myTextElements[i].innerText === "Beachwear") {
+                myTextElements[i].innerText = "Пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Nightwear and Underwear") {
+                myTextElements[i].innerText = "Ночная одежда и нижнее белье";
+            }
+            if (myTextElements[i].innerText === "Suits and Shirts") {
+                myTextElements[i].innerText = "Костюмы и рубашки";
+            }
+            if (myTextElements[i].innerText === "Sweaters") {
+                myTextElements[i].innerText = "Свитера";
+            }
+
+            if (myTextElements[i].innerText === "Special occasions") {
+                myTextElements[i].innerText = "Особые случаи";
+            }
+            if (myTextElements[i].innerText === "Accessories and Baby carriers") {
+                myTextElements[i].innerText = "Аксессуары и переноски для младенцев";
+            }
+            if (myTextElements[i].innerText === "Trousers and Shorts") {
+                myTextElements[i].innerText = "Брюки и шорты";
+            }
+            if (myTextElements[i].innerText === "Dresses") {
+                myTextElements[i].innerText = "Часы и ремешки";
+            }
+            if (myTextElements[i].innerText === "Topwear") {
+                myTextElements[i].innerText = "Верхняя одежда";
+            }
+            if (myTextElements[i].innerText === "Newborn shoes") {
+                myTextElements[i].innerText = "Обувь для новорожденных";
+            }
+            if (myTextElements[i].innerText === "Girl(2-13)") {
+                myTextElements[i].innerText = "Девочка (2-13)";
+            }
+            if (myTextElements[i].innerText === "Boy(2-13)") {
+                myTextElements[i].innerText = "Мальчик (2-13)";
+
+            }if (myTextElements[i].innerText === "Newborn(0-12 months)") {
+                myTextElements[i].innerText = "Новорожденный (0-12 месяцев)";
+
+            }if (myTextElements[i].innerText === "Newborn girl(0-30 months)") {
+                myTextElements[i].innerText = "Новорожденная девочка (0-30 месяцев)";
+
+            }if (myTextElements[i].innerText === "Newborn boy(0-30 months)") {
+                myTextElements[i].innerText = "Новорожденный мальчик (0-30 месяцев)";
+
+            }
+            if (myTextElements[i].innerText === "Clutches mini and Micro Bags") {
+                myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+
+            }
+             if (myTextElements[i].innerText === "Backpacks and Fanny packs") {
+                myTextElements[i].innerText = "Рюкзаки и поясные сумки";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Briefcase and cluthces") {
+                myTextElements[i].innerText = "Портфель и другие вещи";
+
+            }
+
+             if (myTextElements[i].innerText === "Crossbody Bags") {
+                myTextElements[i].innerText = "Сумки через плечо";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Travel bags and Shoppers") {
+                myTextElements[i].innerText = "Дорожные сумки и шопперы";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Boots") {
+                myTextElements[i].innerText = "Ботинки";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Loafers and Moccasins") {
+                myTextElements[i].innerText = "Лоферы и Мокасины";
+
+            }
+             if (myTextElements[i].innerText === "Sandals and Slides") {
+                myTextElements[i].innerText = "Сандалии и шлепанцы";
+
+            }
+
+            if (myTextElements[i].innerText === "Sheakers and Lace-ups") {
+                myTextElements[i].innerText = "Шейкеры и шнуровки";
+
+            }
+
+            if (myTextElements[i].innerText === "Belts and Bijoux") {
+                myTextElements[i].innerText = "Пояса и бижутерия";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Socks") {
+                myTextElements[i].innerText = "Носки";
+
+            }
+
+            if (myTextElements[i].innerText === "Icons") {
+                myTextElements[i].innerText = "Значки";
+
+            }
+
+
+            if (myTextElements[i].innerText === "New arrivals") {
+                myTextElements[i].innerText = "Вновь прибывшие";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Brooches&Tiepins") {
+                myTextElements[i].innerText = "Броши и заколки для галстуков";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Charms and watches") {
+                myTextElements[i].innerText = "Брелоки и часы";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Cufflinks and necklaces") {
+                myTextElements[i].innerText = "Запонки и ожерелья";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Rings and bracelets") {
+                myTextElements[i].innerText = "Кольца и браслеты";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Icons") {
+                myTextElements[i].innerText = "Значки";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Socks and Technology") {
+                myTextElements[i].innerText = "Носки и технологии";
+
+            }
+
+
+
+
+            if (myTextElements[i].innerText === "Login") {
+                myTextElements[i].innerText = "Вход";
+
+            }
+
+
+
+
+
+            if (myTextElements[i].innerText === "YOUR BAG IS EMPTY") {
+                myTextElements[i].innerText = "ВАША КОРЗИНА ПУСТАЯ";
+
+            }
+
+
+            if (myTextElements[i].innerText === "RETRIEVE YOUR BAG") {
+                myTextElements[i].innerText = "ЗАБЕРИТЕ СВОЮ КОРЗИНУ";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Sign in to My Account to access your bag across your devices.") {
+                myTextElements[i].innerText = "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Create Account") {
+                myTextElements[i].innerText = "Создать";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Forgot your password?") {
+                myTextElements[i].innerText = "Забыли пароль?";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Remember me") {
+                myTextElements[i].innerText = "Запомнить меня";
+
+            }
+
+            if (myTextElements[i].innerText === "CREATE ACCOUNT") {
+                myTextElements[i].innerText = "СОЗДАНИЕ АККАУНТА";
+
+            }
+
+            if (myTextElements[i].innerText === "Add your favorite items to your wishlist") {
+                myTextElements[i].innerText = "Добавьте понравившиеся товары в список желаний";
+
+            }
+
+            if (myTextElements[i].innerText === "Save your contact informations for a faster checkout") {
+                myTextElements[i].innerText = "Сохраните свои контактные данные для более быстрого оформления заказа.";
+
+            }
+
+            if (myTextElements[i].innerText === "Check your order status") {
+                myTextElements[i].innerText = "Проверьте статус вашего заказа";
+
+            }
+            if (myTextElements[i].innerText === "NEW IN: CHILDREN'S COLLECTION") {
+                myTextElements[i].innerText = "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ";
+
+            }
+
+            if (myTextElements[i].innerText === "Discover the latest arrivals") {
+                myTextElements[i].innerText = "Откройте для себя последние поступления";
+
+            }
+            
+
+
+        }
+    }
+});
+
+;
+</script>
+
+
+<script>  function changeText() {
+    var myTextElements = document.getElementsByClassName("myText");
+
+    for (var i = 0; i < myTextElements.length; i++) {
+        var currentText = myTextElements[i].innerText;
+
+        if (currentText === "Accessories") {
+            myTextElements[i].innerText = "Аксессуары";
+        } else if (currentText === "Аксессуары") {
+            myTextElements[i].innerText = "Accessories";
+        } 
+
+        if (currentText === "information") {
+            myTextElements[i].innerText = "информация";
+        } else if (currentText === "информация") {
+            myTextElements[i].innerText = "information";
+        } 
+
+        if (currentText === "SHOPPING BAG") {
+            myTextElements[i].innerText = "КОРЗИНА";
+        } else if (currentText === "КОРЗИНА") {
+            myTextElements[i].innerText = "SHOPPING BAG";
+        } 
+
+        if (currentText === "Search") {
+            myTextElements[i].innerText = "Поиск";
+        } else if (currentText === "Поиск") {
+            myTextElements[i].innerText = "Search";
+        } 
+
+        if (currentText === "Account") {
+            myTextElements[i].innerText = "Аккаунт";
+        } else if (currentText === "Аккаунт") {
+            myTextElements[i].innerText = "Account";
+        } 
+
+        if (currentText === "Cart") {
+            myTextElements[i].innerText = "Корзина";
+        } else if (currentText === "Корзина") {
+            myTextElements[i].innerText = "Cart";
+        } 
+
+        if (currentText === "EN") {
+            myTextElements[i].innerText = "RU";
+        } else if (currentText === "RU") {
+            myTextElements[i].innerText = "EN";
+        } 
+        if (currentText === "women") {
+            myTextElements[i].innerText = "женское";
+        } else if (currentText === "женское") {
+            myTextElements[i].innerText = "women";
+        } 
+
+        if (currentText === "men") {
+            myTextElements[i].innerText = "мужское";
+        } else if (currentText === "мужское") {
+            myTextElements[i].innerText = "men";
+        } 
+        if (currentText === "children") {
+            myTextElements[i].innerText = "детское";
+        } else if (currentText === "детское") {
+            myTextElements[i].innerText = "children";
+        } 
+
+         if (currentText === "Clothing") {
+            myTextElements[i].innerText = "Одежда";
+        } else if (currentText === "Одежда") {
+            myTextElements[i].innerText = "Clothing";
+        } 
+
+         if (currentText === "Bags") {
+            myTextElements[i].innerText = "Сумки";
+        } else if (currentText === "Сумки") {
+            myTextElements[i].innerText = "Bags";
+        } 
+
+         if (currentText === "Shoes") {
+            myTextElements[i].innerText = "Обувь";
+        } else if (currentText === "Обувь") {
+            myTextElements[i].innerText = "Shoes";
+        } 
+
+        if (currentText === "Sunglasses") {
+            myTextElements[i].innerText = "Очки";
+        } else if (currentText === "Очки") {
+            myTextElements[i].innerText = "Sunglasses";
+        } 
+
+        if (currentText === "Watches&Jewelry") {
+            myTextElements[i].innerText = "Часы и ювелирные изделия";
+        } else if (currentText === "Часы и ювелирные изделия") {
+            myTextElements[i].innerText = "Watches&Jewelry";
+        } 
+
+        if (currentText === "Coats and Jackets") {
+            myTextElements[i].innerText = "Пальто и куртки";
+        } else if (currentText === "Пальто и куртки") {
+            myTextElements[i].innerText = "Coats and Jackets";
+        } 
+        if (currentText === "Denim and Skirts") {
+            myTextElements[i].innerText = "Джинсы и юбки";
+        } else if (currentText === "Джинсы и юбки") {
+            myTextElements[i].innerText = "Denim and Skirts";
+        } 
+        if (currentText === "Dresses&Blazers") {
+            myTextElements[i].innerText = "Платья и блейзеры";
+        } else if (currentText === "Платья и блейзеры") {
+            myTextElements[i].innerText = "Dresses&Blazers";
+        } 
+        if (currentText === "Shirts and Tops") {
+            myTextElements[i].innerText = "Рубашки и топы";
+        } else if (currentText === "Рубашки и топы") {
+            myTextElements[i].innerText = "Shirts and Tops";
+        } 
+        if (currentText === "Trousers and Shorts") {
+            myTextElements[i].innerText = "Брюки и шорты";
+        } else if (currentText === "Брюки и шорты") {
+            myTextElements[i].innerText = "Trousers and Shorts";
+        } 
+        if (currentText === "T-Shirts and Sweatshirts") {
+            myTextElements[i].innerText = "Футболки и толстовки";
+        } else if (currentText === "Футболки и толстовки") {
+            myTextElements[i].innerText = "T-Shirts and Sweatshirts";
+        } 
+        if (currentText === "Underwear and Beachwear") {
+            myTextElements[i].innerText = "Нижнее белье и пляжная одежда";
+        } else if (currentText === "Нижнее белье и пляжная одежда") {
+            myTextElements[i].innerText = "Underwear and Beachwear";
+        } 
+        if (currentText === "Activewear and Beachwear") {
+            myTextElements[i].innerText = "Спортивная и пляжная одежда";
+        } else if (currentText === "Спортивная и пляжная одежда") {
+            myTextElements[i].innerText = "Activewear and Beachwear";
+        } 
+        if (currentText === "Denim and Sweatshirts") {
+            myTextElements[i].innerText = "Джинсы и толстовки";
+        } else if (currentText === "Джинсы и толстовки") {
+            myTextElements[i].innerText = "Denim and Sweatshirts";
+        } 
+        if (currentText === "Shirts") {
+            myTextElements[i].innerText = "Рубашки";
+        } else if (currentText === "Рубашки") {
+            myTextElements[i].innerText = "Shirts";
+        } 
+        if (currentText === "Suits and Blazers") {
+            myTextElements[i].innerText = "Костюмы и блейзеры";
+        } else if (currentText === "Костюмы и блейзеры") {
+            myTextElements[i].innerText = "Suits and Blazers";
+        } 
+        if (currentText === "T-Shirts and Polos") {
+            myTextElements[i].innerText = "Футболки и поло";
+        } else if (currentText === "Футболки и поло") {
+            myTextElements[i].innerText = "T-Shirts and Polos";
+        } 
+        if (currentText === "Sweaters and Cardigans") {
+            myTextElements[i].innerText = "Свитера и кардиганы";
+        } else if (currentText === "Свитера и кардиганы") {
+            myTextElements[i].innerText = "Sweaters and Cardigans";
+        } 
+        if (currentText === "Underwear and Loungewear") {
+            myTextElements[i].innerText = "Нижнее белье и одежда для отдыха";
+        } else if (currentText === "Нижнее белье и одежда для отдыха") {
+            myTextElements[i].innerText = "Underwear and Loungewear";
+        } 
+
+
+
+
+
+
+
+        if (currentText === "Clutches mini and Micro Bags") {
+            myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+        } else if (currentText === "Клатчи, мини- и микро-сумки") {
+            myTextElements[i].innerText = "Clutches mini and Micro Bags";
+        } 
+        if (currentText === "Handbags and Totes") {
+            myTextElements[i].innerText = "сумки и тотализаторы";
+        } else if (currentText === "сумки и тотализаторы") {
+            myTextElements[i].innerText = "Handbags and Totesr";
+        } 
+        if (currentText === "Shoulder and Crossbody Bags") {
+            myTextElements[i].innerText = "Сумки через плечо и кроссбоди";
+        } else if (currentText === "Сумки через плечо и кроссбоди") {
+            myTextElements[i].innerText = "Shoulder and Crossbody Bags";
+        } 
+        if (currentText === "Sicily and Devotion") {
+            myTextElements[i].innerText = "Сицилия и преданность";
+        } else if (currentText === "Сицилия и преданность") {
+            myTextElements[i].innerText = "Sicily and Devotion";
+        } 
+        if (currentText === "Boots and Booties") {
+            myTextElements[i].innerText = "Сапоги и пинетки";
+        } else if (currentText === "Сапоги и пинетки") {
+            myTextElements[i].innerText = "Boots and Booties";
+        } 
+        if (currentText === "Pumps and Skingback") {
+            myTextElements[i].innerText = "Туфли и Босоножки";
+        } else if (currentText === "Туфли и Босоножки") {
+            myTextElements[i].innerText = "Pumps and Skingback";
+        } 
+        if (currentText === "Sandals and Wedges") {
+            myTextElements[i].innerText = "Босоножки и туфли на танкетке";
+        } else if (currentText === "Босоножки и туфли на танкетке") {
+            myTextElements[i].innerText = "Sandals and Wedges";
+        } 
+        if (currentText === "Slides and Mules") {
+            myTextElements[i].innerText = "Шлепанцы и Мюли";
+        } else if (currentText === "Шлепанцы и Мюли") {
+            myTextElements[i].innerText = "Slides and Mules";
+        } 
+        if (currentText === "Sheakers and Flat") {
+            myTextElements[i].innerText = "Шейкеры и плоские";
+        } else if (currentText === "Шейкеры и плоские") {
+            myTextElements[i].innerText = "Sheakers and Flat";
+        } 
+        if (currentText === "Bijoux and Belts") {
+            myTextElements[i].innerText = "Бижутерия и пояса";
+        } else if (currentText === "Бижутерия и пояса") {
+            myTextElements[i].innerText = "Bijoux and Belts";
+        } 
+        if (currentText === "Hats and Gloves") {
+            myTextElements[i].innerText = "Шляпы и перчатки";
+        } else if (currentText === "Шляпы и перчатки") {
+            myTextElements[i].innerText = "Hats and Gloves";
+
+
+        } if (currentText === "Scarves and Silks") {
+            myTextElements[i].innerText = "Шарфы и шелка";
+        } else if (currentText === "Шарфы и шелка") {
+            myTextElements[i].innerText = "Scarves and Silks";
+        } 
+        if (currentText === "Wallets and small leather goods") {
+            myTextElements[i].innerText = "Кошельки и небольшие изделия из кожи";
+        } else if (currentText === "Кошельки и небольшие изделия из кожи") {
+            myTextElements[i].innerText = "Wallets and small leather goods";
+        } 
+        if (currentText === "New arrivals and Icons") {
+            myTextElements[i].innerText = "Новые поступления и значки";
+        } else if (currentText === "Новые поступления и значки") {
+            myTextElements[i].innerText = "New arrivals and Icons";
+        } 
+        if (currentText === "Earrings and Rings") {
+            myTextElements[i].innerText = "Серьги и кольца";
+        } else if (currentText === "Серьги и кольца") {
+            myTextElements[i].innerText = "Earrings and Rings";
+        } 
+        if (currentText === "Neacklaces and Charms") {
+            myTextElements[i].innerText = "Шнурки и брелоки";
+        } else if (currentText === "Шнурки и брелоки") {
+            myTextElements[i].innerText = "Neacklaces and Charms";
+        } 
+
+        if (currentText === "Watches&Straps") {
+            myTextElements[i].innerText = "Часы и ремешки";
+        } else if (currentText === "Часы и ремешки") {
+            myTextElements[i].innerText = "Watches&Straps";
+        }
+
+
+        if (currentText === "Trousers and Skirts") {
+            myTextElements[i].innerText = "Брюки и юбки";
+        } else if (currentText === "Брюки и юбки") {
+            myTextElements[i].innerText = "Trousers and Skirts";
+        }
+
+        if (currentText === "Dresses and Sweaters") {
+            myTextElements[i].innerText = "Платья и свитера";
+        } else if (currentText === "Платья и свитера") {
+            myTextElements[i].innerText = "Dresses and Sweaters";
+        }
+
+
+        if (currentText === "Beachwear") {
+            myTextElements[i].innerText = "Пляжная одежда";
+        } else if (currentText === "Пляжная одежда") {
+            myTextElements[i].innerText = "Beachwear";
+        }
+
+
+        if (currentText === "Nightwear and Underwear") {
+            myTextElements[i].innerText = "Ночная одежда и нижнее белье";
+        } else if (currentText === "Ночная одежда и нижнее белье") {
+            myTextElements[i].innerText = "Nightwear and Underwear";
+        }
+
+         if (currentText === "Suits and Shirts") {
+            myTextElements[i].innerText = "Костюмы и рубашки";
+        } else if (currentText === "Костюмы и рубашки") {
+            myTextElements[i].innerText = "Suits and Shirts";
+        }
+
+
+         if (currentText === "Sweaters") {
+            myTextElements[i].innerText = "Свитера";
+        } else if (currentText === "Свитера") {
+            myTextElements[i].innerText = "Sweaters";
+        }
+
+         if (currentText === "Special occasions") {
+            myTextElements[i].innerText = "Особые случаи";
+        } else if (currentText === "Особые случаи") {
+            myTextElements[i].innerText = "Special occasions";
+        }
+
+         if (currentText === "Accessories and Baby carriers") {
+            myTextElements[i].innerText = "Аксессуары и переноски для младенцев";
+        } else if (currentText === "Аксессуары и переноски для младенцев") {
+            myTextElements[i].innerText = "Accessories and Baby carriers";
+        }
+
+
+         if (currentText === "Trousers and Shorts") {
+            myTextElements[i].innerText = "Брюки и шорты";
+        } else if (currentText === "Брюки и шорты") {
+            myTextElements[i].innerText = "Trousers and Shorts";
+        }
+
+         if (currentText === "Dresses") {
+            myTextElements[i].innerText = "Платья";
+        } else if (currentText === "Платья") {
+            myTextElements[i].innerText = "Dresses";
+        }
+
+
+         if (currentText === "Topwear") {
+            myTextElements[i].innerText = "Верхняя одежда";
+        } else if (currentText === "Верхняя одежда") {
+            myTextElements[i].innerText = "Topwear";
+        }
+
+
+         if (currentText === "Newborn shoes") {
+            myTextElements[i].innerText = "Обувь для новорожденных";
+        } else if (currentText === "Обувь для новорожденных") {
+            myTextElements[i].innerText = "Newborn shoes";
+        }
+
+
+         if (currentText === "Topwear and Beachwear") {
+            myTextElements[i].innerText = "Верхняя одежда и пляжная одежда";
+        } else if (currentText === "Верхняя одежда и пляжная одежда") {
+            myTextElements[i].innerText = "Topwear and Beachwear";
+        }
+
+
+         if (currentText === "Girl(2-13)") {
+            myTextElements[i].innerText = "Девочка(2-13)";
+        } else if (currentText === "Девочка(2-13)") {
+            myTextElements[i].innerText = "Girl(2-13)";
+        }
+
+         if (currentText === "Boy(2-13)") {
+            myTextElements[i].innerText = "Мальчик (2-13)";
+        } else if (currentText === "Мальчик (2-13)") {
+            myTextElements[i].innerText = "Boy(2-13)";
+        }
+        if (currentText === "Newborn(0-12 months)") {
+            myTextElements[i].innerText = "Новорожденный (0-12 месяцев)";
+        } else if (currentText === "Новорожденный (0-12 месяцев)") {
+            myTextElements[i].innerText = "Newborn(0-12 months)";
+        }
+        if (currentText === "Newborn girl(0-30 months)") {
+            myTextElements[i].innerText = "Новорожденная девочка (0-30 месяцев)";
+        } else if (currentText === "Новорожденная девочка (0-30 месяцев)") {
+            myTextElements[i].innerText = "Newborn girl(0-30 months)";
+        }
+        if (currentText === "Newborn boy(0-30 months)") {
+            myTextElements[i].innerText = "Новорожденный мальчик (0-30 месяцев)";
+        } else if (currentText === "Новорожденный мальчик (0-30 месяцев)") {
+            myTextElements[i].innerText = "Newborn boy(0-30 months)";
+        }
+
+        if (currentText === "Clutches mini and Micro Bags") {
+            myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+        } else if (currentText === "Клатчи, мини- и микро-сумки") {
+            myTextElements[i].innerText = "Clutches mini and Micro Bags";
+        }
+
+        if (currentText === "Backpacks and Fanny packs") {
+            myTextElements[i].innerText = "Рюкзаки и поясные сумки";
+        } else if (currentText === "Рюкзаки и поясные сумки") {
+            myTextElements[i].innerText = "Backpacks and Fanny packs";
+        }
+
+        if (currentText === "Briefcase and cluthces") {
+            myTextElements[i].innerText = "Портфель и другие вещи";
+        } else if (currentText === "Портфель и другие вещи") {
+            myTextElements[i].innerText = "Briefcase and cluthces";
+        }
+
+
+        if (currentText === "Crossbody Bags") {
+            myTextElements[i].innerText = "Сумки через плечо";
+        } else if (currentText === "Сумки через плечо") {
+            myTextElements[i].innerText = "Crossbody Bags";
+        }
+
+
+        if (currentText === "Travel bags and Shoppers") {
+            myTextElements[i].innerText = "Дорожные сумки и шопперы";
+        } else if (currentText === "Дорожные сумки и шопперы") {
+            myTextElements[i].innerText = "Travel bags and Shoppers";
+        }
+
+
+        if (currentText === "Boots") {
+            myTextElements[i].innerText = "Ботинки";
+        } else if (currentText === "Ботинки") {
+            myTextElements[i].innerText = "Boots";
+        }
+
+
+
+        if (currentText === "Loafers and Moccasins") {
+            myTextElements[i].innerText = "Лоферы и Мокасины";
+        } else if (currentText === "Лоферы и Мокасины") {
+            myTextElements[i].innerText = "Loafers and Moccasins";
+        }
+
+
+
+        if (currentText === "Sandals and Slides") {
+            myTextElements[i].innerText = "Сандалии и шлепанцы";
+        } else if (currentText === "Сандалии и шлепанцы") {
+            myTextElements[i].innerText = "Sandals and Slides";
+        }
+
+
+        if (currentText === "Sheakers and Lace-ups") {
+            myTextElements[i].innerText = "Шейкеры и шнуровки";
+        } else if (currentText === "Шейкеры и шнуровки") {
+            myTextElements[i].innerText = "Sheakers and Lace-ups";
+        }
+
+
+        if (currentText === "Belts and Bijoux") {
+            myTextElements[i].innerText = "Пояса и бижутерия";
+        } else if (currentText === "Пояса и бижутерия") {
+            myTextElements[i].innerText = "Belts and Bijoux";
+        }
+
+
+        if (currentText === "Socks") {
+            myTextElements[i].innerText = "Носки";
+        } else if (currentText === "Носки") {
+            myTextElements[i].innerText = "Socks";
+        }
+
+
+        if (currentText === "Icons") {
+            myTextElements[i].innerText = "Значки";
+        } else if (currentText === "Значки") {
+            myTextElements[i].innerText = "Icons";
+        }
+        if (currentText === "New arrivals") {
+            myTextElements[i].innerText = "Вновь прибывшие";
+        } else if (currentText === "Вновь прибывшие") {
+            myTextElements[i].innerText = "New arrivals";
+        }
+
+
+        if (currentText === "Brooches&Tiepins") {
+            myTextElements[i].innerText = "Броши и заколки для галстуков";
+        } else if (currentText === "Броши и заколки для галстуков") {
+            myTextElements[i].innerText = "Brooches&Tiepins";
+        }
+
+
+        if (currentText === "Charms and watches") {
+            myTextElements[i].innerText = "Брелоки и часы";
+        } else if (currentText === "Брелоки и часы") {
+            myTextElements[i].innerText = "Charms and watches";
+        }
+
+
+
+
+        if (currentText === "Cufflinks and necklaces") {
+            myTextElements[i].innerText = "Запонки и ожерелья";
+        } else if (currentText === "Запонки и ожерелья") {
+            myTextElements[i].innerText = "Cufflinks and necklaces";
+        }
+
+
+
+        if (currentText === "Rings and bracelets") {
+            myTextElements[i].innerText = "Кольца и браслеты";
+        } else if (currentText === "Кольца и браслеты") {
+            myTextElements[i].innerText = "Rings and bracelets";
+        }
+
+
+        if (currentText === "Socks and Technology") {
+            myTextElements[i].innerText = "Носки и технологии";
+        } else if (currentText === "Носки и технологии") {
+            myTextElements[i].innerText = "Socks and Technology";
+        }
+
+
+
+        if (currentText === "Login") {
+            myTextElements[i].innerText = "Вход";
+        } else if (currentText === "Вход") {
+            myTextElements[i].innerText = "Login";
+        }
+
+
+
+        if (currentText === "Check your order status") {
+            myTextElements[i].innerText = "Проверьте статус вашего заказа";
+        } else if (currentText === "Проверьте статус вашего заказа") {
+            myTextElements[i].innerText = "Check your order status";
+        }
+
+
+        if (currentText === "Save your contact informations for a faster checkout") {
+            myTextElements[i].innerText = "Сохраните свои контактные данные для более быстрого оформления заказа.";
+        } else if (currentText === "Сохраните свои контактные данные для более быстрого оформления заказа.") {
+            myTextElements[i].innerText = "Save your contact informations for a faster checkout";
+        }
+
+
+        if (currentText === "Add your favorite items to your wishlist") {
+            myTextElements[i].innerText = "Добавьте понравившиеся товары в список желаний";
+        } else if (currentText === "Добавьте понравившиеся товары в список желаний") {
+            myTextElements[i].innerText = "Add your favorite items to your wishlist";
+        }
+
+        if (currentText === "CREATE ACCOUNT") {
+            myTextElements[i].innerText = "СОЗДАНИЕ АККАУНТА";
+        } else if (currentText === "СОЗДАНИЕ АККАУНТА") {
+            myTextElements[i].innerText = "CREATE ACCOUNT";
+        }
+
+
+
+        if (currentText === "Remember me") {
+            myTextElements[i].innerText = "Запомнить меня";
+        } else if (currentText === "Запомнить меня") {
+            myTextElements[i].innerText = "Remember me";
+        }
+
+
+        if (currentText === "Forgot your password?") {
+            myTextElements[i].innerText = "Забыли пароль?";
+        } else if (currentText === "Забыли пароль?") {
+            myTextElements[i].innerText = "Forgot your password?";
+        }
+
+
+        if (currentText === "Create Account") {
+            myTextElements[i].innerText = "Создать";
+        } else if (currentText === "Создать") {
+            myTextElements[i].innerText = "Create Account";
+        }
+
+
+        if (currentText === "Sign in to My Account to access your bag across your devices.") {
+            myTextElements[i].innerText = "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.";
+        } else if (currentText === "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.") {
+            myTextElements[i].innerText = "Sign in to My Account to access your bag across your devices.";
+        }
+
+
+        if (currentText === "RETRIEVE YOUR BAG") {
+            myTextElements[i].innerText = "ЗАБЕРИТЕ СВОЮ КОРЗИНУ";
+        } else if (currentText === "ЗАБЕРИТЕ СВОЮ КОРЗИНУ") {
+            myTextElements[i].innerText = "RETRIEVE YOUR BAG";
+        }
+
+        if (currentText === "YOUR BAG IS EMPTY") {
+            myTextElements[i].innerText = "ВАША КОРЗИНА ПУСТАЯ";
+        } else if (currentText === "ВАША КОРЗИНА ПУСТАЯ") {
+            myTextElements[i].innerText = "YOUR BAG IS EMPTY";
+        }
+
+        if (currentText === "SHOPPING BAG") {
+            myTextElements[i].innerText = "КОРЗИНА";
+        } else if (currentText === "КОРЗИНА") {
+            myTextElements[i].innerText = "SHOPPING BAG";
+        }
+
+
+        if (currentText === "NEW IN: CHILDREN'S COLLECTION") {
+            myTextElements[i].innerText = "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ";
+        } else if (currentText === "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ") {
+            myTextElements[i].innerText = "NEW IN: CHILDREN'S COLLECTION";
+        }
+
+        if (currentText === "Discover the latest arrivals") {
+            myTextElements[i].innerText = "Откройте для себя последние поступления";
+        } else if (currentText === "Откройте для себя последние поступления") {
+            myTextElements[i].innerText = "Discover the latest arrivals";
+        }
+
+        if (currentText === "Proceed to payment") {
+            myTextElements[i].innerText = "Перейти к оплате";
+        } else if (currentText === "Перейти к оплате") {
+            myTextElements[i].innerText = "Proceed to payment";
+        }
+
+    }
+
+
+
+   
+    var currentState = sessionStorage.getItem("currentState") || "english";
+    currentState = (currentState === "english") ? "russian" : "english";
+    sessionStorage.setItem("currentState", currentState);
+    localStorage.setItem("currentState", currentState);
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    var myTextElements = document.getElementsByClassName("myText");
+    var currentState = sessionStorage.getItem("currentState") || "english";
+
+    for (var i = 0; i < myTextElements.length; i++) {
+        if (currentState === "russian") {
+            if (myTextElements[i].innerText === "Accessories") {
+                myTextElements[i].innerText = "Аксессуары";
+            } 
+            if (myTextElements[i].innerText === "information") {
+                myTextElements[i].innerText = "информация";
+            }
+
+            if (myTextElements[i].innerText === "SHOPPING BAG") {
+                myTextElements[i].innerText = "КОРЗИНА";
+            }
+
+            if (myTextElements[i].innerText === "Search") {
+                myTextElements[i].innerText = "Поиск";
+            }
+
+            if (myTextElements[i].innerText === "Account") {
+                myTextElements[i].innerText = "Аккаунт";
+            }
+            if (myTextElements[i].innerText === "Cart") {
+                myTextElements[i].innerText = "Корзина";
+            }
+            if (myTextElements[i].innerText === "EN") {
+                myTextElements[i].innerText = "RU";
+            }
+            if (myTextElements[i].innerText === "women") {
+                myTextElements[i].innerText = "женское";
+            }
+            if (myTextElements[i].innerText === "men") {
+                myTextElements[i].innerText = "мужское";
+            }
+            if (myTextElements[i].innerText === "children") {
+                myTextElements[i].innerText = "детское";
+            }
+
+            if (myTextElements[i].innerText === "Clothing") {
+                myTextElements[i].innerText = "Одежда";
+            }
+
+            if (myTextElements[i].innerText === "Bags") {
+                myTextElements[i].innerText = "Сумки";
+            }
+            if (myTextElements[i].innerText === "Shoes") {
+                myTextElements[i].innerText = "Обувь";
+            }
+            if (myTextElements[i].innerText === "Sunglasses") {
+                myTextElements[i].innerText = "Очки";
+            }
+            if (myTextElements[i].innerText === "Watches&Jewelry") {
+                myTextElements[i].innerText = "Часы и ювелирные изделия";
+            }
+
+            if (myTextElements[i].innerText === "Coats and Jackets") {
+                myTextElements[i].innerText = "Пальто и куртки";
+            }
+
+            if (myTextElements[i].innerText === "Denim and Skirts") {
+                myTextElements[i].innerText = "Джинсы и юбки";
+            }
+            if (myTextElements[i].innerText === "Dresses&Blazers") {
+                myTextElements[i].innerText = "Платья и блейзеры";
+            }
+            if (myTextElements[i].innerText === "Shirts and Tops") {
+                myTextElements[i].innerText = "Рубашки и топы";
+            }
+            if (myTextElements[i].innerText === "Trousers and Shorts") {
+                myTextElements[i].innerText = "Брюки и шорты";
+            }
+
+            if (myTextElements[i].innerText === "T-Shirts and Sweatshirts") {
+                myTextElements[i].innerText = "Футболки и толстовки";
+            }
+            if (myTextElements[i].innerText === "Underwear and Beachwear") {
+                myTextElements[i].innerText = "Нижнее белье и пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Activewear and Beachwear") {
+                myTextElements[i].innerText = "Спортивная и пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Denim and Sweatshirts") {
+                myTextElements[i].innerText = "Джинсы и толстовки";
+            }
+            if (myTextElements[i].innerText === "Shirts") {
+                myTextElements[i].innerText = "Рубашки";
+            }
+            if (myTextElements[i].innerText === "Suits and Blazers") {
+                myTextElements[i].innerText = "Костюмы и блейзеры";
+            }
+            if (myTextElements[i].innerText === "T-Shirts and Polos") {
+                myTextElements[i].innerText = "Футболки и поло";
+            }
+            if (myTextElements[i].innerText === "Sweaters and Cardigans") {
+                myTextElements[i].innerText = "Свитера и кардиганы";
+            }
+            if (myTextElements[i].innerText === "Underwear and Loungewear") {
+                myTextElements[i].innerText = "Нижнее белье и одежда для отдыха";
+            }
+
+            if (myTextElements[i].innerText === "Clutches mini and Micro Bags") {
+                myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+            }
+            if (myTextElements[i].innerText === "Handbags and Totes") {
+                myTextElements[i].innerText = "сумки и тотализаторы";
+            }
+            if (myTextElements[i].innerText === "Shoulder and Crossbody Bags") {
+                myTextElements[i].innerText = "Сумки через плечо и кроссбоди";
+            }
+            if (myTextElements[i].innerText === "Sicily and Devotion") {
+                myTextElements[i].innerText = "Сицилия и преданность";
+            }
+            if (myTextElements[i].innerText === "Boots and Booties") {
+                myTextElements[i].innerText = "Сапоги и пинетки";
+            }
+            if (myTextElements[i].innerText === "Pumps and Skingback") {
+                myTextElements[i].innerText = "Туфли и Босоножки";
+            }
+            if (myTextElements[i].innerText === "Sandals and Wedges") {
+                myTextElements[i].innerText = "Босоножки и туфли на танкетке";
+            }
+            if (myTextElements[i].innerText === "Slides and Mules") {
+                myTextElements[i].innerText = "Шлепанцы и Мюли";
+            }
+            if (myTextElements[i].innerText === "Sheakers and Flat") {
+                myTextElements[i].innerText = "Шейкеры и плоские";
+            }
+            if (myTextElements[i].innerText === "Bijoux and Belts") {
+                myTextElements[i].innerText = "Бижутерия и пояса";
+            }
+            if (myTextElements[i].innerText === "Hats and Gloves") {
+                myTextElements[i].innerText = "Шляпы и перчатки";
+            }
+            if (myTextElements[i].innerText === "Scarves and Silks") {
+                myTextElements[i].innerText = "Шарфы и шелка";
+            }
+            if (myTextElements[i].innerText === "Wallets and small leather goods") {
+                myTextElements[i].innerText = "Кошельки и небольшие изделия из кожи";
+            }
+            if (myTextElements[i].innerText === "New arrivals and Icons") {
+                myTextElements[i].innerText = "Новые поступления и значки";
+            }
+            if (myTextElements[i].innerText === "Earrings and Rings") {
+                myTextElements[i].innerText = "Серьги и кольца";
+            }
+            if (myTextElements[i].innerText === "Neacklaces and Charms") {
+                myTextElements[i].innerText = "Шнурки и брелоки";
+            }
+            if (myTextElements[i].innerText === "Watches&Straps") {
+                myTextElements[i].innerText = "Часы и ремешки";
+            }
+
+            if (myTextElements[i].innerText === "Trousers and Skirts") {
+                myTextElements[i].innerText = "Брюки и юбки";
+            }
+            if (myTextElements[i].innerText === "Dresses and Sweaters") {
+                myTextElements[i].innerText = "Платья и свитера";
+            }
+            if (myTextElements[i].innerText === "Beachwear") {
+                myTextElements[i].innerText = "Пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Nightwear and Underwear") {
+                myTextElements[i].innerText = "Ночная одежда и нижнее белье";
+            }
+            if (myTextElements[i].innerText === "Suits and Shirts") {
+                myTextElements[i].innerText = "Костюмы и рубашки";
+            }
+            if (myTextElements[i].innerText === "Sweaters") {
+                myTextElements[i].innerText = "Свитера";
+            }
+
+            if (myTextElements[i].innerText === "Special occasions") {
+                myTextElements[i].innerText = "Особые случаи";
+            }
+            if (myTextElements[i].innerText === "Accessories and Baby carriers") {
+                myTextElements[i].innerText = "Аксессуары и переноски для младенцев";
+            }
+            if (myTextElements[i].innerText === "Trousers and Shorts") {
+                myTextElements[i].innerText = "Брюки и шорты";
+            }
+            if (myTextElements[i].innerText === "Dresses") {
+                myTextElements[i].innerText = "Часы и ремешки";
+            }
+            if (myTextElements[i].innerText === "Topwear") {
+                myTextElements[i].innerText = "Верхняя одежда";
+            }
+            if (myTextElements[i].innerText === "Newborn shoes") {
+                myTextElements[i].innerText = "Обувь для новорожденных";
+            }
+            if (myTextElements[i].innerText === "Girl(2-13)") {
+                myTextElements[i].innerText = "Девочка (2-13)";
+            }
+            if (myTextElements[i].innerText === "Boy(2-13)") {
+                myTextElements[i].innerText = "Мальчик (2-13)";
+
+            }if (myTextElements[i].innerText === "Newborn(0-12 months)") {
+                myTextElements[i].innerText = "Новорожденный (0-12 месяцев)";
+
+            }if (myTextElements[i].innerText === "Newborn girl(0-30 months)") {
+                myTextElements[i].innerText = "Новорожденная девочка (0-30 месяцев)";
+
+            }if (myTextElements[i].innerText === "Newborn boy(0-30 months)") {
+                myTextElements[i].innerText = "Новорожденный мальчик (0-30 месяцев)";
+
+            }
+            if (myTextElements[i].innerText === "Clutches mini and Micro Bags") {
+                myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+
+            }
+             if (myTextElements[i].innerText === "Backpacks and Fanny packs") {
+                myTextElements[i].innerText = "Рюкзаки и поясные сумки";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Briefcase and cluthces") {
+                myTextElements[i].innerText = "Портфель и другие вещи";
+
+            }
+
+             if (myTextElements[i].innerText === "Crossbody Bags") {
+                myTextElements[i].innerText = "Сумки через плечо";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Travel bags and Shoppers") {
+                myTextElements[i].innerText = "Дорожные сумки и шопперы";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Boots") {
+                myTextElements[i].innerText = "Ботинки";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Loafers and Moccasins") {
+                myTextElements[i].innerText = "Лоферы и Мокасины";
+
+            }
+             if (myTextElements[i].innerText === "Sandals and Slides") {
+                myTextElements[i].innerText = "Сандалии и шлепанцы";
+
+            }
+
+            if (myTextElements[i].innerText === "Sheakers and Lace-ups") {
+                myTextElements[i].innerText = "Шейкеры и шнуровки";
+
+            }
+
+            if (myTextElements[i].innerText === "Belts and Bijoux") {
+                myTextElements[i].innerText = "Пояса и бижутерия";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Socks") {
+                myTextElements[i].innerText = "Носки";
+
+            }
+
+            if (myTextElements[i].innerText === "Icons") {
+                myTextElements[i].innerText = "Значки";
+
+            }
+
+
+            if (myTextElements[i].innerText === "New arrivals") {
+                myTextElements[i].innerText = "Вновь прибывшие";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Brooches&Tiepins") {
+                myTextElements[i].innerText = "Броши и заколки для галстуков";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Charms and watches") {
+                myTextElements[i].innerText = "Брелоки и часы";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Cufflinks and necklaces") {
+                myTextElements[i].innerText = "Запонки и ожерелья";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Rings and bracelets") {
+                myTextElements[i].innerText = "Кольца и браслеты";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Icons") {
+                myTextElements[i].innerText = "Значки";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Socks and Technology") {
+                myTextElements[i].innerText = "Носки и технологии";
+
+            }
+
+
+
+
+            if (myTextElements[i].innerText === "Login") {
+                myTextElements[i].innerText = "Вход";
+
+            }
+
+
+
+
+
+            if (myTextElements[i].innerText === "YOUR BAG IS EMPTY") {
+                myTextElements[i].innerText = "ВАША КОРЗИНА ПУСТАЯ";
+
+            }
+
+
+            if (myTextElements[i].innerText === "RETRIEVE YOUR BAG") {
+                myTextElements[i].innerText = "ЗАБЕРИТЕ СВОЮ КОРЗИНУ";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Sign in to My Account to access your bag across your devices.") {
+                myTextElements[i].innerText = "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Create Account") {
+                myTextElements[i].innerText = "Создать";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Forgot your password?") {
+                myTextElements[i].innerText = "Забыли пароль?";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Remember me") {
+                myTextElements[i].innerText = "Запомнить меня";
+
+            }
+
+            if (myTextElements[i].innerText === "CREATE ACCOUNT") {
+                myTextElements[i].innerText = "СОЗДАНИЕ АККАУНТА";
+
+            }
+
+            if (myTextElements[i].innerText === "Add your favorite items to your wishlist") {
+                myTextElements[i].innerText = "Добавьте понравившиеся товары в список желаний";
+
+            }
+
+            if (myTextElements[i].innerText === "Save your contact informations for a faster checkout") {
+                myTextElements[i].innerText = "Сохраните свои контактные данные для более быстрого оформления заказа.";
+
+            }
+
+            if (myTextElements[i].innerText === "Check your order status") {
+                myTextElements[i].innerText = "Проверьте статус вашего заказа";
+
+            }
+            if (myTextElements[i].innerText === "NEW IN: CHILDREN'S COLLECTION") {
+                myTextElements[i].innerText = "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ";
+
+            }
+
+            if (myTextElements[i].innerText === "Discover the latest arrivals") {
+                myTextElements[i].innerText = "Откройте для себя последние поступления";
+
+            }
+
+            if (myTextElements[i].innerText === "Proceed to payment") {
+                myTextElements[i].innerText = "Перейти к оплате";
+
+            }
+            
+
+
+        }
+    }
+});
+
+;
+</script>
+
+
+<script>  function changeText() {
+    var myTextElements = document.getElementsByClassName("myText");
+
+    for (var i = 0; i < myTextElements.length; i++) {
+        var currentText = myTextElements[i].innerText;
+
+        if (currentText === "Accessories") {
+            myTextElements[i].innerText = "Аксессуары";
+        } else if (currentText === "Аксессуары") {
+            myTextElements[i].innerText = "Accessories";
+        } 
+
+        if (currentText === "information") {
+            myTextElements[i].innerText = "информация";
+        } else if (currentText === "информация") {
+            myTextElements[i].innerText = "information";
+        } 
+
+        if (currentText === "SHOPPING BAG") {
+            myTextElements[i].innerText = "КОРЗИНА";
+        } else if (currentText === "КОРЗИНА") {
+            myTextElements[i].innerText = "SHOPPING BAG";
+        } 
+
+        if (currentText === "Search") {
+            myTextElements[i].innerText = "Поиск";
+        } else if (currentText === "Поиск") {
+            myTextElements[i].innerText = "Search";
+        } 
+
+        if (currentText === "Account") {
+            myTextElements[i].innerText = "Аккаунт";
+        } else if (currentText === "Аккаунт") {
+            myTextElements[i].innerText = "Account";
+        } 
+
+        if (currentText === "Cart") {
+            myTextElements[i].innerText = "Корзина";
+        } else if (currentText === "Корзина") {
+            myTextElements[i].innerText = "Cart";
+        } 
+
+        if (currentText === "EN") {
+            myTextElements[i].innerText = "RU";
+        } else if (currentText === "RU") {
+            myTextElements[i].innerText = "EN";
+        } 
+        if (currentText === "women") {
+            myTextElements[i].innerText = "женское";
+        } else if (currentText === "женское") {
+            myTextElements[i].innerText = "women";
+        } 
+
+        if (currentText === "men") {
+            myTextElements[i].innerText = "мужское";
+        } else if (currentText === "мужское") {
+            myTextElements[i].innerText = "men";
+        } 
+        if (currentText === "children") {
+            myTextElements[i].innerText = "детское";
+        } else if (currentText === "детское") {
+            myTextElements[i].innerText = "children";
+        } 
+
+         if (currentText === "Clothing") {
+            myTextElements[i].innerText = "Одежда";
+        } else if (currentText === "Одежда") {
+            myTextElements[i].innerText = "Clothing";
+        } 
+
+         if (currentText === "Bags") {
+            myTextElements[i].innerText = "Сумки";
+        } else if (currentText === "Сумки") {
+            myTextElements[i].innerText = "Bags";
+        } 
+
+         if (currentText === "Shoes") {
+            myTextElements[i].innerText = "Обувь";
+        } else if (currentText === "Обувь") {
+            myTextElements[i].innerText = "Shoes";
+        } 
+
+        if (currentText === "Sunglasses") {
+            myTextElements[i].innerText = "Очки";
+        } else if (currentText === "Очки") {
+            myTextElements[i].innerText = "Sunglasses";
+        } 
+
+        if (currentText === "Watches&Jewelry") {
+            myTextElements[i].innerText = "Часы и ювелирные изделия";
+        } else if (currentText === "Часы и ювелирные изделия") {
+            myTextElements[i].innerText = "Watches&Jewelry";
+        } 
+
+        if (currentText === "Coats and Jackets") {
+            myTextElements[i].innerText = "Пальто и куртки";
+        } else if (currentText === "Пальто и куртки") {
+            myTextElements[i].innerText = "Coats and Jackets";
+        } 
+        if (currentText === "Denim and Skirts") {
+            myTextElements[i].innerText = "Джинсы и юбки";
+        } else if (currentText === "Джинсы и юбки") {
+            myTextElements[i].innerText = "Denim and Skirts";
+        } 
+        if (currentText === "Dresses&Blazers") {
+            myTextElements[i].innerText = "Платья и блейзеры";
+        } else if (currentText === "Платья и блейзеры") {
+            myTextElements[i].innerText = "Dresses&Blazers";
+        } 
+        if (currentText === "Shirts and Tops") {
+            myTextElements[i].innerText = "Рубашки и топы";
+        } else if (currentText === "Рубашки и топы") {
+            myTextElements[i].innerText = "Shirts and Tops";
+        } 
+        if (currentText === "Trousers and Shorts") {
+            myTextElements[i].innerText = "Брюки и шорты";
+        } else if (currentText === "Брюки и шорты") {
+            myTextElements[i].innerText = "Trousers and Shorts";
+        } 
+        if (currentText === "T-Shirts and Sweatshirts") {
+            myTextElements[i].innerText = "Футболки и толстовки";
+        } else if (currentText === "Футболки и толстовки") {
+            myTextElements[i].innerText = "T-Shirts and Sweatshirts";
+        } 
+        if (currentText === "Underwear and Beachwear") {
+            myTextElements[i].innerText = "Нижнее белье и пляжная одежда";
+        } else if (currentText === "Нижнее белье и пляжная одежда") {
+            myTextElements[i].innerText = "Underwear and Beachwear";
+        } 
+        if (currentText === "Activewear and Beachwear") {
+            myTextElements[i].innerText = "Спортивная и пляжная одежда";
+        } else if (currentText === "Спортивная и пляжная одежда") {
+            myTextElements[i].innerText = "Activewear and Beachwear";
+        } 
+        if (currentText === "Denim and Sweatshirts") {
+            myTextElements[i].innerText = "Джинсы и толстовки";
+        } else if (currentText === "Джинсы и толстовки") {
+            myTextElements[i].innerText = "Denim and Sweatshirts";
+        } 
+        if (currentText === "Shirts") {
+            myTextElements[i].innerText = "Рубашки";
+        } else if (currentText === "Рубашки") {
+            myTextElements[i].innerText = "Shirts";
+        } 
+        if (currentText === "Suits and Blazers") {
+            myTextElements[i].innerText = "Костюмы и блейзеры";
+        } else if (currentText === "Костюмы и блейзеры") {
+            myTextElements[i].innerText = "Suits and Blazers";
+        } 
+        if (currentText === "T-Shirts and Polos") {
+            myTextElements[i].innerText = "Футболки и поло";
+        } else if (currentText === "Футболки и поло") {
+            myTextElements[i].innerText = "T-Shirts and Polos";
+        } 
+        if (currentText === "Sweaters and Cardigans") {
+            myTextElements[i].innerText = "Свитера и кардиганы";
+        } else if (currentText === "Свитера и кардиганы") {
+            myTextElements[i].innerText = "Sweaters and Cardigans";
+        } 
+        if (currentText === "Underwear and Loungewear") {
+            myTextElements[i].innerText = "Нижнее белье и одежда для отдыха";
+        } else if (currentText === "Нижнее белье и одежда для отдыха") {
+            myTextElements[i].innerText = "Underwear and Loungewear";
+        } 
+
+
+
+
+
+
+
+        if (currentText === "Clutches mini and Micro Bags") {
+            myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+        } else if (currentText === "Клатчи, мини- и микро-сумки") {
+            myTextElements[i].innerText = "Clutches mini and Micro Bags";
+        } 
+        if (currentText === "Handbags and Totes") {
+            myTextElements[i].innerText = "сумки и тотализаторы";
+        } else if (currentText === "сумки и тотализаторы") {
+            myTextElements[i].innerText = "Handbags and Totesr";
+        } 
+        if (currentText === "Shoulder and Crossbody Bags") {
+            myTextElements[i].innerText = "Сумки через плечо и кроссбоди";
+        } else if (currentText === "Сумки через плечо и кроссбоди") {
+            myTextElements[i].innerText = "Shoulder and Crossbody Bags";
+        } 
+        if (currentText === "Sicily and Devotion") {
+            myTextElements[i].innerText = "Сицилия и преданность";
+        } else if (currentText === "Сицилия и преданность") {
+            myTextElements[i].innerText = "Sicily and Devotion";
+        } 
+        if (currentText === "Boots and Booties") {
+            myTextElements[i].innerText = "Сапоги и пинетки";
+        } else if (currentText === "Сапоги и пинетки") {
+            myTextElements[i].innerText = "Boots and Booties";
+        } 
+        if (currentText === "Pumps and Skingback") {
+            myTextElements[i].innerText = "Туфли и Босоножки";
+        } else if (currentText === "Туфли и Босоножки") {
+            myTextElements[i].innerText = "Pumps and Skingback";
+        } 
+        if (currentText === "Sandals and Wedges") {
+            myTextElements[i].innerText = "Босоножки и туфли на танкетке";
+        } else if (currentText === "Босоножки и туфли на танкетке") {
+            myTextElements[i].innerText = "Sandals and Wedges";
+        } 
+        if (currentText === "Slides and Mules") {
+            myTextElements[i].innerText = "Шлепанцы и Мюли";
+        } else if (currentText === "Шлепанцы и Мюли") {
+            myTextElements[i].innerText = "Slides and Mules";
+        } 
+        if (currentText === "Sheakers and Flat") {
+            myTextElements[i].innerText = "Шейкеры и плоские";
+        } else if (currentText === "Шейкеры и плоские") {
+            myTextElements[i].innerText = "Sheakers and Flat";
+        } 
+        if (currentText === "Bijoux and Belts") {
+            myTextElements[i].innerText = "Бижутерия и пояса";
+        } else if (currentText === "Бижутерия и пояса") {
+            myTextElements[i].innerText = "Bijoux and Belts";
+        } 
+        if (currentText === "Hats and Gloves") {
+            myTextElements[i].innerText = "Шляпы и перчатки";
+        } else if (currentText === "Шляпы и перчатки") {
+            myTextElements[i].innerText = "Hats and Gloves";
+
+
+        } if (currentText === "Scarves and Silks") {
+            myTextElements[i].innerText = "Шарфы и шелка";
+        } else if (currentText === "Шарфы и шелка") {
+            myTextElements[i].innerText = "Scarves and Silks";
+        } 
+        if (currentText === "Wallets and small leather goods") {
+            myTextElements[i].innerText = "Кошельки и небольшие изделия из кожи";
+        } else if (currentText === "Кошельки и небольшие изделия из кожи") {
+            myTextElements[i].innerText = "Wallets and small leather goods";
+        } 
+        if (currentText === "New arrivals and Icons") {
+            myTextElements[i].innerText = "Новые поступления и значки";
+        } else if (currentText === "Новые поступления и значки") {
+            myTextElements[i].innerText = "New arrivals and Icons";
+        } 
+        if (currentText === "Earrings and Rings") {
+            myTextElements[i].innerText = "Серьги и кольца";
+        } else if (currentText === "Серьги и кольца") {
+            myTextElements[i].innerText = "Earrings and Rings";
+        } 
+        if (currentText === "Neacklaces and Charms") {
+            myTextElements[i].innerText = "Шнурки и брелоки";
+        } else if (currentText === "Шнурки и брелоки") {
+            myTextElements[i].innerText = "Neacklaces and Charms";
+        } 
+
+        if (currentText === "Watches&Straps") {
+            myTextElements[i].innerText = "Часы и ремешки";
+        } else if (currentText === "Часы и ремешки") {
+            myTextElements[i].innerText = "Watches&Straps";
+        }
+
+
+        if (currentText === "Trousers and Skirts") {
+            myTextElements[i].innerText = "Брюки и юбки";
+        } else if (currentText === "Брюки и юбки") {
+            myTextElements[i].innerText = "Trousers and Skirts";
+        }
+
+        if (currentText === "Dresses and Sweaters") {
+            myTextElements[i].innerText = "Платья и свитера";
+        } else if (currentText === "Платья и свитера") {
+            myTextElements[i].innerText = "Dresses and Sweaters";
+        }
+
+
+        if (currentText === "Beachwear") {
+            myTextElements[i].innerText = "Пляжная одежда";
+        } else if (currentText === "Пляжная одежда") {
+            myTextElements[i].innerText = "Beachwear";
+        }
+
+
+        if (currentText === "Nightwear and Underwear") {
+            myTextElements[i].innerText = "Ночная одежда и нижнее белье";
+        } else if (currentText === "Ночная одежда и нижнее белье") {
+            myTextElements[i].innerText = "Nightwear and Underwear";
+        }
+
+         if (currentText === "Suits and Shirts") {
+            myTextElements[i].innerText = "Костюмы и рубашки";
+        } else if (currentText === "Костюмы и рубашки") {
+            myTextElements[i].innerText = "Suits and Shirts";
+        }
+
+
+         if (currentText === "Sweaters") {
+            myTextElements[i].innerText = "Свитера";
+        } else if (currentText === "Свитера") {
+            myTextElements[i].innerText = "Sweaters";
+        }
+
+         if (currentText === "Special occasions") {
+            myTextElements[i].innerText = "Особые случаи";
+        } else if (currentText === "Особые случаи") {
+            myTextElements[i].innerText = "Special occasions";
+        }
+
+         if (currentText === "Accessories and Baby carriers") {
+            myTextElements[i].innerText = "Аксессуары и переноски для младенцев";
+        } else if (currentText === "Аксессуары и переноски для младенцев") {
+            myTextElements[i].innerText = "Accessories and Baby carriers";
+        }
+
+
+         if (currentText === "Trousers and Shorts") {
+            myTextElements[i].innerText = "Брюки и шорты";
+        } else if (currentText === "Брюки и шорты") {
+            myTextElements[i].innerText = "Trousers and Shorts";
+        }
+
+         if (currentText === "Dresses") {
+            myTextElements[i].innerText = "Платья";
+        } else if (currentText === "Платья") {
+            myTextElements[i].innerText = "Dresses";
+        }
+
+
+         if (currentText === "Topwear") {
+            myTextElements[i].innerText = "Верхняя одежда";
+        } else if (currentText === "Верхняя одежда") {
+            myTextElements[i].innerText = "Topwear";
+        }
+
+
+         if (currentText === "Newborn shoes") {
+            myTextElements[i].innerText = "Обувь для новорожденных";
+        } else if (currentText === "Обувь для новорожденных") {
+            myTextElements[i].innerText = "Newborn shoes";
+        }
+
+
+         if (currentText === "Topwear and Beachwear") {
+            myTextElements[i].innerText = "Верхняя одежда и пляжная одежда";
+        } else if (currentText === "Верхняя одежда и пляжная одежда") {
+            myTextElements[i].innerText = "Topwear and Beachwear";
+        }
+
+
+         if (currentText === "Girl(2-13)") {
+            myTextElements[i].innerText = "Девочка(2-13)";
+        } else if (currentText === "Девочка(2-13)") {
+            myTextElements[i].innerText = "Girl(2-13)";
+        }
+
+         if (currentText === "Boy(2-13)") {
+            myTextElements[i].innerText = "Мальчик (2-13)";
+        } else if (currentText === "Мальчик (2-13)") {
+            myTextElements[i].innerText = "Boy(2-13)";
+        }
+        if (currentText === "Newborn(0-12 months)") {
+            myTextElements[i].innerText = "Новорожденный (0-12 месяцев)";
+        } else if (currentText === "Новорожденный (0-12 месяцев)") {
+            myTextElements[i].innerText = "Newborn(0-12 months)";
+        }
+        if (currentText === "Newborn girl(0-30 months)") {
+            myTextElements[i].innerText = "Новорожденная девочка (0-30 месяцев)";
+        } else if (currentText === "Новорожденная девочка (0-30 месяцев)") {
+            myTextElements[i].innerText = "Newborn girl(0-30 months)";
+        }
+        if (currentText === "Newborn boy(0-30 months)") {
+            myTextElements[i].innerText = "Новорожденный мальчик (0-30 месяцев)";
+        } else if (currentText === "Новорожденный мальчик (0-30 месяцев)") {
+            myTextElements[i].innerText = "Newborn boy(0-30 months)";
+        }
+
+        if (currentText === "Clutches mini and Micro Bags") {
+            myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+        } else if (currentText === "Клатчи, мини- и микро-сумки") {
+            myTextElements[i].innerText = "Clutches mini and Micro Bags";
+        }
+
+        if (currentText === "Backpacks and Fanny packs") {
+            myTextElements[i].innerText = "Рюкзаки и поясные сумки";
+        } else if (currentText === "Рюкзаки и поясные сумки") {
+            myTextElements[i].innerText = "Backpacks and Fanny packs";
+        }
+
+        if (currentText === "Briefcase and cluthces") {
+            myTextElements[i].innerText = "Портфель и другие вещи";
+        } else if (currentText === "Портфель и другие вещи") {
+            myTextElements[i].innerText = "Briefcase and cluthces";
+        }
+
+
+        if (currentText === "Crossbody Bags") {
+            myTextElements[i].innerText = "Сумки через плечо";
+        } else if (currentText === "Сумки через плечо") {
+            myTextElements[i].innerText = "Crossbody Bags";
+        }
+
+
+        if (currentText === "Travel bags and Shoppers") {
+            myTextElements[i].innerText = "Дорожные сумки и шопперы";
+        } else if (currentText === "Дорожные сумки и шопперы") {
+            myTextElements[i].innerText = "Travel bags and Shoppers";
+        }
+
+
+        if (currentText === "Boots") {
+            myTextElements[i].innerText = "Ботинки";
+        } else if (currentText === "Ботинки") {
+            myTextElements[i].innerText = "Boots";
+        }
+
+
+
+        if (currentText === "Loafers and Moccasins") {
+            myTextElements[i].innerText = "Лоферы и Мокасины";
+        } else if (currentText === "Лоферы и Мокасины") {
+            myTextElements[i].innerText = "Loafers and Moccasins";
+        }
+
+
+
+        if (currentText === "Sandals and Slides") {
+            myTextElements[i].innerText = "Сандалии и шлепанцы";
+        } else if (currentText === "Сандалии и шлепанцы") {
+            myTextElements[i].innerText = "Sandals and Slides";
+        }
+
+
+        if (currentText === "Sheakers and Lace-ups") {
+            myTextElements[i].innerText = "Шейкеры и шнуровки";
+        } else if (currentText === "Шейкеры и шнуровки") {
+            myTextElements[i].innerText = "Sheakers and Lace-ups";
+        }
+
+
+        if (currentText === "Belts and Bijoux") {
+            myTextElements[i].innerText = "Пояса и бижутерия";
+        } else if (currentText === "Пояса и бижутерия") {
+            myTextElements[i].innerText = "Belts and Bijoux";
+        }
+
+
+        if (currentText === "Socks") {
+            myTextElements[i].innerText = "Носки";
+        } else if (currentText === "Носки") {
+            myTextElements[i].innerText = "Socks";
+        }
+
+
+        if (currentText === "Icons") {
+            myTextElements[i].innerText = "Значки";
+        } else if (currentText === "Значки") {
+            myTextElements[i].innerText = "Icons";
+        }
+        if (currentText === "New arrivals") {
+            myTextElements[i].innerText = "Вновь прибывшие";
+        } else if (currentText === "Вновь прибывшие") {
+            myTextElements[i].innerText = "New arrivals";
+        }
+
+
+        if (currentText === "Brooches&Tiepins") {
+            myTextElements[i].innerText = "Броши и заколки для галстуков";
+        } else if (currentText === "Броши и заколки для галстуков") {
+            myTextElements[i].innerText = "Brooches&Tiepins";
+        }
+
+
+        if (currentText === "Charms and watches") {
+            myTextElements[i].innerText = "Брелоки и часы";
+        } else if (currentText === "Брелоки и часы") {
+            myTextElements[i].innerText = "Charms and watches";
+        }
+
+
+
+
+        if (currentText === "Cufflinks and necklaces") {
+            myTextElements[i].innerText = "Запонки и ожерелья";
+        } else if (currentText === "Запонки и ожерелья") {
+            myTextElements[i].innerText = "Cufflinks and necklaces";
+        }
+
+
+
+        if (currentText === "Rings and bracelets") {
+            myTextElements[i].innerText = "Кольца и браслеты";
+        } else if (currentText === "Кольца и браслеты") {
+            myTextElements[i].innerText = "Rings and bracelets";
+        }
+
+
+        if (currentText === "Socks and Technology") {
+            myTextElements[i].innerText = "Носки и технологии";
+        } else if (currentText === "Носки и технологии") {
+            myTextElements[i].innerText = "Socks and Technology";
+        }
+
+
+
+        if (currentText === "Login") {
+            myTextElements[i].innerText = "Вход";
+        } else if (currentText === "Вход") {
+            myTextElements[i].innerText = "Login";
+        }
+
+
+
+        if (currentText === "Check your order status") {
+            myTextElements[i].innerText = "Проверьте статус вашего заказа";
+        } else if (currentText === "Проверьте статус вашего заказа") {
+            myTextElements[i].innerText = "Check your order status";
+        }
+
+
+        if (currentText === "Save your contact informations for a faster checkout") {
+            myTextElements[i].innerText = "Сохраните свои контактные данные для более быстрого оформления заказа.";
+        } else if (currentText === "Сохраните свои контактные данные для более быстрого оформления заказа.") {
+            myTextElements[i].innerText = "Save your contact informations for a faster checkout";
+        }
+
+
+        if (currentText === "Add your favorite items to your wishlist") {
+            myTextElements[i].innerText = "Добавьте понравившиеся товары в список желаний";
+        } else if (currentText === "Добавьте понравившиеся товары в список желаний") {
+            myTextElements[i].innerText = "Add your favorite items to your wishlist";
+        }
+
+        if (currentText === "CREATE ACCOUNT") {
+            myTextElements[i].innerText = "СОЗДАНИЕ АККАУНТА";
+        } else if (currentText === "СОЗДАНИЕ АККАУНТА") {
+            myTextElements[i].innerText = "CREATE ACCOUNT";
+        }
+
+
+
+        if (currentText === "Remember me") {
+            myTextElements[i].innerText = "Запомнить меня";
+        } else if (currentText === "Запомнить меня") {
+            myTextElements[i].innerText = "Remember me";
+        }
+
+
+        if (currentText === "Forgot your password?") {
+            myTextElements[i].innerText = "Забыли пароль?";
+        } else if (currentText === "Забыли пароль?") {
+            myTextElements[i].innerText = "Forgot your password?";
+        }
+
+
+        if (currentText === "Create Account") {
+            myTextElements[i].innerText = "Создать";
+        } else if (currentText === "Создать") {
+            myTextElements[i].innerText = "Create Account";
+        }
+
+
+        if (currentText === "Sign in to My Account to access your bag across your devices.") {
+            myTextElements[i].innerText = "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.";
+        } else if (currentText === "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.") {
+            myTextElements[i].innerText = "Sign in to My Account to access your bag across your devices.";
+        }
+
+
+        if (currentText === "RETRIEVE YOUR BAG") {
+            myTextElements[i].innerText = "ЗАБЕРИТЕ СВОЮ КОРЗИНУ";
+        } else if (currentText === "ЗАБЕРИТЕ СВОЮ КОРЗИНУ") {
+            myTextElements[i].innerText = "RETRIEVE YOUR BAG";
+        }
+
+        if (currentText === "YOUR BAG IS EMPTY") {
+            myTextElements[i].innerText = "ВАША КОРЗИНА ПУСТАЯ";
+        } else if (currentText === "ВАША КОРЗИНА ПУСТАЯ") {
+            myTextElements[i].innerText = "YOUR BAG IS EMPTY";
+        }
+
+        if (currentText === "SHOPPING BAG") {
+            myTextElements[i].innerText = "КОРЗИНА";
+        } else if (currentText === "КОРЗИНА") {
+            myTextElements[i].innerText = "SHOPPING BAG";
+        }
+
+
+        if (currentText === "NEW IN: CHILDREN'S COLLECTION") {
+            myTextElements[i].innerText = "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ";
+        } else if (currentText === "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ") {
+            myTextElements[i].innerText = "NEW IN: CHILDREN'S COLLECTION";
+        }
+
+        if (currentText === "Discover the latest arrivals") {
+            myTextElements[i].innerText = "Откройте для себя последние поступления";
+        } else if (currentText === "Откройте для себя последние поступления") {
+            myTextElements[i].innerText = "Discover the latest arrivals";
+        }
+
+    }
+
+
+
+   
+    var currentState = sessionStorage.getItem("currentState") || "english";
+    currentState = (currentState === "english") ? "russian" : "english";
+    sessionStorage.setItem("currentState", currentState);
+    localStorage.setItem("currentState", currentState);
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    var myTextElements = document.getElementsByClassName("myText");
+    var currentState = sessionStorage.getItem("currentState") || "english";
+
+    for (var i = 0; i < myTextElements.length; i++) {
+        if (currentState === "russian") {
+            if (myTextElements[i].innerText === "Accessories") {
+                myTextElements[i].innerText = "Аксессуары";
+            } 
+            if (myTextElements[i].innerText === "information") {
+                myTextElements[i].innerText = "информация";
+            }
+
+            if (myTextElements[i].innerText === "SHOPPING BAG") {
+                myTextElements[i].innerText = "КОРЗИНА";
+            }
+
+            if (myTextElements[i].innerText === "Search") {
+                myTextElements[i].innerText = "Поиск";
+            }
+
+            if (myTextElements[i].innerText === "Account") {
+                myTextElements[i].innerText = "Аккаунт";
+            }
+            if (myTextElements[i].innerText === "Cart") {
+                myTextElements[i].innerText = "Корзина";
+            }
+            if (myTextElements[i].innerText === "EN") {
+                myTextElements[i].innerText = "RU";
+            }
+            if (myTextElements[i].innerText === "women") {
+                myTextElements[i].innerText = "женское";
+            }
+            if (myTextElements[i].innerText === "men") {
+                myTextElements[i].innerText = "мужское";
+            }
+            if (myTextElements[i].innerText === "children") {
+                myTextElements[i].innerText = "детское";
+            }
+
+            if (myTextElements[i].innerText === "Clothing") {
+                myTextElements[i].innerText = "Одежда";
+            }
+
+            if (myTextElements[i].innerText === "Bags") {
+                myTextElements[i].innerText = "Сумки";
+            }
+            if (myTextElements[i].innerText === "Shoes") {
+                myTextElements[i].innerText = "Обувь";
+            }
+            if (myTextElements[i].innerText === "Sunglasses") {
+                myTextElements[i].innerText = "Очки";
+            }
+            if (myTextElements[i].innerText === "Watches&Jewelry") {
+                myTextElements[i].innerText = "Часы и ювелирные изделия";
+            }
+
+            if (myTextElements[i].innerText === "Coats and Jackets") {
+                myTextElements[i].innerText = "Пальто и куртки";
+            }
+
+            if (myTextElements[i].innerText === "Denim and Skirts") {
+                myTextElements[i].innerText = "Джинсы и юбки";
+            }
+            if (myTextElements[i].innerText === "Dresses&Blazers") {
+                myTextElements[i].innerText = "Платья и блейзеры";
+            }
+            if (myTextElements[i].innerText === "Shirts and Tops") {
+                myTextElements[i].innerText = "Рубашки и топы";
+            }
+            if (myTextElements[i].innerText === "Trousers and Shorts") {
+                myTextElements[i].innerText = "Брюки и шорты";
+            }
+
+            if (myTextElements[i].innerText === "T-Shirts and Sweatshirts") {
+                myTextElements[i].innerText = "Футболки и толстовки";
+            }
+            if (myTextElements[i].innerText === "Underwear and Beachwear") {
+                myTextElements[i].innerText = "Нижнее белье и пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Activewear and Beachwear") {
+                myTextElements[i].innerText = "Спортивная и пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Denim and Sweatshirts") {
+                myTextElements[i].innerText = "Джинсы и толстовки";
+            }
+            if (myTextElements[i].innerText === "Shirts") {
+                myTextElements[i].innerText = "Рубашки";
+            }
+            if (myTextElements[i].innerText === "Suits and Blazers") {
+                myTextElements[i].innerText = "Костюмы и блейзеры";
+            }
+            if (myTextElements[i].innerText === "T-Shirts and Polos") {
+                myTextElements[i].innerText = "Футболки и поло";
+            }
+            if (myTextElements[i].innerText === "Sweaters and Cardigans") {
+                myTextElements[i].innerText = "Свитера и кардиганы";
+            }
+            if (myTextElements[i].innerText === "Underwear and Loungewear") {
+                myTextElements[i].innerText = "Нижнее белье и одежда для отдыха";
+            }
+
+            if (myTextElements[i].innerText === "Clutches mini and Micro Bags") {
+                myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+            }
+            if (myTextElements[i].innerText === "Handbags and Totes") {
+                myTextElements[i].innerText = "сумки и тотализаторы";
+            }
+            if (myTextElements[i].innerText === "Shoulder and Crossbody Bags") {
+                myTextElements[i].innerText = "Сумки через плечо и кроссбоди";
+            }
+            if (myTextElements[i].innerText === "Sicily and Devotion") {
+                myTextElements[i].innerText = "Сицилия и преданность";
+            }
+            if (myTextElements[i].innerText === "Boots and Booties") {
+                myTextElements[i].innerText = "Сапоги и пинетки";
+            }
+            if (myTextElements[i].innerText === "Pumps and Skingback") {
+                myTextElements[i].innerText = "Туфли и Босоножки";
+            }
+            if (myTextElements[i].innerText === "Sandals and Wedges") {
+                myTextElements[i].innerText = "Босоножки и туфли на танкетке";
+            }
+            if (myTextElements[i].innerText === "Slides and Mules") {
+                myTextElements[i].innerText = "Шлепанцы и Мюли";
+            }
+            if (myTextElements[i].innerText === "Sheakers and Flat") {
+                myTextElements[i].innerText = "Шейкеры и плоские";
+            }
+            if (myTextElements[i].innerText === "Bijoux and Belts") {
+                myTextElements[i].innerText = "Бижутерия и пояса";
+            }
+            if (myTextElements[i].innerText === "Hats and Gloves") {
+                myTextElements[i].innerText = "Шляпы и перчатки";
+            }
+            if (myTextElements[i].innerText === "Scarves and Silks") {
+                myTextElements[i].innerText = "Шарфы и шелка";
+            }
+            if (myTextElements[i].innerText === "Wallets and small leather goods") {
+                myTextElements[i].innerText = "Кошельки и небольшие изделия из кожи";
+            }
+            if (myTextElements[i].innerText === "New arrivals and Icons") {
+                myTextElements[i].innerText = "Новые поступления и значки";
+            }
+            if (myTextElements[i].innerText === "Earrings and Rings") {
+                myTextElements[i].innerText = "Серьги и кольца";
+            }
+            if (myTextElements[i].innerText === "Neacklaces and Charms") {
+                myTextElements[i].innerText = "Шнурки и брелоки";
+            }
+            if (myTextElements[i].innerText === "Watches&Straps") {
+                myTextElements[i].innerText = "Часы и ремешки";
+            }
+
+            if (myTextElements[i].innerText === "Trousers and Skirts") {
+                myTextElements[i].innerText = "Брюки и юбки";
+            }
+            if (myTextElements[i].innerText === "Dresses and Sweaters") {
+                myTextElements[i].innerText = "Платья и свитера";
+            }
+            if (myTextElements[i].innerText === "Beachwear") {
+                myTextElements[i].innerText = "Пляжная одежда";
+            }
+            if (myTextElements[i].innerText === "Nightwear and Underwear") {
+                myTextElements[i].innerText = "Ночная одежда и нижнее белье";
+            }
+            if (myTextElements[i].innerText === "Suits and Shirts") {
+                myTextElements[i].innerText = "Костюмы и рубашки";
+            }
+            if (myTextElements[i].innerText === "Sweaters") {
+                myTextElements[i].innerText = "Свитера";
+            }
+
+            if (myTextElements[i].innerText === "Special occasions") {
+                myTextElements[i].innerText = "Особые случаи";
+            }
+            if (myTextElements[i].innerText === "Accessories and Baby carriers") {
+                myTextElements[i].innerText = "Аксессуары и переноски для младенцев";
+            }
+            if (myTextElements[i].innerText === "Trousers and Shorts") {
+                myTextElements[i].innerText = "Брюки и шорты";
+            }
+            if (myTextElements[i].innerText === "Dresses") {
+                myTextElements[i].innerText = "Часы и ремешки";
+            }
+            if (myTextElements[i].innerText === "Topwear") {
+                myTextElements[i].innerText = "Верхняя одежда";
+            }
+            if (myTextElements[i].innerText === "Newborn shoes") {
+                myTextElements[i].innerText = "Обувь для новорожденных";
+            }
+            if (myTextElements[i].innerText === "Girl(2-13)") {
+                myTextElements[i].innerText = "Девочка (2-13)";
+            }
+            if (myTextElements[i].innerText === "Boy(2-13)") {
+                myTextElements[i].innerText = "Мальчик (2-13)";
+
+            }if (myTextElements[i].innerText === "Newborn(0-12 months)") {
+                myTextElements[i].innerText = "Новорожденный (0-12 месяцев)";
+
+            }if (myTextElements[i].innerText === "Newborn girl(0-30 months)") {
+                myTextElements[i].innerText = "Новорожденная девочка (0-30 месяцев)";
+
+            }if (myTextElements[i].innerText === "Newborn boy(0-30 months)") {
+                myTextElements[i].innerText = "Новорожденный мальчик (0-30 месяцев)";
+
+            }
+            if (myTextElements[i].innerText === "Clutches mini and Micro Bags") {
+                myTextElements[i].innerText = "Клатчи, мини- и микро-сумки";
+
+            }
+             if (myTextElements[i].innerText === "Backpacks and Fanny packs") {
+                myTextElements[i].innerText = "Рюкзаки и поясные сумки";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Briefcase and cluthces") {
+                myTextElements[i].innerText = "Портфель и другие вещи";
+
+            }
+
+             if (myTextElements[i].innerText === "Crossbody Bags") {
+                myTextElements[i].innerText = "Сумки через плечо";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Travel bags and Shoppers") {
+                myTextElements[i].innerText = "Дорожные сумки и шопперы";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Boots") {
+                myTextElements[i].innerText = "Ботинки";
+
+            }
+
+
+             if (myTextElements[i].innerText === "Loafers and Moccasins") {
+                myTextElements[i].innerText = "Лоферы и Мокасины";
+
+            }
+             if (myTextElements[i].innerText === "Sandals and Slides") {
+                myTextElements[i].innerText = "Сандалии и шлепанцы";
+
+            }
+
+            if (myTextElements[i].innerText === "Sheakers and Lace-ups") {
+                myTextElements[i].innerText = "Шейкеры и шнуровки";
+
+            }
+
+            if (myTextElements[i].innerText === "Belts and Bijoux") {
+                myTextElements[i].innerText = "Пояса и бижутерия";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Socks") {
+                myTextElements[i].innerText = "Носки";
+
+            }
+
+            if (myTextElements[i].innerText === "Icons") {
+                myTextElements[i].innerText = "Значки";
+
+            }
+
+
+            if (myTextElements[i].innerText === "New arrivals") {
+                myTextElements[i].innerText = "Вновь прибывшие";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Brooches&Tiepins") {
+                myTextElements[i].innerText = "Броши и заколки для галстуков";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Charms and watches") {
+                myTextElements[i].innerText = "Брелоки и часы";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Cufflinks and necklaces") {
+                myTextElements[i].innerText = "Запонки и ожерелья";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Rings and bracelets") {
+                myTextElements[i].innerText = "Кольца и браслеты";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Icons") {
+                myTextElements[i].innerText = "Значки";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Socks and Technology") {
+                myTextElements[i].innerText = "Носки и технологии";
+
+            }
+
+
+
+
+            if (myTextElements[i].innerText === "Login") {
+                myTextElements[i].innerText = "Вход";
+
+            }
+
+
+
+
+
+            if (myTextElements[i].innerText === "YOUR BAG IS EMPTY") {
+                myTextElements[i].innerText = "ВАША КОРЗИНА ПУСТАЯ";
+
+            }
+
+
+            if (myTextElements[i].innerText === "RETRIEVE YOUR BAG") {
+                myTextElements[i].innerText = "ЗАБЕРИТЕ СВОЮ КОРЗИНУ";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Sign in to My Account to access your bag across your devices.") {
+                myTextElements[i].innerText = "Войдите в «Мою учетную запись», чтобы получить доступ к своей сумке на всех ваших устройствах.";
+
+            }
+
+
+
+            if (myTextElements[i].innerText === "Create Account") {
+                myTextElements[i].innerText = "Создать";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Forgot your password?") {
+                myTextElements[i].innerText = "Забыли пароль?";
+
+            }
+
+
+            if (myTextElements[i].innerText === "Remember me") {
+                myTextElements[i].innerText = "Запомнить меня";
+
+            }
+
+            if (myTextElements[i].innerText === "CREATE ACCOUNT") {
+                myTextElements[i].innerText = "СОЗДАНИЕ АККАУНТА";
+
+            }
+
+            if (myTextElements[i].innerText === "Add your favorite items to your wishlist") {
+                myTextElements[i].innerText = "Добавьте понравившиеся товары в список желаний";
+
+            }
+
+            if (myTextElements[i].innerText === "Save your contact informations for a faster checkout") {
+                myTextElements[i].innerText = "Сохраните свои контактные данные для более быстрого оформления заказа.";
+
+            }
+
+            if (myTextElements[i].innerText === "Check your order status") {
+                myTextElements[i].innerText = "Проверьте статус вашего заказа";
+
+            }
+            if (myTextElements[i].innerText === "NEW IN: CHILDREN'S COLLECTION") {
+                myTextElements[i].innerText = "НОВИНКА: ДЕТСКАЯ КОЛЛЕКЦИЯ";
+
+            }
+
+            if (myTextElements[i].innerText === "Discover the latest arrivals") {
+                myTextElements[i].innerText = "Откройте для себя последние поступления";
+
+            }
+            
+
+
+        }
+    }
+});
+
+
+</script>
+<script>
+
+    let searchInput = document.querySelector('#searchInput');
+
+
+    let categoryButtons = document.querySelectorAll('.category');
+
+
+    searchInput.addEventListener('input', searchItems);
+
+    let searchInput = document.querySelector('#searchInput');
+
+
+    let categoryButtons = document.querySelectorAll('.category');
+
+
+    searchInput.addEventListener('input', searchItems);
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu .dws-menu1, .AllMenu .dws-menu2, .AllMenu .dws-menu3, .AllMenu .dws-menu4, .AllMenu .dws-menu5, .AllMenu .dws-menu6, .AllMenu .dws-menu7, .AllMenu .dws-menu8, .AllMenu .dws-menu9, .AllMenu .dws-menu10');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu1 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu1 .dws-menu1, .AllMenu1 .dws-menu2, .AllMenu1 .dws-menu3, .AllMenu1 .dws-menu4, .AllMenu1 .dws-menu5, .AllMenu1 .dws-menu6');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu1 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menuItems = document.querySelectorAll('.AllMenu2 .menu .a');
+  var dwsMenus = document.querySelectorAll('.AllMenu2 .dws-menu1, .AllMenu2 .dws-menu2, .AllMenu2 .dws-menu3, .AllMenu2 .dws-menu4, .AllMenu2 .dws-menu5');
+
+  function hideAllMenus() {
+    dwsMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  }
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener('click', function () {
+      hideAllMenus();
+
+      var targetMenu;
+      if (index === 1) { 
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu2');
+      } else {
+        targetMenu = document.querySelector('.AllMenu2 .dws-menu' + (index + 1));
+      }
+
+      if (targetMenu) {
+        targetMenu.style.display = 'flex';
+      }
+    });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let womenElement = document.querySelector(".women");
+    let closeMenuElement = document.querySelector(".closeMenu");
+    let menuWomenMenElement = document.querySelector(".MenuWomenMen");
+    if(womenElement) {
+        womenElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.add("active");
+        });
+    }
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.remove("active");
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() { 
+    let closeMenuElement = document.querySelector(".closeMenu");
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            console.log("Close menu clicked");
+            document.querySelector(".MenuWomenMen").style.display = "none";
+        });
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let womenMenuElement = document.querySelector(".womenMenu");
+    let closeMenuElement = document.querySelector(".closeMenu");
+    let menuWomenMenElement = document.querySelector(".MenuWomenMen");
+    if(womenMenuElement) {
+        womenMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.add("active");
+        });
+    }
+    if(closeMenuElement) {
+        closeMenuElement.addEventListener("click", function() {
+            menuWomenMenElement.classList.remove("active");
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+        var menLink = document.querySelector('.men');
+        var menuBlock = document.querySelector('.MenuWomenMen1');
+
+        menLink.addEventListener('click', function () {
+            menuBlock.style.display = (menuBlock.style.display === 'none' || menuBlock.style.display === '') ? 'flex' : 'none';
+            
+        });
+    });
+
+document.addEventListener('DOMContentLoaded', function () {
+        var menLink = document.querySelector('.childrenchildren');
+        var menuBlock = document.querySelector('.MenuWomenMen2');
+
+        menLink.addEventListener('click', function () {
+            menuBlock.style.display = (menuBlock.style.display === 'none' || menuBlock.style.display === '') ? 'flex' : 'none';
+            
+        });
+    });
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        modal.style.display = modal.style.display === "none" ? "flex" : "none";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    var women = document.getElementsByClassName("women")[0];
+    var menuWomenMen = document.getElementsByClassName("MenuWomenMen")[0];
+    var closeMenu = document.getElementsByClassName("closeMenu")[0];
+
+    women.onclick = function() {
+        if (menuWomenMen.style.display === "" || menuWomenMen.style.display === "none") {
+            menuWomenMen.style.display = "block";
+        } else {
+            menuWomenMen.style.display = "none";
+        }
+    }
+
+    closeMenu.onclick = function() {
+        menuWomenMen.style.display = "none";
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const womenLink = document.querySelector('.women');
+    const menuWomenMen = document.querySelector('.MenuWomenMen');
+    const closeMenuButton = document.querySelector('.closeMenu');
+
+    womenLink.addEventListener('click', () => {
+        if (menuWomenMen.style.display === 'flex') {
+            menuWomenMen.style.display = 'none';
+        } else {
+            menuWomenMen.style.display = 'flex';
+        }
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+        menuWomenMen.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === menuWomenMen) {
+            menuWomenMen.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+
+
+
+    </script>   
+
+
+
+
+
+
+
+
+
+
+
+        <div class="h1"> 
+        <a href="/">Gamma</a>
+        </div> 
+ 
+         
+
+        <div class="link"> 
+         
+         <a class="women"><p class="myText">women</p></a> 
+         <a class="men"><p class="myText">men</p></a> 
+          
+         <a class="childrenchildren" id="fourteen"><p class="myText">children</p></a>
+        
+        </div> 
+
+    </div>
+
+
+
+      
+    </div>
+
+   
+ 
+ 
+  
+
+
+        <div class="MenuWomenMen">
+
+    <div class="DandGscrolledMenu"> 
+
+        
+        <div class="closeMenu">X</div>
+        <div class="h1Menu"> 
+        <a href="/">Gamma</a>
+        </div> 
+ 
+ 
+        <div class="linkMenu"> 
+
+         <a class="womenMenu" id="twelve"><p class="myText">women</p></a> 
+         
+        </div> 
+
+    </div>
+
+<div class="AllMenu">
+  <div class="menu">
+    <div class="a">
+     <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/q_Q0f_9dFjz.png?updatedAt=1705245851246"><span class="myText" id="myText1">Clothing</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+
+    <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/qq_XqPKy8yI_.png?updatedAt=1705245850859"><span class="myText" id="myText1">Bags</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+
+    <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/q_Q0f_9dFjz.png?updatedAt=1705245851246"><span class="myText" id="myText1">Shoes</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+
+    <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/qq_XqPKy8yI_.png?updatedAt=1705245850859"><span class="myText" id="myText1">Accessories</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+    <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/q_Q0f_9dFjz.png?updatedAt=1705245851246"><span class="myText" id="myText1">Sunglasses</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+        <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/qq_XqPKy8yI_.png?updatedAt=1705245850859"><span class="myText" id="myText1">Watches&Jewelry</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+
+   
+
+  </div>
+
+  <div class="dws-menu1">
+    <div class="dws-menu1Col">
+        <a class="a" id="twenty-one" href="/coats-and-jackets" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Coats and Jackets</span></a>
+        <a class="a" id="twenty-two" href="/denim-and-skirts" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText" id="myText1">Denim and Skirts</span></a>
+        <a class="a" id="twenty-three" href="/dresses&blazers" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Dresses&Blazers</span></a>
+        <a class="a" id="twenty-four"href="/shirts-and-tops" data-image="https://i.imgur.com/yjlZjzM.jpg"> <span class="myText"id="myText1">Shirts and Tops</span></a>
+        <a class="a" id="twenty-five" href="/trousers-and-shorts" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Trousers and Shorts</span></a>
+        <a class="a" id="twenty-six" href="/tshirts-and-sweatshirts" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">T-Shirts and Sweatshirts</span></a>
+        <a class="a" id="twenty-seven" href="/underwear-and-beachwear" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Underwear and Beachwear</span></a>
+    </div>
+
+  </div>
+
+  <div class="dws-menu2">
+    <div class="dws-menu1Col">
+        <a class="a" id="twenty-eight" href="/clutches-mini-and-micro-bags" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Clutches mini and Micro Bags</span></a>
+        <a class="a" id="twenty-nine"  href="/handbags-and-totes" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Handbags and Totes</span></a>
+        <a class="a" id="thirty"  href="/shoulder-and-crossbody-bags" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Shoulder and Crossbody Bags</span></a>
+        <a class="a" id="thirty-one"  href="/sicily-and-devotion" data-image="/images/coats.jpg"><span class="myText"id="myText1">Sicily and Devotion</span></a>
+    </div>
+    
+  </div>
+
+  <div class="dws-menu3">
+    <div class="dws-menu1Col">
+        <a class="a" id="thirty-two" href="/boots-and-booties" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Boots and Booties</span></a>
+        <a class="a" id="thirty-three" href="/pumps-and-skingback" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Pumps and Skingback</span></a>
+        <a class="a" id="thirty-four" href="/sandals-and-wedges" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Sandals and Wedges</span></a>
+        <a class="a" id="thirty-five" href="/slides-and-mules" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Slides and Mules</span></a>
+        <a class="a" id="thirty-six" href="/sheakers-and-flat" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Sheakers and Flat</span></a>
+    </div>
+   
+  </div>
+
+  <div class="dws-menu4">
+    <div class="dws-menu1Col">
+        <a class="a" id="thirty-seven" href="/bijoux-and-belts" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Bijoux and Belts</span></a>
+        <a class="a" id="thirty-eight" href="/hats-and-gloves" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Hats and Gloves</span></a>
+        <a class="a" id="thirty-nine" href="/scarves-and-silks" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Scarves and Silks</span></a>
+        <a class="a" id="forty" href="/socks-and-technology" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Socks and Technology</span></a>
+        <a class="a" id="forty-one" href="/wallets-and-small-leather-goods" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Wallets and small leather goods</span></a>
+    </div>
+    
+  </div>
+
+    <div class="dws-menu5">
+    <div class="dws-menu1Col">
+      <a class="a" id="forty-two" href="/new-arrivals-and-icons" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">New arrivals and Icons</span></a>
+    </div>
+    
+  </div>
+    <div class="dws-menu6">
+    <div class="dws-menu1Col">
+        <a class="a" id="forty-three" href="/earrings-and-rings" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Earrings and Rings</span></a>
+        <a class="a" id="forty-four" href="/neacklaces-and-charms" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Neacklaces and Charms</span></a>
+        <a class="a" id="forty-five" href="/watches&straps" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Watches&Straps</span></a>
+    </div>
+    
+  </div>
+ <div class="png-container" style="display:flex;width: 38vw;height: 100vh; justify-content: center;align-items: center;">
+
+    
+        <img src="" style="width: 100%; height: 100%; object-fit: cover;">
+      
+ </div>   
+
+</div>
+
+
+
+
+
+</div> 
+</div>
+
+
+
+<div class="MenuWomenMen1">
+    <div class="DandGscrolledMenu"> 
+        <div class="closeMenu1">X</div>
+
+        <div class="h1Menu"> 
+        <a href="/">Gamma</a>
+        </div> 
+ 
+ 
+        <div class="linkMenu"> 
+ 
+         <a class="mennMenu" id="seventy-five"><p class="myText">men</p></a> 
+
+        </div> 
+
+    </div>
+
+ <div class="AllMenu1">
+  <div class="menu">
+    <div class="a">
+     <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/q_Q0f_9dFjz.png?updatedAt=1705245851246"><span class="myText"id="myText1">Clothing</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+
+    <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/qq_XqPKy8yI_.png?updatedAt=1705245850859"><span class="myText"id="myText1">Bags</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+
+    <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/q_Q0f_9dFjz.png?updatedAt=1705245851246"><span class="myText"id="myText1">Shoes</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+
+    <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/qq_XqPKy8yI_.png?updatedAt=1705245850859"><span class="myText"id="myText1">Accessories</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+    <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/q_Q0f_9dFjz.png?updatedAt=1705245851246"><span class="myText"id="myText1">Sunglasses</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+        <div class="a">
+      <a id="fifteen" data-image="https://ik.imagekit.io/uavondnkg/qq_XqPKy8yI_.png?updatedAt=1705245850859"><span class="myText"id="myText1">Watches&Jewelry</span></a>
+        <img class="menu-image" src="" alt="">
+    </div>
+
+   
+
+  </div>
+
+  <div class="dws-menu1">
+    <div class="dws-menu1Col">
+        <a class="a" id="forty-six" href="/activewear-and-beachwear" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText" id="myText1">Activewear and Beachwear</span></a>
+        <a class="a" id="forty-seven" href="/coats-and-jackets1" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Coats and Jackets</span></a>
+        <a class="a" id="forty-eight" href="/denim-and-sweatshirts" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Denim and Sweatshirts</p></span></a>
+        <a class="a" id="forty-nine" href="/shirts" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Shirts</span></a>
+        <a class="a" id="fifty" href="/suits-and-blazers" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Suits and Blazers</span></a>
+        <a class="a" id="fifty-one" href="/tshirts-and-polos" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">T-Shirts and Polos</span></a>
+        <a class="a" id="fifty-two"  href="/sweaters-and-cardigans" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Sweaters and Cardigans</span></a>
+        <a class="a" id="fifty-three" href="/trousers-and-shorts1" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Trousers and Shorts</span></a>
+        <a class="a" id="fifty-four" href="/underwear-and-loungewear" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Underwear and Loungewear</span></a>
+    </div>
+
+  </div>
+
+  <div class="dws-menu2">
+    <div class="dws-menu1Col">
+        <a class="a" id="fifty-three" href="/backpacks-and-fanny-packs" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Backpacks and Fanny packs</span></a>
+        <a class="a" id="fifty-four" href="/briefcase-and-cluthces" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Briefcase and cluthces</span></a>
+        <a class="a" id="fifty-five" href="/crossbody-bags" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Crossbody Bags</span></a>
+        <a class="a" id="fifty-six" href="/travel-bags-and-shoppers" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Travel bags and Shoppers</span></a>
+        <a class="a" id="fifty-seven" href="/trousers-and-shorts1" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Trousers and Shorts</span></a>
+        <a class="a" id="fifty-eight" href="/underwear-and-loungewear" data-image="https://i.imgur.com/yjlZjzM.jpg"> <span class="myText"id="myText1">Underwear and Loungewear</span></a>
+    </div>
+    
+  </div>
+
+  <div class="dws-menu3">
+    <div class="dws-menu1Col">
+        <a class="a" id="fifty-nine" href="/boots" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Boots</span></a>
+        <a class="a" id="sixty" href="/loafers-and-moccasins" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Loafers and Moccasins</span></a>
+        <a class="a" id="sixty-one" href="/sandals-and-slides" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Sandals and Slides</span></a>
+        <a class="a" id="sixty-two" href="/sheakers-and-lace-ups" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Sheakers and Lace-ups</span></a>
+      
+    </div>
+   
+  </div>
+
+  <div class="dws-menu4">
+    <div class="dws-menu1Col">
+        <a class="a" id="sixty-three" href="/belts-and-bijoux" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Belts and Bijoux</span></a>
+        <a class="a" id="sixty-four" href="/hats-and-gloves1" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Hats and Gloves</span></a>
+        <a class="a" id="sixty-five" href="/scarves-and-silks1" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Scarves and Silks</span></a>
+        <a class="a" id="sixty-six" href="/socks" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Socks</span></a>
+        <a class="a" id="sixty-seven" href="/wallets-and-small-leather-goods1" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Wallets and small leather goods</span></a>
+        <a class="a" id="sixty-eight" href="/ties-and-pocket-squares" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Ties and pocket squares</span></a>
+    </div>
+    
+  </div>
+
+    <div class="dws-menu5">
+    <div class="dws-menu1Col">
+        <a class="a" id="sixty-nine" href="/icons" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Icons</span></a>
+        <a class="a" id="seventy" href="/new-arrivals" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">New arrivals</span></a>
+    </div>
+    
+  </div>
+    <div class="dws-menu6">
+    <div class="dws-menu1Col">
+        <a class="a" id="seventy-one" href="/brooches&tiepins" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Brooches&Tiepins</span></a>
+        <a class="a" id="seventy-two" href="/charms-and-watches" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Charms and watches</span></a>
+        <a class="a" id="seventy-three" href="/cufflinks-and-necklaces" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Cufflinks and necklaces</span></a>
+        <a class="a" id="seventy-four" href="/rings-and-bracelets" data-image="https://i.imgur.com/yjlZjzM.jpg"><span class="myText"id="myText1">Rings and bracelets</span></a>
+    </div>
+    
+  </div>
+
+ <div class="png-container" style="display:flex;width: 38vw;height: 100vh; justify-content: center;align-items: center;">
+
+    
+        <img src="" style="width: 100%; height: 100%; object-fit: cover;">
+      
+ </div> 
+</div> 
+
+
+</div>
+
+
+     </div> 
+   </div> 
+ </div> 
+     </div> 
+
+ </div> 
+
+
+
+
+
+
+</script> 
+</body> 
+</html>

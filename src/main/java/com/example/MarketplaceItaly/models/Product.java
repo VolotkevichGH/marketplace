@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -22,8 +24,13 @@ public class Product {
     private double price;
     private Boolean hasSale;
     private double backPrice;
-    @ManyToMany
+    @ElementCollection(targetClass = Category.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "product_categories", joinColumns = @JoinColumn(name = "product_id"))
+    @Enumerated(EnumType.STRING)
     private Set<Category> category;
     private String image;
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "product_header", joinColumns = @JoinColumn(name = "product_id"))
+    private Category headCategory;
 
 }

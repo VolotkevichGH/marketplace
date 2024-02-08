@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Switcher</title>
+</head>
+<body>
+<div id="searchSidebar" class="sidebar">
+    <div class="contentSearch">
+     <input type="text" id="searchInput" placeholder="Поиск..." style="margin-left:1%">
+<div style="display:flex;gap: 5%;margin-left: 3%;margin-top: 2%;">
+<button class="category" data-category="men">Men</button>
+<button class="category" data-category="women">Women</button>
+<button class="category" data-category="children">Children</button>
+</div>
+<div class="container">
+
+
+    <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">тттттттттттттттттттттттттттттттттттттттт</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">то</div>
+    </div>
+
+    <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">тов</div>
+
+    </div>
+
+    <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">това</div>
+    </div>
+
+    <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">товар</div>
+    </div>
+
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">товар</div>
+    </div>
+
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">това</div>
+    </div>
+
+        <div class="item" data-category="men">
+        <img src="b1.jpg" alt="Товар 1">
+        <div class="item-name">това</div>
+    </div>
+
+    <div class="item" data-category="women">
+        <img src="b1.jpg" alt="Товар 2">
+        <div class="item-name">товар</div>
+    </div>
+
+        <div class="item" data-category="women">
+        <img src="b1.jpg" alt="Товар 2">
+        <div class="item-name">товары</div>
+    </div>
+
+
+        <div class="item" data-category="women">
+        <img src="b1.jpg" alt="Товар 2">
+        <div class="item-name">6</div>
+    </div>
+</div>
+     </div>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav('search')">×</a>
+</div>
+
+<script>
+    let searchInput = document.querySelector('#searchInput');
+
+
+    let categoryButtons = document.querySelectorAll('.category');
+
+
+    searchInput.addEventListener('input', searchItems);
+
+
+    categoryButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                searchInput.removeAttribute('data-category');
+            } else {
+                categoryButtons.forEach(function(btn) {
+                    btn.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                searchInput.setAttribute('data-category', this.getAttribute('data-category'));
+            }
+            searchItems();
+        });
+    });
+
+    function searchItems() {
+
+        let query = searchInput.value;
+
+
+        let selectedCategory = searchInput.getAttribute('data-category');
+
+
+        let items = document.querySelectorAll('.item');
+
+
+        if (query === '') {
+            items.forEach(function(item) {
+                item.style.display = 'none';
+            });
+        } else {
+
+            let count = 0;
+            items.forEach(function(item) {
+                let itemName = item.querySelector('.item-name').textContent;
+                let itemCategory = item.getAttribute('data-category');
+                if (itemName.startsWith(query) && (!selectedCategory || itemCategory === selectedCategory)) {
+                    if (count < 6) {
+                        item.style.display = 'flex';
+                        count++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
