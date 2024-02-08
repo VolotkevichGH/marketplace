@@ -56,6 +56,14 @@ public class HomeController {
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("products", productRepository.findAll());
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        boolean userIsActive = userRepository.findByUsername(name).isPresent();
+        if(userIsActive){
+            User user = (User) userRepository.findByUsername(name).get();
+            System.out.println(user.getUsername() + "зашел в систему");
+        } else {
+            System.out.println("Пользователь не авторизован");
+        }
         return "D&G";
     }
 

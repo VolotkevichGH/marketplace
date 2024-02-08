@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="en"> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head> 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <meta charset="utf-8" />
@@ -1384,6 +1384,7 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
 
 
   
+<form th:action="@{/login}" method="post">
 <div id="loginSidebar" class="sidebar">
     <div class="contentLogin">
      <div class="log">
@@ -1393,13 +1394,13 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
          <div class="l">
 
     <div class="inputBox">
-        <input type="Email" placeholder="Email" id="Email">
-        
+        <input type="Email" placeholder="Email" id="Email" name="username">
+
     </div>
 
     <div class="inputBox">
-        <input type="password" placeholder="Password" id="password">
-        <img src="eyeClose.png" alt="" id="eyeicon">
+        <input type="password" placeholder="Password" id="password" name="password">
+        <img src="../static/assets/eyeClose.png" alt="" id="eyeicon">
     </div>
 
     </div>
@@ -1448,78 +1449,78 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
 
 
     <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">тттттттттттттттттттттттттттттттттттттттт</div>
     </div>
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">то</div>
     </div>
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">то</div>
     </div>
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">то</div>
     </div>
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">то</div>
     </div>
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">то</div>
     </div>
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">то</div>
     </div>
 
     <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">тов</div>
 
     </div>
 
     <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">това</div>
     </div>
 
     <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">товар</div>
     </div>
 
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">товар</div>
     </div>
 
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">това</div>
     </div>
 
         <div class="item" data-category="men">
-        <img src="b1.jpg" alt="Товар 1">
+        <img src="../static/assets/b1.jpg" alt="Товар 1">
         <div class="item-name">това</div>
     </div>
 
     <div class="item" data-category="women">
-        <img src="b1.jpg" alt="Товар 2">
+        <img src="../static/assets/b1.jpg" alt="Товар 2">
         <div class="item-name">товар</div>
     </div>
 
         <div class="item" data-category="women">
-        <img src="b1.jpg" alt="Товар 2">
+        <img src="../static/assets/b1.jpg" alt="Товар 2">
         <div class="item-name">товары</div>
     </div>
 
 
         <div class="item" data-category="women">
-        <img src="b1.jpg" alt="Товар 2">
+        <img src="../static/assets/b1.jpg" alt="Товар 2">
         <div class="item-name">6</div>
     </div>
 </div>
@@ -1597,8 +1598,8 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
 <div class="img">
     <div class="img-container">
         <div class="img1">
-            <a href="women.html">
-            <img src="b1.jpg" alt="Image 1" width="50%" height="600px">
+            <a href="/women">
+            <img src="../static/assets/b1.jpg" alt="Image 1" width="50%" height="600px">
             </a>
             <p>ТекстТексТексТекс</p>
             <button class="button"><a>Текст</a></button>
@@ -1606,8 +1607,8 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
         </div>
 
         <div class="img2">
-            <a href="men.html">
-            <img src="b1.jpg" alt="Image 2" width="50%" height="600px">
+            <a href="/men">
+            <img src="../static/assets/b1.jpg" alt="Image 2" width="50%" height="600px">
             </a>
             <p>ТекстТекстТек</p>
             <button class="button"><a>Текст</a></button>
@@ -1620,13 +1621,13 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
 
 <div class="buy">
  <div class="column">
- <img src="b1.jpg" alt="Image 1" width="50%" height="400px">
+ <img src="../static/assets/b1.jpg" alt="Image 1" width="50%" height="400px">
  <h2>TEXTTEXTTEXT</h2>
  <button class="columnb"><a>Текст</a></button>
   </div> 
 
 <div class="column">
-<img src="b1.jpg" alt="Image 1" width="50%" height="400px">
+<img src="../static/assets/b1.jpg" alt="Image 1" width="50%" height="400px">
 <h2>TEXTTEXTTEXT</h2>
 <button class="columnb"><a>Текст</a></button>
 </div>
@@ -1634,13 +1635,13 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
 
 <div class="buy">
  <div class="column">
- <img src="b1.jpg" alt="Image 1" width="50%" height="400px">
+ <img src="../static/assets/b1.jpg" alt="Image 1" width="50%" height="400px">
  <h2>TEXTTEXTTEXT</h2>
  <button class="columnb"><a>Текст</a></button>
   </div> 
 
 <div class="column">
-<img src="b1.jpg" alt="Image 1" width="50%" height="400px">
+<img src="../static/assets/b1.jpg" alt="Image 1" width="50%" height="400px">
 <h2>TEXTTEXTTEXT</h2>
 <button class="columnb"><a>Текст</a></button>
 </div>
@@ -1653,7 +1654,7 @@ document.querySelector('.womenMenu').addEventListener('click', function() {
     <h1>NEW IN: CHILDREN'S COLLECTION</h1>
     </div>
     <div class="childImg">
-    <img src="b1.jpg" alt="Image 1" width="600px" height="600px">
+    <img src="../static/assets/b1.jpg" alt="Image 1" width="600px" height="600px">
     </div>
     <div class="childDic">
     <h1>Discover the latest arrivals</h1>
