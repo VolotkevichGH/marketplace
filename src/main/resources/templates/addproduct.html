@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
@@ -576,16 +576,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+<form action="/admin/addproduct" method="post">
 <div class="block">
     <div class="searc">
         <div class="search">
             <label for="search">Название</label><br>
-            <input type="text" id="search" name="search"><br>
+            <input type="text" id="search" name="name"><br>
         </div>
         <div class="price">
             <label for="price">Описание</label><br>
-            <input type="text" id="price" name="price"><br>
+            <input type="text" id="description" name="description"><br>
         </div>
 
                 <div class="price">
@@ -595,32 +595,31 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="category" style="display: flex;flex-direction: row;flex-wrap: wrap;width: 100%;height: 100px;margin-top: 20px;">
             Выберите категорию
         </div>
-        <button type="button" class="blockSearch">Найти</button>
     </div>
     <div style="">
 <div style="display:flex;flex-direction: column;">
-<input type="file" id="file1" />
-<button onclick="save()" style="margin-top:10px">Save</button>
+    <input type="file" id="file1" name="image"/>
+    <button onclick="save()" style="margin-top:10px">Save</button>
 </div>
-<img id="image1" style="    max-width: 50%;
-    height: auto;" />
-<br>
-</div>
-<script>
+        <img id="image1" style="    max-width: 50%;
+    height: auto;"/>
+        <br>
+    </div>
+    <script>
 
-    function save ()  {
-        let f = file1.files[0];
-        if (f) {
-            image1.src = URL.createObjectURL(f);
-            localStorage.setItem('myImage', image1.src);
+        function save ()  {
+            let f = file1.files[0];
+            if (f) {
+                image1.src = URL.createObjectURL(f);
+                localStorage.setItem('myImage', image1.src);
+            }
         }
-    }
 
-    image1.src = localStorage.getItem('myImage')
-</script>
+        image1.src = localStorage.getItem('myImage')
+    </script>
 
 </div>
-
+</form>
  <div class="AllMenu">
 
         <div class="menu">
@@ -902,8 +901,6 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         </div>
     </div>
-
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
