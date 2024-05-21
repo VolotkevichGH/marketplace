@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование товара</title>
+</head>
+<body>
+<form th:action="'/admin/product/edit/' + ${product.id}" method="post">
+    <label>Укажите Бренд</label><br>
+    <input name="BRAND" type="text" placeholder="Укажите Бренд" th:value="${product.brand}"><br>
+    <label>Укажите SKU</label><br>
+    <input name="SKU" type="text" placeholder="Укажите SKU" th:value="${product.sku}"><br>
+    <label>Укажите NAME_EN</label><br>
+    <input name="NAME_EN" type="text" placeholder="Укажите NAME_EN" th:value="${product.name_en}"><br>
+    <label>Укажите NAME</label><br>
+    <input name="NAME" type="text" placeholder="Укажите NAME" th:value="${product.name}"><br>
+    <label>Укажите WEIGHT</label><br>
+    <input name="WEIGHT" type="text" placeholder="Укажите WEIGHT" th:value="${product.weight}"><br>
+    <label>Укажите LENGTH</label><br>
+    <input name="LENGTH" type="text" placeholder="Укажите LENGTH" th:value="${product.length}"><br>
+    <label>Укажите WIDE</label><br>
+    <input name="WIDE" type="text" placeholder="Укажите WIDE" th:value="${product.wide}"><br>
+    <label>Укажите HEIGHT</label><br>
+    <input name="HEIGHT" type="text" placeholder="Укажите HEIGHT" th:value="${product.height}"><br>
+    <label>Укажите SIZE</label><br>
+    <input name="SIZE" type="text" placeholder="Укажите SIZE" th:value="${product.size}"><br>
+    <label>Укажите COLOR_ORIG</label><br>
+    <input name="COLOR_ORIG" type="text" placeholder="Укажите COLOR_ORIG" th:value="${product.color_orig}"><br>
+    <label>Укажите COLOR_RU</label><br>
+    <input name="COLOR_RU" type="text" placeholder="Укажите COLOR_RU" th:value="${product.color_ru}"><br>
+    <label>Укажите DESCRIPTION</label><br>
+    <input name="DESCRIPTION" type="text" placeholder="Укажите DESCRIPTION" th:value="${product.description}"><br>
+    <label>Укажите PRICE</label><br>
+    <input name="PRICE" type="text" placeholder="Укажите PRICE" th:value="${product.price}"><br>
+    <label>Укажите PRICE_OLD</label><br>
+    <input name="PRICE_OLD" type="text" placeholder="Укажите PRICE_OLD" th:value="${product.backPrice}"><br>
+    <button type="submit">Изменить</button>
+</form>
+</body>
+</html>
