@@ -4100,11 +4100,8 @@ function closeNav() {
       
     </div>
 
-<div class="inspectionImg">
-    <img th:src="${product.image}"></img>
-    <img th:src="${product.image}"></img>
-    <img th:src="${product.image}"></img>
-    <img th:src="${product.image}"></img>
+<div class="inspectionImg" th:each="img : ${images}">
+    <img th:src="${img}">
 </div>
 
 <div class="CartColor">

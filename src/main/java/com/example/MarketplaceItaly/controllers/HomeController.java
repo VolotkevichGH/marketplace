@@ -7,18 +7,18 @@ import com.example.MarketplaceItaly.models.Role;
 import com.example.MarketplaceItaly.models.User;
 import com.example.MarketplaceItaly.repositories.ProductRepository;
 import com.example.MarketplaceItaly.repositories.UserRepository;
+import com.google.api.services.sheets.v4.Sheets;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.awt.*;
-import java.io.File;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +28,8 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class HomeController {
 
-
+    private static Sheets sheetsService;
+    final static String SPREADSHEET_ID = "1tPxy-tj2a3J6ODzZRXiK2JTQd6usdHDvMJpPxWI6c_Y";
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ProductRepository productRepository;
@@ -56,7 +57,7 @@ public class HomeController {
             user.setSurname(lastname);
             user.setPassword(passwordEncoder.encode(password));
             user.setUsername(email);
-            user.setRoles(Set.of(Role.ROLE_ADMIN));
+            user.setRoles(Set.of(Role.ROLE_USER));
             userRepository.save(user);
             return "redirect:/";
         } else {
@@ -65,12 +66,12 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String homePage(Model model) {
+    public String homePage(Model model) throws IOException, GeneralSecurityException {
         model.addAttribute("products", productRepository.findAll());
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean userIsActive = userRepository.findByUsername(name).isPresent();
         if (userIsActive) {
-            User user = (User) userRepository.findByUsername(name).get();
+            User user =  userRepository.findByUsername(name).get();
             System.out.println(user.getUsername() + "зашел в систему");
             model.addAttribute("myprod", user.getCart());
             return "D&G A";
@@ -81,7 +82,7 @@ public class HomeController {
     }
 
     @PostMapping("/cartaddproduct-{product}")
-    public String addProductToCart(Model model, @PathVariable Product product) {
+    public String addProductToCart(@PathVariable Product product) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean userIsActive = userRepository.findByUsername(name).isPresent();
         if (userIsActive) {
@@ -846,6 +847,7 @@ public class HomeController {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean userIsActive = userRepository.findByUsername(name).isPresent();
         model.addAttribute("product", product);
+        model.addAttribute("images", product.getImage());
         if (userIsActive) {
             User user = (User) userRepository.findByUsername(name).get();
             model.addAttribute("myprod", user.getCart());
@@ -1862,21 +1864,7 @@ public class HomeController {
         return "women";
     }
 
-    @GetMapping("/test")
-    public String test(Model model){
-        return "test";
-    }
 
-    @SneakyThrows
-    @PostMapping("/test")
-    public String testP(Model model, @RequestParam MultipartFile multipartFile){
-        return "redirect:/test";
-    }
-
-    @GetMapping("/test1")
-    public String test1(Model model){
-        return "test1";
-    }
 
 
 }

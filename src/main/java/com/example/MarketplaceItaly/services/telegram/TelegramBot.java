@@ -42,23 +42,9 @@ public class TelegramBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(id);
         message.setText(text);
-        SendChatAction chatAction = new SendChatAction();
-        chatAction.setAction(ActionType.TYPING);
-        execute(chatAction);
         execute(message);
     }
 
-    @SneakyThrows
-    public void sendFile(long id, String fileName, String message){
-        InputFile file = new InputFile();
-        InputStream stream = getClass().getClassLoader().getResourceAsStream(fileName);
-        file.setMedia(stream, fileName);
-        SendDocument document = new SendDocument();
-        document.setChatId(id);
-        document.setCaption(message);
-        document.setDocument(file);
-        execute(document);
-    }
 
     @SneakyThrows
     public void sendFile(long id, File file, String message){
